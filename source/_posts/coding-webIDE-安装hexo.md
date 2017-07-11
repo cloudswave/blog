@@ -15,24 +15,23 @@ tags: [WebIDE,Hexo,Github,gitcafe]
 WebIDE预览链接
  ![t](https://dn-coding-net-production-pp.qbox.me/9278520a-aff1-40c9-9fdf-39dfd5bbcd60.png) 
 
-## 在`github`或者`gitcafe`中添加page项目，**项目名和用户名相同**
+## 在`github`和`coding`中添加page项目，**项目名和用户名相同**，coding中记得开通pages服务
 
- ![图片](https://dn-coding-net-production-pp.qbox.me/73623394-250b-4454-bf70-2e6bdfbaa6fb.png) 
-
-配置`_config.yml`, github或者gitcafe部署
+配置`_config.yml`, github和coding部署
 
 ```
 deploy: 
   type: git
-  repository: git@gitcafe.com:ethanzhu/ethanzhu.git
-  branch: gitcafe-pages
+  repository: 
+    github: https://github.com/cloudswave/cloudswave.github.io.git,master
+    coding: https://git.coding.net/ethanzhu/ethanzhu.coding.me.git,master
 # deploy: 
 #   type: git
 #   repository: https://github.com/cloudswave/cloudswave.github.io.git
 #   branch: master
 ```
 
-## 发布到`github`或者`gitcafe`中
+## 发布到`github`和`coding`中
 
 ```
   hexo d
