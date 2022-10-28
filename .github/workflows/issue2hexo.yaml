@@ -33,7 +33,7 @@ jobs:
         with:
           issue_url: ${{ env.ISSUE_URL }}
           output: 'source/_posts'
-          replace: true
+          replace: false
       - name: commit hexo源文件
         run: |
           echo $(date) > update.md
@@ -46,3 +46,26 @@ jobs:
         with:
           github_token: ${{ github.token }}
           repository: ${{ env.BLOG_SOURCE }}
+      - name: Build and Deploy
+        uses: solybum/hexo-deploy@master
+        env:
+          PERSONAL_TOKEN: ${{ github.token }}
+          PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io # The repository the action should deploy to.
+          BRANCH: master  # The branch the action should deploy to.
+          PUBLISH_DIR: ./public # The folder the action should deploy.
+#       - name: Cache NPM dependencies
+#         uses: actions/cache@v2
+#         with:
+#           path: node_modules
+#           key: ${{ runner.OS }}-npm-cache
+#           restore-keys: |
+#             ${{ runner.OS }}-npm-cache
+#       - name: Install Dependencies
+#         run: npm install
+#       - name: Build
+#         run: npm run dist
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ github.token }}
+#           publish_dir: ./public
