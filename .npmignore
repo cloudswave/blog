@@ -1,0 +1,11 @@
+# File created using '.npmignore Generator' for zhousiwei: https://zhousiwei.gitee.io/
+
+# Created by https://github.com/JoeyBling
+
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
