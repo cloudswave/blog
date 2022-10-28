@@ -124,7 +124,7 @@ jsonContent:
     comments: false
     link: true
     permalink: false
-    excerpt: false
+    excerpt: true
     categories: false
     tags: true
 
