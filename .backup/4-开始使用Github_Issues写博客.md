@@ -6,6 +6,7 @@
 - Github Web版和App都非常简洁实用，可以随意写文章不需要担心审核问题
 - 可以通过Actions工作流来同步文章到Github Pages和其他博客平台
 
+<!--more-->
 ## 需求和实现
 ### 自动生成README目录
 仓库里增加workflows配置文件仿照[.github/workflows/issue2readme.yaml](https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2readme.yaml)进行修改，[说明文档](https://github.com/bxb100/issueblog#readme)

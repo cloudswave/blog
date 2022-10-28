@@ -15,7 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Fri, 28 Oct 2022 19:05:36 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 28 Oct 2022 20:06:46 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
@@ -25,6 +25,7 @@
 <li>Github Web版和App都非常简洁实用，可以随意写文章不需要担心审核问题</li>
 <li>可以通过Actions工作流来同步文章到Github Pages和其他博客平台</li>
 </ul>
+
 <h2><a id="user-content-需求和实现" class="anchor" aria-hidden="true" href="#需求和实现"><span aria-hidden="true" class="octicon octicon-link"></span></a>需求和实现</h2>
 <h3><a id="user-content-自动生成readme目录" class="anchor" aria-hidden="true" href="#自动生成readme目录"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动生成README目录</h3>
 <p>仓库里增加workflows配置文件仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2readme.yaml">.github/workflows/issue2readme.yaml</a>进行修改，<a href="https://github.com/bxb100/issueblog#readme">说明文档</a></p>
@@ -60,7 +61,7 @@
 <h3><a id="user-content-自动发布文章到其他博客平台用来引流" class="anchor" aria-hidden="true" href="#自动发布文章到其他博客平台用来引流"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动发布文章到其他博客平台用来引流</h3>
 <p>todo</p>
 ]]></description>
-                    <pubDate>Fri, 28 Oct 2022 19:05:23 GMT</pubDate>
+                    <pubDate>Fri, 28 Oct 2022 20:06:35 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
                 <link>https://github.com/cloudswave/blog/issues/4</link>
                     <author><![CDATA[cloudswave]]></author>
