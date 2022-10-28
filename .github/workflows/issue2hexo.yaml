@@ -7,8 +7,11 @@ env:
   ISSUE_URL: https://github.com/cloudswave/blog/issues
   # blog部署的页面
   BLOG: cloudswave/blog
-  # ${{ github.event.issue.user.login }}
-
+  # github pages repo
+  PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
+  # GITHUB TOKEN
+  GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
+  
 on:
   issues:
     types: [opened, edited]
@@ -33,7 +36,7 @@ jobs:
         with:
           issue_url: ${{ env.ISSUE_URL }}
           output: 'source/_posts'
-          replace: false
+          replace: false # 是否先清空output目录
       - name: commit hexo源文件
         run: |
           echo $(date) > update.md
@@ -49,8 +52,8 @@ jobs:
       - name: Build and Deploy
         uses: solybum/hexo-deploy@master
         env:
-          PERSONAL_TOKEN: ${{ secrets.BLOG_TOKEN }}
-          PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io # The repository the action should deploy to.
+          PERSONAL_TOKEN: ${{ env.GITHUB_TOKEN }}
+          PUBLISH_REPOSITORY: ${{ env.PUBLISH_REPOSITORY }} # The repository the action should deploy to.
           BRANCH: master  # The branch the action should deploy to.
           PUBLISH_DIR: ./public # The folder the action should deploy.
 #       - name: Cache NPM dependencies
