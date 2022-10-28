@@ -15,7 +15,57 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Fri, 28 Oct 2022 17:58:12 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 28 Oct 2022 19:05:36 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[开始使用Github Issues写博客]]></title>
+                    <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
+<ul>
+<li>简书频繁下架文章，每天只能发布两篇</li>
+<li>CSDN写过不够专注，客户端不好用</li>
+<li>Github Web版和App都非常简洁实用，可以随意写文章不需要担心审核问题</li>
+<li>可以通过Actions工作流来同步文章到Github Pages和其他博客平台</li>
+</ul>
+<h2><a id="user-content-需求和实现" class="anchor" aria-hidden="true" href="#需求和实现"><span aria-hidden="true" class="octicon octicon-link"></span></a>需求和实现</h2>
+<h3><a id="user-content-自动生成readme目录" class="anchor" aria-hidden="true" href="#自动生成readme目录"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动生成README目录</h3>
+<p>仓库里增加workflows配置文件仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2readme.yaml">.github/workflows/issue2readme.yaml</a>进行修改，<a href="https://github.com/bxb100/issueblog#readme">说明文档</a></p>
+<h3><a id="user-content-自动构建hexo发布到github-pages" class="anchor" aria-hidden="true" href="#自动构建hexo发布到github-pages"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动构建Hexo发布到Github Pages</h3>
+<p>仓库里增加workflows配置文件放照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2hexo.yaml">.github/workflows/issue2hexo.yaml</a>，根据自身情况修改环境变量</p>
+<pre><code>env:
+  # hexo源文件仓库
+  BLOG_SOURCE: cloudswave/blog
+  # issue链接
+  ISSUE_URL: https://github.com/cloudswave/blog/issues
+  # blog部署的页面
+  BLOG: cloudswave/blog
+  # github pages repo
+  PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
+  # GITHUB TOKEN 可以试一试将secrets.BLOG_TOKEN可以直接改成github内置的密钥secrets.BLOG_TOKEN，但是我的会报如下图的权限错误
+  GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198711776-db2ff7fc-f7ec-4eec-b67f-8a1d162a1964.png"><img src="https://user-images.githubusercontent.com/5915548/198711776-db2ff7fc-f7ec-4eec-b67f-8a1d162a1964.png" alt="image" style="max-width: 100%;"></a></p>
+<p>BLOG_TOKEN生成指导：</p>
+<ol>
+<li>
+<p><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic">creating-a-personal-access-token-classic</a>不知道选那些权限选择的时候全部选上吧
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198711260-eb252739-105f-472b-8894-a016fc1d28ad.png"><img src="https://user-images.githubusercontent.com/5915548/198711260-eb252739-105f-472b-8894-a016fc1d28ad.png" alt="image" style="max-width: 100%;"></a></p>
+</li>
+<li>
+<p><a href="https://docs.github.com/cn/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository">creating-encrypted-secrets-for-a-repository</a></p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198710315-f180cdb0-baa8-4c16-aa92-fed599bd354f.png"><img src="https://user-images.githubusercontent.com/5915548/198710315-f180cdb0-baa8-4c16-aa92-fed599bd354f.png" alt="image" style="max-width: 100%;"></a>
+<strong>另外还需要Pages仓库的权限配置</strong>，如下图：
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712542-b1c8edfc-4170-426b-885c-0ba691a6934b.png"><img src="https://user-images.githubusercontent.com/5915548/198712542-b1c8edfc-4170-426b-885c-0ba691a6934b.png" alt="image" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png"><img src="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png" alt="image" style="max-width: 100%;"></a></p>
+<h3><a id="user-content-自动发布文章到其他博客平台用来引流" class="anchor" aria-hidden="true" href="#自动发布文章到其他博客平台用来引流"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动发布文章到其他博客平台用来引流</h3>
+<p>todo</p>
+]]></description>
+                    <pubDate>Fri, 28 Oct 2022 19:05:23 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
+                <link>https://github.com/cloudswave/blog/issues/4</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>Top</category>
+            </item>
             <item>
                 <title><![CDATA[测试issue2blog]]></title>
                     <description><![CDATA[<h2><a id="user-content-标题" class="anchor" aria-hidden="true" href="#标题"><span aria-hidden="true" class="octicon octicon-link"></span></a>标题</h2>
