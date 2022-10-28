@@ -71,7 +71,7 @@ deploy:
   type: git
   repository: 
     github: https://github.com/cloudswave/cloudswave.github.io.git,master
-    coding: https://git.coding.net/ethanzhu/ethanzhu.coding.me.git,master
+#   coding: https://git.coding.net/ethanzhu/ethanzhu.coding.me.git,master
 # deploy: 
 #   type: git
 #   repository: git@gitcafe.com:ethanzhu/ethanzhu.git
