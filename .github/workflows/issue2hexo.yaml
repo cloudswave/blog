@@ -49,7 +49,7 @@ jobs:
       - name: Build and Deploy
         uses: solybum/hexo-deploy@master
         env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.BLOG_TOKEN }}
           PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io # The repository the action should deploy to.
           BRANCH: master  # The branch the action should deploy to.
           PUBLISH_DIR: ./public # The folder the action should deploy.
