@@ -1,9 +1,10 @@
 ## 简介
-使用github issues创建的个人博客.[RSS Feed](https://cloudswave.github.io/feed.xml)
+使用github issues创建的个人博客.[RSS Feed](https://raw.githubusercontent.com/cloudswave/blog/master/feed.xml)
 ## 链接
 | Name | Link | Desc |
 | ---- | ---- | ---- |
 | 简书 | https://www.jianshu.com/u/d0de7c834d18 | 个人简书博客 |
+| CSDN | https://blog.csdn.net/iethanzhu | 个人CSDN博客 |
 
 ## 最近更新
 - [计划](https://github.com/cloudswave/blog/issues/3)---2022-10-28
