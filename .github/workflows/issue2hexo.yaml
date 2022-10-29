@@ -50,6 +50,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run dist
+      - name: Gulp
+        run: npm run gulp
       - name: Deploy
         uses: cloudswave/hexo-deploy@master
         env:
