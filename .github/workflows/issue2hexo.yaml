@@ -1,6 +1,7 @@
 name: issue2hexo
 
 env:
+  # Pages Deploy Repo
   PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
   # GITHUB TOKEN
   GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
@@ -41,66 +42,10 @@ jobs:
       - name: Build and Deploy
         uses: solybum/hexo-deploy@master
         env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ env.GITHUB_TOKEN }}
           PUBLISH_REPOSITORY: ${{ env.PUBLISH_REPOSITORY }} # The repository the action should deploy to.
           BRANCH: master  # The branch the action should deploy to.
           PUBLISH_DIR: ./public # The folder the action should deploy.
-# env:
-#   # hexo源文件仓库
-#   BLOG_SOURCE: cloudswave/blog
-#   # issue链接
-#   ISSUE_URL: https://github.com/cloudswave/blog/issues
-#   # blog部署的页面
-#   BLOG: cloudswave/blog
-#   # github pages repo
-#   PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
-#   # GITHUB TOKEN
-#   GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
-  
-# on:
-#   issues:
-#     types: [opened, edited]
-#   push:
-#     branches:    
-#       - 'master'
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     # 仓库作者才才能触发
-#     if: ${{ github.actor == github.repository_owner }}
-#     steps:
-#       - name: 拉取hexo源文件
-#         uses: actions/checkout@v3
-#         with:
-#           persist-credentials: 'false'
-#           repository: ${{ env.BLOG_SOURCE }}
-#           ref: 'master'
-#           token: ${{ github.token }}
-#       - name: issue生成hexo文章
-#         uses: flytam/github-issue-to-hexo@main
-#         with:
-#           issue_url: ${{ env.ISSUE_URL }}
-#           output: 'source/_posts'
-#           replace: false # 是否先清空output目录
-#       - name: commit hexo源文件
-#         run: |
-#           echo $(date) > update.md
-#           git add .
-#           git config user.name "issue-to-hexo bot"
-#           git config user.email "test@github.com"
-#           git commit -m "Add a post"
-#       - name: 推送hexo源文件
-#         uses: ad-m/github-push-action@master
-#         with:
-#           github_token: ${{ github.token }}
-#           repository: ${{ env.BLOG_SOURCE }}
-#       - name: Build and Deploy
-#         uses: solybum/hexo-deploy@master
-#         env:
-#           PERSONAL_TOKEN: ${{ env.GITHUB_TOKEN }}
-#           PUBLISH_REPOSITORY: ${{ env.PUBLISH_REPOSITORY }} # The repository the action should deploy to.
-#           BRANCH: master  # The branch the action should deploy to.
-#           PUBLISH_DIR: ./public # The folder the action should deploy.
 
 
 #       - name: Cache NPM dependencies
