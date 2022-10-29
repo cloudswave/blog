@@ -15,7 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Fri, 28 Oct 2022 20:06:46 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Oct 2022 08:33:48 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
@@ -32,12 +32,6 @@
 <h3><a id="user-content-自动构建hexo发布到github-pages" class="anchor" aria-hidden="true" href="#自动构建hexo发布到github-pages"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动构建Hexo发布到Github Pages</h3>
 <p>仓库里增加workflows配置文件放照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2hexo.yaml">.github/workflows/issue2hexo.yaml</a>，根据自身情况修改环境变量</p>
 <pre><code>env:
-  # hexo源文件仓库
-  BLOG_SOURCE: cloudswave/blog
-  # issue链接
-  ISSUE_URL: https://github.com/cloudswave/blog/issues
-  # blog部署的页面
-  BLOG: cloudswave/blog
   # github pages repo
   PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
   # GITHUB TOKEN 可以试一试将secrets.BLOG_TOKEN可以直接改成github内置的密钥secrets.BLOG_TOKEN，但是我的会报如下图的权限错误
@@ -61,7 +55,7 @@
 <h3><a id="user-content-自动发布文章到其他博客平台用来引流" class="anchor" aria-hidden="true" href="#自动发布文章到其他博客平台用来引流"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动发布文章到其他博客平台用来引流</h3>
 <p>todo</p>
 ]]></description>
-                    <pubDate>Fri, 28 Oct 2022 20:06:35 GMT</pubDate>
+                    <pubDate>Sat, 29 Oct 2022 08:33:34 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
                 <link>https://github.com/cloudswave/blog/issues/4</link>
                     <author><![CDATA[cloudswave]]></author>

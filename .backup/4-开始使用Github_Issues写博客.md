@@ -15,12 +15,6 @@
 仓库里增加workflows配置文件放照[.github/workflows/issue2hexo.yaml](https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2hexo.yaml)，根据自身情况修改环境变量
 ```
 env:
-  # hexo源文件仓库
-  BLOG_SOURCE: cloudswave/blog
-  # issue链接
-  ISSUE_URL: https://github.com/cloudswave/blog/issues
-  # blog部署的页面
-  BLOG: cloudswave/blog
   # github pages repo
   PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
   # GITHUB TOKEN 可以试一试将secrets.BLOG_TOKEN可以直接改成github内置的密钥secrets.BLOG_TOKEN，但是我的会报如下图的权限错误
