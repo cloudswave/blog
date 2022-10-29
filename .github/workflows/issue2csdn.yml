@@ -1,0 +1,28 @@
+name: Issue to CSDN
+on:
+  issues:
+    # Sufficient to trigger this workflow when an issue is milestoned
+    types: [milestoned]
+    # types: [unlabeled, labeled, edited, milestoned]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == github.repository_owner }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'    
+      # use here
+      - uses: cloudseave/issue2csdn@main
+        with:
+          issue_url: https://github.com/cloudswave/blog/issues
+          token: ${{ secrets.GITHUB_TOKEN }}
+          csdn_cookie: ${{ secrets.CSDN_COOKIE }}
+          ## optional below
+          milestone: publish
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  cancel-in-progress: true 
