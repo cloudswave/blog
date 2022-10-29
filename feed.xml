@@ -15,7 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sat, 29 Oct 2022 08:33:48 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Oct 2022 18:26:39 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
@@ -53,13 +53,136 @@
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712542-b1c8edfc-4170-426b-885c-0ba691a6934b.png"><img src="https://user-images.githubusercontent.com/5915548/198712542-b1c8edfc-4170-426b-885c-0ba691a6934b.png" alt="image" style="max-width: 100%;"></a>
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png"><img src="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png" alt="image" style="max-width: 100%;"></a></p>
 <h3><a id="user-content-自动发布文章到其他博客平台用来引流" class="anchor" aria-hidden="true" href="#自动发布文章到其他博客平台用来引流"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动发布文章到其他博客平台用来引流</h3>
-<p>todo</p>
+<ul>
+<li>CSDN</li>
+</ul>
 ]]></description>
-                    <pubDate>Sat, 29 Oct 2022 08:33:34 GMT</pubDate>
+                    <pubDate>Sat, 29 Oct 2022 18:26:28 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
                 <link>https://github.com/cloudswave/blog/issues/4</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>Top</category>
+                        <category>good first issue</category>
+            </item>
+            <item>
+                <title><![CDATA[How to get and save the CSDN cookie as the secret]]></title>
+                    <description><![CDATA[<ul>
+<li>Press FN + F12 to the Dev Tools and select the network</li>
+<li>Login the <a href="https://mp.csdn.net/" rel="nofollow">CSDN Blog</a>
+</li>
+<li>Find the Cookie</li>
+<li>Copy the Cookie and save to the Repo Secrets Setting page</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png"><img width="959" alt="get-the-csdn-cookie" src="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png"><img width="1094" alt="save-the-cookie" src="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Sat, 29 Oct 2022 18:12:10 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/6</guid>
+                <link>https://github.com/cloudswave/blog/issues/6</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>Guide</category>
+            </item>
+            <item>
+                <title><![CDATA[CSDN博客接口]]></title>
+                    <description><![CDATA[<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"./mcConfig"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">request</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'request'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">querystring</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'querystring'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-en">createPost</span><span class="pl-kos">(</span><span class="pl-s1">oPost</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+
+  <span class="pl-k">var</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-s">"https://mp.csdn.net/mdeditor/saveArticle"</span><span class="pl-kos">;</span>
+  <span class="pl-k">var</span> <span class="pl-s1">oBody</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+          <span class="pl-c1">title</span>: <span class="pl-s1">oPost</span><span class="pl-kos">.</span><span class="pl-c1">title</span><span class="pl-kos">,</span>
+          <span class="pl-c1">markdowncontent</span>: <span class="pl-s1">oPost</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">,</span>
+          <span class="pl-c1">tags</span>:<span class="pl-s">"Fiori"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">categories</span>:<span class="pl-s">"Fiori"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">channel</span>:<span class="pl-s">"14"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">type</span>:<span class="pl-s">"original"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">articleedittype</span>:<span class="pl-s">"1"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">content</span>: <span class="pl-s1">oPost</span><span class="pl-kos">.</span><span class="pl-c1">body</span>
+        <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">formData</span> <span class="pl-c1">=</span> <span class="pl-s1">querystring</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">oBody</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">contentLength</span> <span class="pl-c1">=</span> <span class="pl-s1">formData</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">createPostOptions</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">url</span>: <span class="pl-s1">url</span><span class="pl-kos">,</span>
+        <span class="pl-c1">method</span>: <span class="pl-s">"POST"</span><span class="pl-kos">,</span>  
+        <span class="pl-c1">headers</span>: <span class="pl-kos">{</span>
+            <span class="pl-s">"content-type"</span>: <span class="pl-s">"application/x-www-form-urlencoded"</span><span class="pl-kos">,</span>
+            <span class="pl-s">"Content-Length"</span>: <span class="pl-s1">contentLength</span><span class="pl-kos">,</span>
+            <span class="pl-s">"origin"</span> :<span class="pl-s">"https://mp.csdn.net"</span><span class="pl-kos">,</span>
+            <span class="pl-s">"referer"</span> :<span class="pl-s">"https://mp.csdn.net/mdeditor"</span><span class="pl-kos">,</span>
+            <span class="pl-s">"User-Agent"</span> :<span class="pl-s">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"</span><span class="pl-kos">,</span>
+            <span class="pl-s">"cookie"</span>: <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">cookie</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">body</span>: <span class="pl-s1">formData</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span><span class="pl-s1">reject</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+      <span class="pl-k">var</span> <span class="pl-s1">requestC</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span><span class="pl-kos">.</span><span class="pl-en">defaults</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">jar</span>: <span class="pl-c1">true</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Step1: create post via url: "</span>   <span class="pl-s1">url</span> <span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+      <span class="pl-s1">requestC</span><span class="pl-kos">(</span><span class="pl-s1">createPostOptions</span><span class="pl-kos">,</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">,</span><span class="pl-s1">response</span><span class="pl-kos">,</span><span class="pl-s1">body</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+       
+       <span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+          <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+       <span class="pl-kos">}</span>
+       <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"response: "</span>   <span class="pl-s1">body</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+       <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">body</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> 
+     <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-s1">createPost</span><span class="pl-kos">;</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">request</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'request'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-en">getIssue</span><span class="pl-kos">(</span><span class="pl-s1">issueNumber</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+
+  <span class="pl-k">var</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-s">"https://api.github.com/repos/i042416/KnowlegeRepository/issues/"</span><span class="pl-kos"></span>   <span class="pl-s1">issueNumber</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">var</span> <span class="pl-s1">getIssueOptions</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">url</span>: <span class="pl-s1">url</span><span class="pl-kos">,</span>
+        <span class="pl-c1">method</span>: <span class="pl-s">"GET"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">json</span>:<span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">headers</span>: <span class="pl-kos">{</span>
+            <span class="pl-s">"User-Agent"</span>: <span class="pl-s">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"</span>
+        <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span><span class="pl-s1">reject</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+      <span class="pl-k">var</span> <span class="pl-s1">requestC</span> <span class="pl-c1">=</span> <span class="pl-s1">request</span><span class="pl-kos">.</span><span class="pl-en">defaults</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">jar</span>: <span class="pl-c1">true</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Step1: get issue detail via url: "</span>   <span class="pl-s1">url</span> <span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+      <span class="pl-s1">requestC</span><span class="pl-kos">(</span><span class="pl-s1">getIssueOptions</span><span class="pl-kos">,</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">,</span><span class="pl-s1">response</span><span class="pl-kos">,</span><span class="pl-s1">body</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+          <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error occurred: "</span>   <span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"title:"</span>   <span class="pl-s1">body</span><span class="pl-kos">.</span><span class="pl-c1">title</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"body: "</span>   <span class="pl-s1">body</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">for</span><span class="pl-kos">(</span> <span class="pl-k">var</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">body</span><span class="pl-kos">.</span><span class="pl-c1">labels</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">i</span>  <span class="pl-kos">)</span><span class="pl-kos">{</span>
+          <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"label: "</span>   <span class="pl-s1">body</span><span class="pl-kos">.</span><span class="pl-c1">labels</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+        <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">body</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> 
+     <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-s1">getIssue</span><span class="pl-kos">;</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">readIssue</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"./readIssueMod"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">createPost</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"./createPostMod"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">readIssue</span><span class="pl-kos">(</span><span class="pl-c1">2215</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-s1">createPost</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error: "</span>   <span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p><a href="https://www.jianshu.com/p/ae4fe3c6ccf7" rel="nofollow">https://www.jianshu.com/p/ae4fe3c6ccf7</a></p>
+]]></description>
+                    <pubDate>Sat, 29 Oct 2022 13:46:17 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/5</guid>
+                <link>https://github.com/cloudswave/blog/issues/5</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>随笔</category>
             </item>
             <item>
                 <title><![CDATA[测试issue2blog]]></title>
@@ -71,6 +194,7 @@
 五级标题:     #### 标题</p>
 <h2><a id="user-content-加粗" class="anchor" aria-hidden="true" href="#加粗"><span aria-hidden="true" class="octicon octicon-link"></span></a>加粗</h2>
 <p><strong>加粗</strong></p>
+
 <h2><a id="user-content-图片" class="anchor" aria-hidden="true" href="#图片"><span aria-hidden="true" class="octicon octicon-link"></span></a>图片</h2>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5ddad46642a2c8b0ac8a83c25b204e21c16d8523bb5d51c23084866c9e32aee8/68747470733a2f2f7777772e696d6775726c2e6f72672f7374617469632f696d616765732f6c756f79652e6a7067"><img src="https://camo.githubusercontent.com/5ddad46642a2c8b0ac8a83c25b204e21c16d8523bb5d51c23084866c9e32aee8/68747470733a2f2f7777772e696d6775726c2e6f72672f7374617469632f696d616765732f6c756f79652e6a7067" alt="落叶" data-canonical-src="https://www.imgurl.org/static/images/luoye.jpg" style="max-width: 100%;"></a></p>
 <h2><a id="user-content-超链接" class="anchor" aria-hidden="true" href="#超链接"><span aria-hidden="true" class="octicon octicon-link"></span></a>超链接</h2>
@@ -80,10 +204,10 @@
 <h2><a id="user-content-粗斜体" class="anchor" aria-hidden="true" href="#粗斜体"><span aria-hidden="true" class="octicon octicon-link"></span></a>粗斜体</h2>
 <p><em><strong>粗斜体</strong></em></p>
 <h2><a id="user-content-代码块" class="anchor" aria-hidden="true" href="#代码块"><span aria-hidden="true" class="octicon octicon-link"></span></a>代码块</h2>
-<pre><code>code..
+<pre><code>code.
 </code></pre>
 ]]></description>
-                    <pubDate>Fri, 28 Oct 2022 17:09:39 GMT</pubDate>
+                    <pubDate>Sat, 29 Oct 2022 12:41:02 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/1</guid>
                 <link>https://github.com/cloudswave/blog/issues/1</link>
                     <author><![CDATA[cloudswave]]></author>

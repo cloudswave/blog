@@ -10,6 +10,7 @@
 ## 加粗
 **加粗**
 
+<!--more-->
 ## 图片
 ![落叶](https://www.imgurl.org/static/images/luoye.jpg)
 
@@ -24,5 +25,5 @@
 
 ## 代码块
 ```
-code..
+code.
 ```

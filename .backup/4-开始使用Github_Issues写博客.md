@@ -34,4 +34,4 @@ BLOG_TOKEN生成指导：
 ![image](https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png)
 
 ### 自动发布文章到其他博客平台用来引流
-todo
+- CSDN
