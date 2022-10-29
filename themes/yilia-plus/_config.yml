@@ -111,8 +111,8 @@ gitment_owner: cloudswave      #你的 GitHub ID
 gitment_remote: false
 gitment_repo: 'cloudwave.github.io'          #存储评论的 repo name(需要在Github创建)
 gitment_oauth:
-  client_id: '1062039060f4021e8ae2'           #client ID
-  client_secret: '6ffbfcbd49ef5b123d524664657145a662179f34'       #client secret
+  client_id: '24cc76ae5d5d97a16759'           #client ID
+  client_secret: 'd641d24229e60217cfe82170ced17885df437e1a'       #client secret
 
 # 4、Giteement----【国内用户建议使用这个，相对比较快】
 # 关于如何集成:https://www.jianshu.com/p/f5c4633524c7
