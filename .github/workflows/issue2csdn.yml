@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '16'    
       # use here
-      - uses: cloudseave/issue2csdn@main
+      - uses: cloudswave/issue2csdn@main
         with:
           issue_url: https://github.com/cloudswave/blog/issues
           token: ${{ secrets.GITHUB_TOKEN }}
