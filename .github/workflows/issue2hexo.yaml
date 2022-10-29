@@ -9,9 +9,6 @@ on:
   issues:
     # Sufficient to trigger this workflow when an issue is unlabeled, labeled, edited, milestoned
     types: [unlabeled, labeled, edited, milestoned]
-  push:
-    branches:    
-      - 'master'
 jobs:
   build:
     runs-on: ubuntu-latest
