@@ -168,7 +168,7 @@ baidu_push: false
 copyright_type: 2
 
 # 网站成立年份(默认为 2018，若填入年份小于当前年份，则显示为 2018-2019 类似的格式)
-since: 2018
+since: 2022
 
 # Progress Bar | 页面加载进度条
 # Demo: http://github.hubspot.com/pace/docs/welcome/
@@ -213,9 +213,9 @@ live2d:
   # (关闭请设置为false)
   enable: true
   # 模型名称(取值请参考：https://github.com/JoeyBling/hexo-theme-yilia-plus/wiki/live2d%E6%A8%A1%E5%9E%8B%E5%8C%85%E5%B1%95%E7%A4%BA)
-  model: miku
+  model: chitose
   display:
-    position: right # 显示位置：left/right(default: 'right')
+    position: left # 显示位置：left/right(default: 'right')
     width: 145  # 模型的长度(default: 150)
     height: 320 # 模型的高度(default: 300)
     hOffset: 50 # 水平偏移(default: 0)
