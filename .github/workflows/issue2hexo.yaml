@@ -9,7 +9,9 @@ on:
   issues:
     # Sufficient to trigger this workflow when an issue is unlabeled, labeled, edited, milestoned
     types: [unlabeled, labeled, edited, milestoned]
-
+  push:
+    branches:    
+      - 'master'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,8 +52,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run clean && npm run dist
-      - name: Gulp
-        run: npm run gulp
+#       - name: Gulp
+#         run: npm run gulp
       - name: Deploy
         uses: cloudswave/hexo-deploy@master
         env:
