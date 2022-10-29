@@ -49,7 +49,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm run dist
+        run: npm run clean && npm run dist
       - name: Gulp
         run: npm run gulp
       - name: Deploy
