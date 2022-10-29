@@ -27,7 +27,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           ## optional below
           milestone: 'publish'
-          output: './source/_post/'
+          output: './'
       - name: Commit report
         run: |
           git config --global user.name 'GitHub Action'
@@ -41,7 +41,7 @@ jobs:
       - name: Build and Deploy
         uses: solybum/hexo-deploy@master
         env:
-          PERSONAL_TOKEN: ${{ env.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_REPOSITORY: ${{ env.PUBLISH_REPOSITORY }} # The repository the action should deploy to.
           BRANCH: master  # The branch the action should deploy to.
           PUBLISH_DIR: ./public # The folder the action should deploy.
