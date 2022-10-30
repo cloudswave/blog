@@ -255,7 +255,7 @@ https://github.com/onblogs/BlogHelper/blob/master/src/blog/csdn.js
 ---
 
 <a id="issuecomment-1296133554"></a>
-更新博客浏览器抓包生成的Node.jsfetch：
+更新博客时浏览器抓包生成的Node.jsfetch：
 ```
 fetch("https://bizapi.csdn.net/blog-console-api/v3/mdeditor/saveArticle", {
   "headers": {

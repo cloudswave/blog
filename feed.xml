@@ -15,7 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 06:34:05 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Oct 2022 06:34:23 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[CSDN博客接口]]></title>
                     <description><![CDATA[<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"./mcConfig"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
@@ -112,7 +112,7 @@
 <span class="pl-s1">readIssue</span><span class="pl-kos">(</span><span class="pl-c1">2215</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-s1">createPost</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error: "</span>   <span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p><a href="https://www.jianshu.com/p/ae4fe3c6ccf7" rel="nofollow">https://www.jianshu.com/p/ae4fe3c6ccf7</a></p>
 ]]></description>
-                    <pubDate>Sun, 30 Oct 2022 06:33:48 GMT</pubDate>
+                    <pubDate>Sun, 30 Oct 2022 06:34:11 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/5</guid>
                 <link>https://github.com/cloudswave/blog/issues/5</link>
                     <author><![CDATA[cloudswave]]></author>
