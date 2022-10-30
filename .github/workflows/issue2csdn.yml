@@ -24,6 +24,7 @@ jobs:
           ## optional below
           markdowncontent: |
             ${{ github.event.issue.body }}
+            
             _本文同步于个人Github博客：[${{ github.event.issue.html_url }}](${{ github.event.issue.html_url }})，欢迎留言。_
 concurrency: 
   group: ${{ github.workflow }}-${{ github.event.issue.number }}
