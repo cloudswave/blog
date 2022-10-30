@@ -11,6 +11,7 @@
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 
 ## 最近更新
+- [Github issue update api](https://github.com/cloudswave/blog/issues/8)---2022-10-30
 - [便签](https://github.com/cloudswave/blog/issues/7)---2022-10-30
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
 - [CSDN博客接口分析](https://github.com/cloudswave/blog/issues/5)---2022-10-29

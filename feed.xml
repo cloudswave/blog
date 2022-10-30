@@ -15,7 +15,39 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 06:54:05 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Oct 2022 08:58:11 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[Github issue update api]]></title>
+                    <description><![CDATA[<p>Github issue update js api:</p>
+<pre><code>// Octokit.js
+// https://github.com/octokit/core.js#readme
+const octokit = new Octokit({
+  auth: 'YOUR-TOKEN'
+})
+
+await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
+  owner: 'OWNER',
+  repo: 'REPO',
+  issue_number: 'ISSUE_NUMBER',
+  title: 'Found a bug',
+  body: 'I\'m having a problem with this.',
+  assignees: [
+    'octocat'
+  ],
+  milestone: 1,
+  state: 'open',
+  labels: [
+    'bug'
+  ]
+})
+</code></pre>
+<p><a href="https://docs.github.com/cn/rest/issues/issues#update-an-issue">https://docs.github.com/cn/rest/issues/issues#update-an-issue</a></p>
+]]></description>
+                    <pubDate>Sun, 30 Oct 2022 08:58:05 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/8</guid>
+                <link>https://github.com/cloudswave/blog/issues/8</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
