@@ -35,10 +35,10 @@
 - [CSDN博客接口](https://github.com/cloudswave/blog/issues/5)---2022-10-29
 
 ## TODO
-TODO list from [计划](https://github.com/cloudswave/blog/issues/3)--1 jobs to do--1 jobs done
-- [ ] GitHub Issue Blog to CSDN blog
+TODO list from [计划](https://github.com/cloudswave/blog/issues/3) all done
 <details><summary>MORE</summary>
 
 - [x] Github Issues Blog to readme.md
+- [x] GitHub Issue Blog to CSDN blog
 </details>
 
