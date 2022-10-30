@@ -2,9 +2,10 @@ name: 'issue2readme'
 on:
   workflow_dispatch:
   issues:
-    types: [opened, edited]
-  issue_comment:
-    types: [created, edited]
+    types: [milestoned]
+    # types: [opened, edited]
+#   issue_comment:
+#     types: [created, edited]
 concurrency:
   # just run one action at a time
   group: ${{ github.workflow }}
