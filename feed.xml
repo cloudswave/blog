@@ -15,40 +15,13 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 03:14:26 GMT</lastBuildDate>
-            <item>
-                <title><![CDATA[便签]]></title>
-                    <description><![CDATA[<p>/(\w+)/(\w+)/issues/[1-9]\d*(/?)$</p>
-]]></description>
-                    <pubDate>Sun, 30 Oct 2022 03:14:14 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/7</guid>
-                <link>https://github.com/cloudswave/blog/issues/7</link>
-                    <author><![CDATA[cloudswave]]></author>
-            </item>
-            <item>
-                <title><![CDATA[How to get and save the CSDN cookie as the secret]]></title>
-                    <description><![CDATA[<ul>
-<li>Press FN + F12 to the Dev Tools and select the network</li>
-<li>Login the <a href="https://mp.csdn.net/" rel="nofollow">CSDN Blog</a>
-</li>
-<li>Find the Cookie</li>
-<li>Copy the Cookie and save to the Repo Secrets Setting page</li>
-</ul>
-<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png"><img width="959" alt="get-the-csdn-cookie" src="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png"><img width="1094" alt="save-the-cookie" src="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png" style="max-width: 100%;"></a></p>
-]]></description>
-                    <pubDate>Sat, 29 Oct 2022 18:30:22 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/6</guid>
-                <link>https://github.com/cloudswave/blog/issues/6</link>
-                    <author><![CDATA[cloudswave]]></author>
-                        <category>Guide</category>
-            </item>
+        <lastBuildDate>Sun, 30 Oct 2022 03:53:55 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
 <ul>
 <li>简书频繁下架文章，每天只能发布两篇</li>
-<li>CSDN写过不够专注，客户端不好用</li>
+<li>CSDN写作不够专注，客户端不好用</li>
 <li>Github Web版和App都非常简洁实用，可以随意写文章不需要担心审核问题</li>
 <li>可以通过Actions工作流来同步文章到Github Pages和其他博客平台</li>
 </ul>
@@ -84,12 +57,39 @@
 <li>CSDN</li>
 </ul>
 ]]></description>
-                    <pubDate>Sat, 29 Oct 2022 18:26:43 GMT</pubDate>
+                    <pubDate>Sun, 30 Oct 2022 03:53:47 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
                 <link>https://github.com/cloudswave/blog/issues/4</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>Top</category>
                         <category>good first issue</category>
+            </item>
+            <item>
+                <title><![CDATA[便签]]></title>
+                    <description><![CDATA[<p>/(\w+)/(\w+)/issues/[1-9]\d*(/?)$</p>
+]]></description>
+                    <pubDate>Sun, 30 Oct 2022 03:14:14 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/7</guid>
+                <link>https://github.com/cloudswave/blog/issues/7</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[How to get and save the CSDN cookie as the secret]]></title>
+                    <description><![CDATA[<ul>
+<li>Press FN + F12 to the Dev Tools and select the network</li>
+<li>Login the <a href="https://mp.csdn.net/" rel="nofollow">CSDN Blog</a>
+</li>
+<li>Find the Cookie</li>
+<li>Copy the Cookie and save to the Repo Secrets Setting page</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png"><img width="959" alt="get-the-csdn-cookie" src="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png"><img width="1094" alt="save-the-cookie" src="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Sat, 29 Oct 2022 18:30:22 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/6</guid>
+                <link>https://github.com/cloudswave/blog/issues/6</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>Guide</category>
             </item>
             <item>
                 <title><![CDATA[CSDN博客接口]]></title>
