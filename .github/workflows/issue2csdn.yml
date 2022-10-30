@@ -18,11 +18,13 @@ jobs:
       # use here
       - uses: cloudswave/issue2csdn@main
         with:
-          issue_url: https://github.com/cloudswave/blog/issues
+          issue_url: ${{ github.event.issue.html_url }}
           token: ${{ secrets.GITHUB_TOKEN }}
           csdn_cookie: ${{ secrets.CSDN_COOKIE }}
           ## optional below
-          milestone: publish
+          markdowncontent: |
+            ${{ github.event.issue.body }}
+            _本文同步于个人Github博客：[${{ github.event.issue.html_url }}](${{ github.event.issue.html_url }})，欢迎留言。_
 concurrency: 
   group: ${{ github.workflow }}-${{ github.event.issue.number }}
   cancel-in-progress: true 
