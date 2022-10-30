@@ -26,3 +26,4 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
 ```
 
 https://docs.github.com/cn/rest/issues/issues#update-an-issue
+<!--csdn-article-id:127601871-->
