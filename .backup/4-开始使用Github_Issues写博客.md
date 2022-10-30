@@ -34,4 +34,4 @@ BLOG_TOKEN生成指导：
 ![image](https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png)
 
 ### 自动发布文章到其他博客平台用来引流
-- CSDN
+- CSDN, 参考[issue2csdn](https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2csdn.yml)增加workflows配置文件，[说明文档](https://github.com/cloudswave/issue2csdn#readme)
