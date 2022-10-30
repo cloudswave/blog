@@ -286,4 +286,5 @@ fetch("https://bizapi.csdn.net/blog-console-api/v3/mdeditor/saveArticle", {
 ---
 
 <a id="issuecomment-1296136439"></a>
+接下来的工作：
 csdn创建文章的时候会返回文章id，然后记录到对应issue的某个地方，更新issue的时候通过该id去更新csdn文章而不重新创建
