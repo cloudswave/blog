@@ -15,7 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 09:28:03 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Oct 2022 09:31:03 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[测试issue2blog]]></title>
                     <description><![CDATA[<h2><a id="user-content-标题" class="anchor" aria-hidden="true" href="#标题"><span aria-hidden="true" class="octicon octicon-link"></span></a>标题</h2>
@@ -38,8 +38,11 @@
 <h2><a id="user-content-代码块" class="anchor" aria-hidden="true" href="#代码块"><span aria-hidden="true" class="octicon octicon-link"></span></a>代码块</h2>
 <pre><code>code.
 </code></pre>
+<h2><a id="user-content-分割线" class="anchor" aria-hidden="true" href="#分割线"><span aria-hidden="true" class="octicon octicon-link"></span></a>分割线</h2>
+<p>Hello</p>
+
 ]]></description>
-                    <pubDate>Sun, 30 Oct 2022 09:27:51 GMT</pubDate>
+                    <pubDate>Sun, 30 Oct 2022 09:30:51 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/1</guid>
                 <link>https://github.com/cloudswave/blog/issues/1</link>
                     <author><![CDATA[cloudswave]]></author>
