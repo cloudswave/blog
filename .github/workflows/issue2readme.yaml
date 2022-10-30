@@ -21,8 +21,8 @@ jobs:
           # Define the README.md header content
           md_header: |
             ## 简介
-            使用Github Issues写博客.[RSS Feed](https://raw.githubusercontent.com/cloudswave/blog/master/feed.xml)
-            同步发布到[EthanZhu's Blog](https://cloudswave.github.io)
+            使用Github Issues写博客,[RSS Feed](https://raw.githubusercontent.com/cloudswave/blog/master/feed.xml)
+            ,同步发布到[EthanZhu's Blog](https://cloudswave.github.io)和CSDN
           blog_author: "EthanZhu"
           recent_title: "最近更新"
           top_title: "置顶"
