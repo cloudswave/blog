@@ -15,9 +15,9 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 09:11:08 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Oct 2022 09:17:14 GMT</lastBuildDate>
             <item>
-                <title><![CDATA[Github issue update api]]></title>
+                <title><![CDATA[Github issue update Api]]></title>
                     <description><![CDATA[<p>Github issue update js api:</p>
 <pre><code>// Octokit.js
 // https://github.com/octokit/core.js#readme
@@ -44,7 +44,7 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
 <p><a href="https://docs.github.com/cn/rest/issues/issues#update-an-issue">https://docs.github.com/cn/rest/issues/issues#update-an-issue</a></p>
 
 ]]></description>
-                    <pubDate>Sun, 30 Oct 2022 09:10:53 GMT</pubDate>
+                    <pubDate>Sun, 30 Oct 2022 09:17:03 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/8</guid>
                 <link>https://github.com/cloudswave/blog/issues/8</link>
                     <author><![CDATA[cloudswave]]></author>

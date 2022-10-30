@@ -1,4 +1,4 @@
-[Github issue update api](https://github.com/cloudswave/blog/issues/8)
+[Github issue update Api](https://github.com/cloudswave/blog/issues/8)
 
 Github issue update js api:
 ```
