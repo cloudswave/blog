@@ -15,22 +15,24 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 05:36:34 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Oct 2022 06:10:13 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
 <ul>
 <li>简书频繁下架文章，每天只能发布两篇</li>
-<li>CSDN写作不够专注，客户端不好用</li>
+<li>CSDN页面太杂，写作不够专注，客户端不好用</li>
 <li>Github Web版和App都非常简洁实用，可以随意写文章不需要担心审核问题</li>
 <li>可以通过Actions工作流来同步文章到Github Pages和其他博客平台</li>
+<li>学习Github Action开发，学习机遇Github到自动化构建部署流程</li>
 </ul>
+
 
 <h2><a id="user-content-需求和实现" class="anchor" aria-hidden="true" href="#需求和实现"><span aria-hidden="true" class="octicon octicon-link"></span></a>需求和实现</h2>
 <h3><a id="user-content-自动生成readme目录" class="anchor" aria-hidden="true" href="#自动生成readme目录"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动生成README目录</h3>
-<p>仓库里增加workflows配置文件仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2readme.yaml">.github/workflows/issue2readme.yaml</a>进行修改，<a href="https://github.com/bxb100/issueblog#readme">说明文档</a></p>
+<p>仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2readme.yaml">.github/workflows/issue2readme.yaml</a>在仓库里增加workflows配置文件进行修改，<a href="https://github.com/bxb100/issueblog#readme">说明文档</a>，最后生成<a href="https://github.com/cloudswave/blog/#readme">效果</a></p>
 <h3><a id="user-content-自动构建hexo发布到github-pages" class="anchor" aria-hidden="true" href="#自动构建hexo发布到github-pages"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动构建Hexo发布到Github Pages</h3>
-<p>仓库里增加workflows配置文件放照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2hexo.yaml">.github/workflows/issue2hexo.yaml</a>，根据自身情况修改环境变量</p>
+<p>仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2hexo.yaml">.github/workflows/issue2hexo.yaml</a>在仓库里增加workflows配置文件，根据自身情况修改环境变量，最后发布的效果可查看<a href="cloudswave.github.io">我的Hexo博客</a></p>
 <pre><code>env:
   # github pages repo
   PUBLISH_REPOSITORY: cloudswave/cloudswave.github.io
@@ -54,11 +56,28 @@
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png"><img src="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png" alt="image" style="max-width: 100%;"></a></p>
 <h3><a id="user-content-自动发布文章到其他博客平台用来引流" class="anchor" aria-hidden="true" href="#自动发布文章到其他博客平台用来引流"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动发布文章到其他博客平台用来引流</h3>
 <ul>
-<li>CSDN, 参考<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2csdn.yml">issue2csdn</a>增加workflows配置文件，<a href="https://github.com/cloudswave/issue2csdn#readme">说明文档</a>
+<li>发布到CSDN, 参考<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2csdn.yml">issue2csdn</a>增加workflows配置文件，<a href="https://github.com/cloudswave/issue2csdn#readme">说明文档</a>
 </li>
 </ul>
+<h3><a id="user-content-提示" class="anchor" aria-hidden="true" href="#提示"><span aria-hidden="true" class="octicon octicon-link"></span></a>提示</h3>
+<p>如果你只想在issue添加Miestone为publish的时候才发布更新，可以修改yml里的触发器，如：</p>
+<pre><code>on:
+  issues:
+    # Sufficient to trigger this workflow when an issue is milestoned
+    types: [milestoned]
+    # types: [unlabeled, labeled, edited, milestoned]
+</code></pre>
+<p>可以在Actions页面查看workflow执行日志和禁止某个workflow执行
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198864861-03313485-2a81-4f76-ba44-ec24254a619a.png"><img width="805" alt="action-guide" src="https://user-images.githubusercontent.com/5915548/198864861-03313485-2a81-4f76-ba44-ec24254a619a.png" style="max-width: 100%;"></a></p>
+<h2><a id="user-content-参考文档" class="anchor" aria-hidden="true" href="#参考文档"><span aria-hidden="true" class="octicon octicon-link"></span></a>参考文档</h2>
+<ul>
+<li><a href="https://github.com/Solybum/hexo-deploy">https://github.com/Solybum/hexo-deploy</a></li>
+<li><a href="https://github.com/zenghongtu/github-issue-to-hexo">https://github.com/zenghongtu/github-issue-to-hexo</a></li>
+<li><a href="https://github.com/onblog/BlogHelper">https://github.com/onblog/BlogHelper</a></li>
+<li><a href="https://github.com/JoeyBling/yilia-plus-demo">https://github.com/JoeyBling/yilia-plus-demo</a></li>
+</ul>
 ]]></description>
-                    <pubDate>Sun, 30 Oct 2022 05:16:17 GMT</pubDate>
+                    <pubDate>Sun, 30 Oct 2022 06:10:01 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
                 <link>https://github.com/cloudswave/blog/issues/4</link>
                     <author><![CDATA[cloudswave]]></author>
