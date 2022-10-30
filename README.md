@@ -16,7 +16,7 @@
 - [CSDN博客接口](https://github.com/cloudswave/blog/issues/5)---2022-10-29
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 - [计划](https://github.com/cloudswave/blog/issues/3)---2022-10-28
-- [链接](https://github.com/cloudswave/blog/issues/2)---2022-10-28
+- [友情链接](https://github.com/cloudswave/blog/issues/2)---2022-10-28
 - [测试issue2blog](https://github.com/cloudswave/blog/issues/1)---2022-10-28
 
 ## Guide
