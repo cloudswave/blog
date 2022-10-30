@@ -281,3 +281,9 @@ fetch("https://bizapi.csdn.net/blog-console-api/v3/mdeditor/saveArticle", {
 });
 ```
 <img width="783" alt="截屏2022-10-30 下午2 36 30" src="https://user-images.githubusercontent.com/5915548/198865764-4e8ca3b5-417d-450b-adab-4e1bd2028d48.png">
+
+
+---
+
+<a id="issuecomment-1296136439"></a>
+csdn创建文章的时候会返回文章id，然后记录到对应issue的某个地方，更新issue的时候通过该id去更新csdn文章而不重新创建
