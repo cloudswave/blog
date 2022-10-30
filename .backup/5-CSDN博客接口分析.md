@@ -1,4 +1,4 @@
-[CSDN博客接口](https://github.com/cloudswave/blog/issues/5)
+[CSDN博客接口分析](https://github.com/cloudswave/blog/issues/5)
 
 ```javascript
 var config = require("./mcConfig");

@@ -13,7 +13,7 @@
 ## 最近更新
 - [便签](https://github.com/cloudswave/blog/issues/7)---2022-10-30
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
-- [CSDN博客接口](https://github.com/cloudswave/blog/issues/5)---2022-10-29
+- [CSDN博客接口分析](https://github.com/cloudswave/blog/issues/5)---2022-10-29
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 - [计划](https://github.com/cloudswave/blog/issues/3)---2022-10-28
 - [友情链接](https://github.com/cloudswave/blog/issues/2)---2022-10-28
@@ -28,7 +28,7 @@
 
 
 ## 随笔
-- [CSDN博客接口](https://github.com/cloudswave/blog/issues/5)---2022-10-29
+- [CSDN博客接口分析](https://github.com/cloudswave/blog/issues/5)---2022-10-29
 
 ## TODO
 TODO list from [计划](https://github.com/cloudswave/blog/issues/3) all done
