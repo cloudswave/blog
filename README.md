@@ -19,10 +19,6 @@
 - [链接](https://github.com/cloudswave/blog/issues/2)---2022-10-28
 - [测试issue2blog](https://github.com/cloudswave/blog/issues/1)---2022-10-28
 
-## good first issue
-- [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
-
-
 ## Guide
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
 

@@ -15,31 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 05:11:35 GMT</lastBuildDate>
-            <item>
-                <title><![CDATA[便签]]></title>
-                    <description><![CDATA[<p>正则表达式提取issue url参数：</p>
-<pre><code>&gt; reg = /\/(\w+)\/(\w+)\/issues\/(\w+)(\/?)$/
-/\/(\w+)\/(\w+)\/issues\/(\w+)(\/?)$/
-&gt; issue_url = "https://github.com/cloudswave/blog/issues/6/"
-&gt; issue_url.match(reg)
-[
-  '/cloudswave/blog/issues/6/',
-  'cloudswave',
-  'blog',
-  '6',
-  '/',
-  index: 18,
-  input: 'https://github.com/cloudswave/blog/issues/6/',
-  groups: undefined
-]
-</code></pre>
-]]></description>
-                    <pubDate>Sun, 30 Oct 2022 05:10:34 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/7</guid>
-                <link>https://github.com/cloudswave/blog/issues/7</link>
-                    <author><![CDATA[cloudswave]]></author>
-            </item>
+        <lastBuildDate>Sun, 30 Oct 2022 05:35:46 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
                     <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
@@ -82,12 +58,35 @@
 </li>
 </ul>
 ]]></description>
-                    <pubDate>Sun, 30 Oct 2022 04:20:45 GMT</pubDate>
+                    <pubDate>Sun, 30 Oct 2022 05:16:17 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/4</guid>
                 <link>https://github.com/cloudswave/blog/issues/4</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>Top</category>
-                        <category>good first issue</category>
+            </item>
+            <item>
+                <title><![CDATA[便签]]></title>
+                    <description><![CDATA[<p>正则表达式提取issue url参数：</p>
+<pre><code>&gt; reg = /\/(\w+)\/(\w+)\/issues\/(\w+)(\/?)$/
+/\/(\w+)\/(\w+)\/issues\/(\w+)(\/?)$/
+&gt; issue_url = "https://github.com/cloudswave/blog/issues/6/"
+&gt; issue_url.match(reg)
+[
+  '/cloudswave/blog/issues/6/',
+  'cloudswave',
+  'blog',
+  '6',
+  '/',
+  index: 18,
+  input: 'https://github.com/cloudswave/blog/issues/6/',
+  groups: undefined
+]
+</code></pre>
+]]></description>
+                    <pubDate>Sun, 30 Oct 2022 05:10:34 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/7</guid>
+                <link>https://github.com/cloudswave/blog/issues/7</link>
+                    <author><![CDATA[cloudswave]]></author>
             </item>
             <item>
                 <title><![CDATA[How to get and save the CSDN cookie as the secret]]></title>
