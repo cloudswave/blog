@@ -15,7 +15,21 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 30 Oct 2022 09:31:03 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 12 Nov 2022 09:08:11 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[禁用win10自动更新]]></title>
+                    <description><![CDATA[<p>管理员运行cmd：</p>
+<pre><code>takeown /F C:\Windows\SoftwareDistribution /A /R
+Icacls C:\Windows\SoftwareDistribution /deny system:(OI)(CI)(W)
+Icacls C:\Windows\SoftwareDistribution /deny "ALL APPLICATION PACKAGES:(OI)(CI)(W)"
+</code></pre>
+]]></description>
+                    <pubDate>Sat, 12 Nov 2022 09:07:59 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/9</guid>
+                <link>https://github.com/cloudswave/blog/issues/9</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
             <item>
                 <title><![CDATA[测试issue2blog]]></title>
                     <description><![CDATA[<h2><a id="user-content-标题" class="anchor" aria-hidden="true" href="#标题"><span aria-hidden="true" class="octicon octicon-link"></span></a>标题</h2>

@@ -1,6 +1,6 @@
 ## 简介
-使用Github Issues写博客.[RSS Feed](https://raw.githubusercontent.com/cloudswave/blog/master/feed.xml)
-同步发布到[EthanZhu's Blog](https://cloudswave.github.io)
+使用Github Issues写博客,[RSS Feed](https://raw.githubusercontent.com/cloudswave/blog/master/feed.xml)
+,同步发布到[EthanZhu's Blog](https://cloudswave.github.io)和CSDN
 ## 链接
 | Name | Link | Desc |
 | ---- | ---- | ---- |
@@ -11,6 +11,7 @@
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 
 ## 最近更新
+- [禁用win10自动更新](https://github.com/cloudswave/blog/issues/9)---2022-11-12
 - [Github issue update Api](https://github.com/cloudswave/blog/issues/8)---2022-10-30
 - [便签](https://github.com/cloudswave/blog/issues/7)---2022-10-30
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
@@ -22,6 +23,10 @@
 
 ## Guide
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
+
+
+## 搞机
+- [禁用win10自动更新](https://github.com/cloudswave/blog/issues/9)---2022-11-12
 
 
 ## 测试
