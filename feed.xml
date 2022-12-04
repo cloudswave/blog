@@ -15,7 +15,29 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sat, 12 Nov 2022 09:08:11 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 04 Dec 2022 13:58:37 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[finalshell配置备份同步]]></title>
+                    <description><![CDATA[<p>备份同步以下文件：</p>
+<pre><code>/Users/$USER/Library/FinalShell/config.json
+/Users/$USER/Library/FinalShell/conn/
+</code></pre>
+]]></description>
+                    <pubDate>Sun, 04 Dec 2022 13:58:22 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/11</guid>
+                <link>https://github.com/cloudswave/blog/issues/11</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[davfs挂载webdav]]></title>
+                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
+]]></description>
+                    <pubDate>Sun, 04 Dec 2022 11:30:18 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
+                <link>https://github.com/cloudswave/blog/issues/10</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[禁用win10自动更新]]></title>
                     <description><![CDATA[<p>管理员运行cmd：</p>
@@ -23,8 +45,9 @@
 Icacls C:\Windows\SoftwareDistribution /deny system:(OI)(CI)(W)
 Icacls C:\Windows\SoftwareDistribution /deny "ALL APPLICATION PACKAGES:(OI)(CI)(W)"
 </code></pre>
+
 ]]></description>
-                    <pubDate>Sat, 12 Nov 2022 09:07:59 GMT</pubDate>
+                    <pubDate>Sat, 12 Nov 2022 09:08:16 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/9</guid>
                 <link>https://github.com/cloudswave/blog/issues/9</link>
                     <author><![CDATA[cloudswave]]></author>
@@ -297,8 +320,8 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
 <li>Find the Cookie</li>
 <li>Copy the Cookie and save to the Repo Secrets Setting page</li>
 </ul>
-<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png"><img width="959" alt="get-the-csdn-cookie" src="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png"><img width="1094" alt="save-the-cookie" src="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png"><img width="959" alt="get-the-csdn-cookie" src="https://user-images.githubusercontent.com/5915548/198843510-5b7c7c37-e3c2-4d1b-9cac-c7bff5fd5961.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png"><img width="1094" alt="save-the-cookie" src="https://user-images.githubusercontent.com/5915548/198843517-e563b5ef-3f42-423f-b9c5-1bcc793ffa4e.png" style="max-width: 100%;"></a></p>
 ]]></description>
                     <pubDate>Sat, 29 Oct 2022 18:30:22 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/6</guid>
