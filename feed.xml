@@ -15,15 +15,22 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 04 Dec 2022 13:58:37 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 06 Dec 2022 05:00:47 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[finalshell配置备份同步]]></title>
                     <description><![CDATA[<p>备份同步以下文件：</p>
-<pre><code>/Users/$USER/Library/FinalShell/config.json
-/Users/$USER/Library/FinalShell/conn/
+<pre><code>/Users/$USER/Library/FinalShell/conn/
+/Users/$USER/Library/FinalShell/config.json
+/Users/$USER/Library/FinalShell/knownhosts.json
+/Users/$USER/Library/FinalShell/config.json
 </code></pre>
+<p>/conn #服务器连接信息配置文件夹
+config.json #基本配置文件
+knownhosts.json #服务器密钥
+tconfig.json #一些缓存</p>
+
 ]]></description>
-                    <pubDate>Sun, 04 Dec 2022 13:58:22 GMT</pubDate>
+                    <pubDate>Tue, 06 Dec 2022 05:00:31 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/11</guid>
                 <link>https://github.com/cloudswave/blog/issues/11</link>
                     <author><![CDATA[cloudswave]]></author>
@@ -33,7 +40,7 @@
                 <title><![CDATA[davfs挂载webdav]]></title>
                     <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
 ]]></description>
-                    <pubDate>Sun, 04 Dec 2022 11:30:18 GMT</pubDate>
+                    <pubDate>Tue, 06 Dec 2022 04:57:26 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
                 <link>https://github.com/cloudswave/blog/issues/10</link>
                     <author><![CDATA[cloudswave]]></author>
