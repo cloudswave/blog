@@ -15,7 +15,47 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Tue, 06 Dec 2022 05:00:47 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 09 Dec 2022 07:53:10 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[docker版alist和aria2配合使用]]></title>
+                    <description><![CDATA[<pre><code>docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name="alist" xhofe/alist:latest
+
+docker run -d \
+--name aria2 \
+--restart unless-stopped \
+--log-opt max-size=1m \
+-e PUID=$UID \
+-e PGID=$GID \
+-e UMASK_SET=022 \
+-e RPC_SECRET=pac_password \
+-e RPC_PORT=6800 \
+-e LISTEN_PORT=6888 \
+-p 16800:6800 \
+-p 16888:6888 \
+-p 16888:6888/udp \
+-v /root/aria2/config:/config \
+-v /etc/alist/temp/downloads:/downloads \
+-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 \
+p3terx/aria2-pro
+</code></pre>
+<p>-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享</p>
+
+]]></description>
+                    <pubDate>Fri, 09 Dec 2022 07:53:05 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/12</guid>
+                <link>https://github.com/cloudswave/blog/issues/12</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[davfs挂载webdav]]></title>
+                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
+]]></description>
+                    <pubDate>Wed, 07 Dec 2022 04:08:54 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
+                <link>https://github.com/cloudswave/blog/issues/10</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[finalshell配置备份同步]]></title>
                     <description><![CDATA[<p>备份同步以下文件：</p>
@@ -35,15 +75,6 @@ tconfig.json #一些缓存</p>
                 <link>https://github.com/cloudswave/blog/issues/11</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>搞机</category>
-            </item>
-            <item>
-                <title><![CDATA[davfs挂载webdav]]></title>
-                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
-]]></description>
-                    <pubDate>Tue, 06 Dec 2022 04:57:26 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
-                <link>https://github.com/cloudswave/blog/issues/10</link>
-                    <author><![CDATA[cloudswave]]></author>
             </item>
             <item>
                 <title><![CDATA[禁用win10自动更新]]></title>
