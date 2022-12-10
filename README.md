@@ -11,28 +11,29 @@
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 
 ## 最近更新
+- [给rm增加回收站，安全的使用rm命令](https://github.com/cloudswave/blog/issues/13)---2022-12-10
 - [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 - [finalshell配置备份同步](https://github.com/cloudswave/blog/issues/11)---2022-12-04
-- [davfs挂载webdav](https://github.com/cloudswave/blog/issues/10)---2022-12-04
+- [挂载alist webdav](https://github.com/cloudswave/blog/issues/10)---2022-12-04
 - [禁用win10自动更新](https://github.com/cloudswave/blog/issues/9)---2022-11-12
 - [Github issue update Api](https://github.com/cloudswave/blog/issues/8)---2022-10-30
 - [便签](https://github.com/cloudswave/blog/issues/7)---2022-10-30
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
 - [CSDN博客接口分析](https://github.com/cloudswave/blog/issues/5)---2022-10-29
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
-- [计划](https://github.com/cloudswave/blog/issues/3)---2022-10-28
 
 ## Guide
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
 
 
 ## Reverie
-- [davfs挂载webdav](https://github.com/cloudswave/blog/issues/10)---2022-12-04
+- [挂载alist webdav](https://github.com/cloudswave/blog/issues/10)---2022-12-04
 - [Github issue update Api](https://github.com/cloudswave/blog/issues/8)---2022-10-30
 - [便签](https://github.com/cloudswave/blog/issues/7)---2022-10-30
 
 
 ## 搞机
+- [给rm增加回收站，安全的使用rm命令](https://github.com/cloudswave/blog/issues/13)---2022-12-10
 - [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 - [finalshell配置备份同步](https://github.com/cloudswave/blog/issues/11)---2022-12-04
 - [禁用win10自动更新](https://github.com/cloudswave/blog/issues/9)---2022-11-12

@@ -1,6 +1,5 @@
 [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)
 
-
 ```
 docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name="alist" xhofe/alist:latest
 
@@ -22,5 +21,6 @@ docker run -d \
 -v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 \
 p3terx/aria2-pro
 ```
--v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享
+-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享，并且只能在同一台服务器上否则离线下载后复制到某个存储下面时会报transfer失败
+参考：https://alist.nn.ci/zh/guide/install/docker.html
 <!--csdn-article-id:128254475-->

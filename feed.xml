@@ -15,7 +15,57 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Fri, 09 Dec 2022 07:53:10 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 10 Dec 2022 14:50:45 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[给rm增加回收站，安全的使用rm命令]]></title>
+                    <description><![CDATA[<pre><code>#!/usr/bin/env bash
+#
+# Description: 给rm命令增加回收站
+# System Required: CentOS/Debian/Ubuntu
+# Version: 1.0.0
+
+cat &gt; /usr/local/bin/rm.sh &lt;&lt; 'EOF'
+#!/bin/bash 
+
+RECYCLE=~/.local/share/Trash/files
+test ! -d ${RECYCLE} &amp;&amp; mkdir -p ${RECYCLE} #if not trash folder,create one  
+_datedir=`date +"%Y%m%d"`  
+_dstdir=${RECYCLE}/${_datedir}  
+test ! -d ${_dstdir} &amp;&amp; mkdir -p ${_dstdir} #if not trash folder,create one  
+
+for _parms in $*  
+do  
+if [ -d ${_parms} ] || [ -f ${_parms} ];then  
+  test -d ${_parms} &amp;&amp; echo "${_parms} is directory" &amp;&amp; mv ${_parms} ${_dstdir}/  
+  test -f ${_parms} &amp;&amp; echo "${_parms} is file" &amp;&amp; mv ${_parms} ${_dstdir}/  
+  else   echo "${_parms} is not directory or file"  
+fi  
+done
+EOF
+
+chmod +x /usr/local/bin/rm.sh
+echo "alias rm='/usr/local/bin/rm.sh'" &gt;&gt; ~/.bashrc
+echo "alias surm='/bin/rm -i'" &gt;&gt; ~/.bashrc
+echo "alias rmt='/bin/rm -i -r ~/.local/share/Trash/files/*'" &gt;&gt; ~/.bashrc # 一键清理回收站命令: rmt -f
+
+source ~/.bashrc
+</code></pre>
+]]></description>
+                    <pubDate>Sat, 10 Dec 2022 14:50:29 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/13</guid>
+                <link>https://github.com/cloudswave/blog/issues/13</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[挂载alist webdav]]></title>
+                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
+]]></description>
+                    <pubDate>Sat, 10 Dec 2022 06:59:58 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
+                <link>https://github.com/cloudswave/blog/issues/10</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[docker版alist和aria2配合使用]]></title>
                     <description><![CDATA[<pre><code>docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name="alist" xhofe/alist:latest
@@ -38,23 +88,15 @@ docker run -d \
 -v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 \
 p3terx/aria2-pro
 </code></pre>
-<p>-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享</p>
+<p>-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享，并且只能在同一台服务器上否则离线下载后复制到某个存储下面时会报transfer失败
+参考：<a href="https://alist.nn.ci/zh/guide/install/docker.html" rel="nofollow">https://alist.nn.ci/zh/guide/install/docker.html</a></p>
 
 ]]></description>
-                    <pubDate>Fri, 09 Dec 2022 07:53:05 GMT</pubDate>
+                    <pubDate>Fri, 09 Dec 2022 08:02:00 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/12</guid>
                 <link>https://github.com/cloudswave/blog/issues/12</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>搞机</category>
-            </item>
-            <item>
-                <title><![CDATA[davfs挂载webdav]]></title>
-                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
-]]></description>
-                    <pubDate>Wed, 07 Dec 2022 04:08:54 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
-                <link>https://github.com/cloudswave/blog/issues/10</link>
-                    <author><![CDATA[cloudswave]]></author>
             </item>
             <item>
                 <title><![CDATA[finalshell配置备份同步]]></title>
