@@ -15,7 +15,71 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sat, 10 Dec 2022 14:50:45 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 11 Dec 2022 12:54:24 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[nginx和php-fpm以root用户运行]]></title>
+                    <description><![CDATA[<p><strong>开启root权限，请谨慎使用！！！</strong>
+为了使KodExplorer能读写root用户数据需要修改nginx，php-fpm运行用户为root，下面为修改笔记</p>
+<ul>
+<li>nginx version: nginx/1.18.0 (Ubuntu)</li>
+<li>PHP 8.1</li>
+</ul>
+<p>sudo vi /etc/nginx/nginx.conf</p>
+<pre><code>user root; #第一行
+...
+</code></pre>
+<p>sudo vi /etc/php/8.1/fpm/pool.d/<a href="http://www.conf" rel="nofollow">www.conf</a></p>
+<pre><code>...
+# 修改两处
+listen.owner = root
+listen.group = root
+...
+user = root
+group = root
+</code></pre>
+<p>sudo vi /lib/systemd/system/php8.1-fpm.service</p>
+<pre><code># 加上-R允许root执行
+...
+ExecStart=/usr/sbin/php-fpm8.1 -R --nodaemonize --fpm-config /etc/php/8.1/fpm/php-fpm.conf
+...
+</code></pre>
+<p>防火墙问题可能导致80端口无法访问</p>
+<pre><code># 如果外网无法访问请关闭防火墙或者添加规则
+service iptables stop 
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+</code></pre>
+<p>重启服务</p>
+<pre><code>systemctl daemon-reload # php8.1-fpm.service修改刷新
+/etc/init.d/php8.1-fpm restart
+/etc/init.d/nginx restart
+
+# check php8.1-fpm.sock是否生成
+ls /run/php/
+</code></pre>
+]]></description>
+                    <pubDate>Sun, 11 Dec 2022 12:54:07 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/15</guid>
+                <link>https://github.com/cloudswave/blog/issues/15</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[docker kodexplorer]]></title>
+                    <description><![CDATA[<pre><code> docker run -d \
+--name kode \
+-e PUID=$UID \
+-e PGID=$GID \
+-p 80:80 \
+-v /root/kode:/var/www/html \
+-v /root:/father \
+kodcloud/kodexplorer
+</code></pre>
+]]></description>
+                    <pubDate>Sat, 10 Dec 2022 18:23:43 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/14</guid>
+                <link>https://github.com/cloudswave/blog/issues/14</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[给rm增加回收站，安全的使用rm命令]]></title>
                     <description><![CDATA[<pre><code>#!/usr/bin/env bash
@@ -50,8 +114,9 @@ echo "alias rmt='/bin/rm -i -r ~/.local/share/Trash/files/*'" &gt;&gt; ~/.bashrc
 
 source ~/.bashrc
 </code></pre>
+
 ]]></description>
-                    <pubDate>Sat, 10 Dec 2022 14:50:29 GMT</pubDate>
+                    <pubDate>Sat, 10 Dec 2022 14:50:48 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/13</guid>
                 <link>https://github.com/cloudswave/blog/issues/13</link>
                     <author><![CDATA[cloudswave]]></author>

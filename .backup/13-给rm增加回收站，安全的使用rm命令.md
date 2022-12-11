@@ -33,3 +33,4 @@ echo "alias rmt='/bin/rm -i -r ~/.local/share/Trash/files/*'" >> ~/.bashrc # 一
 
 source ~/.bashrc
 ```
+<!--csdn-article-id:128270345-->
