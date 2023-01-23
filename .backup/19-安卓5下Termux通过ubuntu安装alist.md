@@ -53,7 +53,7 @@ echo "~/startup.sh" >> ~/.atilo/ubuntu/root/.bashrc
 ```
 vi ~/startup.sh增加：
 ```
-if pgrep -x "ubuntu" >/dev/null
+if pgrep -f "ubuntu" >/dev/null
   then
     echo "ubuntu运行中..."
   else
@@ -71,3 +71,4 @@ if pgrep -x "alist" >/dev/null
   echo "alist已开启..."
 fi
 ```
+<!--csdn-article-id:128754459-->
