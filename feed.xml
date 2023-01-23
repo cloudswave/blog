@@ -15,7 +15,61 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Mon, 23 Jan 2023 15:13:53 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Jan 2023 19:38:32 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[Termux通过ubuntu安装宝塔面板]]></title>
+                    <description><![CDATA[<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
+<p>参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
+<h1><a id="user-content-arm64快速安装宝塔" class="anchor" aria-hidden="true" href="#arm64快速安装宝塔"><span aria-hidden="true" class="octicon octicon-link"></span></a>arm64快速安装宝塔</h1>
+<p>参考：<a href="https://gitee.com/pdusb/pdusb-fast-btpanel" rel="nofollow">https://gitee.com/pdusb/pdusb-fast-btpanel</a>
+ubuntu下：</p>
+<pre><code>git clone https://gitee.com/pdusb/pdusb-fast-btpanel.git
+cd pdusb-fast-btpanel
+./pdbolt-inst-bt-acel.sh
+bash /tmp/btp/pdbolt-bt-install/install.sh
+
+/etc/init.d/bt restart
+# 进入宝塔工具面板，可查看修改端口和密码
+bt
+</code></pre>
+<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
+<ul>
+<li>
+<p>ERROR: cannot verify download.bt.cn's certificate, issued by ‘CN=sslTrus (RSA) OV CA,O=sslTrus,C=CN’: Unable to locally verify the issuer's authority. To connect to download.bt.cn insecurely, use `--no-check-certificate' ERROR: Download python env fielded.
+关闭证书验证：echo "check_certificate = off" &gt;&gt; ~/.wgetrc</p>
+</li>
+<li>
+<p>报错chmod: cannot access '/tmp/btp/pyenv/bin/python3.7': Operation not permitted...</p>
+</li>
+</ul>
+<pre><code>...
+root@localhost:~/pdusb-fast-btpanel# chmod 777 /tmp/btp/pyenv/bin/ -R
+chmod: cannot access '/tmp/btp/pyenv/bin/python3.7': Operation not permitted
+chmod: cannot access '/tmp/btp/pyenv/bin/.l2s.python3.70001': Operation not permitted
+chmod: cannot access '/tmp/btp/pyenv/bin/python3.7m': Operation not permitted
+...
+</code></pre>
+<p>解压pyenv-ubuntu2004-3.7.8-aarch64.tar.xz出错导致，重新解压后替换出错文件</p>
+<ul>
+<li>宝塔启动失败</li>
+</ul>
+<pre><code>...
+Traceback (most recent call last):
+  File "/www/server/panel/BT-Panel", line 27, in &lt;module&gt;
+    from BTPanel import app,sys,public
+  File "/www/server/panel/BTPanel/__init__.py", line 11, in &lt;module&gt;
+    import json
+ModuleNotFoundError: No module named 'json'
+...
+</code></pre>
+<p>权限修复：chmod 777 -R /www</p>
+]]></description>
+                    <pubDate>Mon, 23 Jan 2023 19:38:13 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/20</guid>
+                <link>https://github.com/cloudswave/blog/issues/20</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
             <item>
                 <title><![CDATA[安卓5下Termux通过ubuntu安装alist]]></title>
                     <description><![CDATA[<p>安卓7以上可以直接通过pkg install alist来安装alist，安卓5安装ubuntu需要64位termux，通过Atilo套娃其他linux来安装alist</p>

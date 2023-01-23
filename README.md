@@ -11,6 +11,7 @@
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 
 ## 最近更新
+- [Termux通过ubuntu安装宝塔面板](https://github.com/cloudswave/blog/issues/20)---2023-01-23
 - [安卓5下Termux通过ubuntu安装alist](https://github.com/cloudswave/blog/issues/19)---2023-01-23
 - [联想乐檬k3刷安卓5.1教程](https://github.com/cloudswave/blog/issues/18)---2023-01-22
 - [termux nginx配置多网站示例](https://github.com/cloudswave/blog/issues/17)---2022-12-25
@@ -20,7 +21,6 @@
 - [给rm增加回收站，安全的使用rm命令](https://github.com/cloudswave/blog/issues/13)---2022-12-10
 - [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 - [finalshell配置备份同步](https://github.com/cloudswave/blog/issues/11)---2022-12-04
-- [挂载alist webdav](https://github.com/cloudswave/blog/issues/10)---2022-12-04
 
 ## Guide
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
@@ -39,13 +39,14 @@
 
 
 ## 搞机
+- [Termux通过ubuntu安装宝塔面板](https://github.com/cloudswave/blog/issues/20)---2023-01-23
 - [安卓5下Termux通过ubuntu安装alist](https://github.com/cloudswave/blog/issues/19)---2023-01-23
 - [联想乐檬k3刷安卓5.1教程](https://github.com/cloudswave/blog/issues/18)---2023-01-22
 - [nginx和php-fpm以root用户运行](https://github.com/cloudswave/blog/issues/15)---2022-12-11
 - [给rm增加回收站，安全的使用rm命令](https://github.com/cloudswave/blog/issues/13)---2022-12-10
-- [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 <details><summary>MORE</summary>
 
+- [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 - [finalshell配置备份同步](https://github.com/cloudswave/blog/issues/11)---2022-12-04
 - [禁用win10自动更新](https://github.com/cloudswave/blog/issues/9)---2022-11-12
 </details>
