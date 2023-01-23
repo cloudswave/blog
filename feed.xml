@@ -15,7 +15,487 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sun, 11 Dec 2022 12:54:24 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Jan 2023 09:44:33 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[安卓5下Termux通过ubuntu安装alist]]></title>
+                    <description><![CDATA[<p>安卓7以上可以直接通过pkg install alist来安装alist，安卓5安装ubuntu需要64位termux，通过Atilo套娃其他linux来安装alist</p>
+<h2><a id="user-content-安装" class="anchor" aria-hidden="true" href="#安装"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装</h2>
+<p>termux下：</p>
+<pre><code>apt install tmux
+echo "deb [trusted=yes arch=all] https://yadominjinta.github.io/files/ termux extras" &gt;&gt; $PREFIX/etc/apt/sources.list.d/atilo.list
+apt update &amp;&amp; apt install atilo-cn
+atilo images #可以安装的镜像列表
+atilo pull ubuntu
+ls ~/.atilo #可以备份该路径以便日后有问题恢复系统
+atilo run ubuntu #启动进入ubuntu
+</code></pre>
+<p>ubuntu下：</p>
+<pre><code>apt install curl
+apt install tmux
+curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install
+/opt/alist/alist admin #查看密码
+/opt/alist/alist server
+</code></pre>
+<p>Atilo介绍：</p>
+<pre><code>Atilo 是一个用来帮助你在termux上安装不同的GNU/Linux发行版的程序
+命令:
+images 列出可用镜像
+remove 移除本地的镜像
+pull 拉取远程的镜像
+run 运行镜像
+clean 清除缓存
+help 帮助
+
+$ atilo images
++----------+------------+--------+--------+
+| 名称 | 版本 | 已安装 | 可安装 |
++----------+------------+--------+--------+
+| alpine | 3.12 | False | True |
+| centos | 8 | False | True |
+| debian | buster | False | True |
+| fedora | 33 | False | True |
+| kali | latest | False | True |
+| opensuse | Tumbleweed | False | True |
+| ubuntu | focal | False | True |
++----------+------------+--------+--------+
+</code></pre>
+<h2><a id="user-content-自启配置" class="anchor" aria-hidden="true" href="#自启配置"><span aria-hidden="true" class="octicon octicon-link"></span></a>自启配置</h2>
+<p>termux下：</p>
+<pre><code>echo "~/startup.sh" &gt;&gt; ~/.bashrc
+echo "~/startup.sh" &gt;&gt; ~/.atilo/ubuntu/root/.bashrc
+</code></pre>
+<p>vi ~/startup.sh增加：</p>
+<pre><code>if pgrep -x "ubuntu" &gt;/dev/null
+  then
+    echo "ubuntu运行中..."
+  else
+  tmux new -d -s ubuntu 'atilo run ubuntu'
+  echo "ubuntu已开启..."
+fi
+</code></pre>
+<p>vi ~/.atilo/ubuntu/root/startup.sh：</p>
+<pre><code>if pgrep -x "alist" &gt;/dev/null
+  then
+    echo "alist运行中..."
+  else
+  tmux new -d -s alist '/opt/alist/alist server'
+  echo "alist已开启..."
+fi
+</code></pre>
+]]></description>
+                    <pubDate>Mon, 23 Jan 2023 09:44:16 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/19</guid>
+                <link>https://github.com/cloudswave/blog/issues/19</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[联想乐檬k3刷安卓5.1教程]]></title>
+                    <description><![CDATA[<p>快捷键：
+三键进recovery: 电源键+音量加+音量减
+进入fastboot: 电源键+音量减
+官方更多选择菜单：电源键+音量减
+高通刷机：按住音量加+音量减然后插电脑usb，设备管理器会显示高通端口
+刷机包下载:<a href="https://pan.baidu.com/s/1tnf2xMoqtcL6p50ZiRYICw%C2%A0%E6%8F%90%E5%8F%96%E7%A0%81:agjm" rel="nofollow">https://pan.baidu.com/s/1tnf2xMoqtcL6p50ZiRYICw 提取码:agjm</a>
+提示： 如果插电脑usb后供电不足反复重启，则电池触点正负极接线后使用充电宝供电</p>
+<h2><a id="user-content-线刷51底包" class="anchor" aria-hidden="true" href="#线刷51底包"><span aria-hidden="true" class="octicon octicon-link"></span></a>线刷5.1底包</h2>
+<p><code>联想乐檬K3安卓5.0以上底层线刷包.rar</code>中有线刷文件，驱动和工具
+线刷工具使用参考：<a href="http://m.rom.7to.cn/jiaochengdetail/4292" rel="nofollow">http://m.rom.7to.cn/jiaochengdetail/4292</a></p>
+<ol>
+<li>
+<p>先将官方刷机包解压到电脑上，然后再将刷机工具也解压，然后进入工具目录，找到并双击运行升级工具“QcomDLoader.exe”,</p>
+</li>
+<li>
+<p>点击工具左侧的第一个按钮，也就是port上面那个齿轮按钮，点击后如下所示找到解压好的固件文件夹。
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/213976396-073045d4-2282-419a-8ad7-b72475747578.png"><img src="https://user-images.githubusercontent.com/5915548/213976396-073045d4-2282-419a-8ad7-b72475747578.png" alt="image" style="max-width: 100%;"></a></p>
+</li>
+<li>
+<p>再点击工具左侧第二个按钮，也就是两个齿轮的按钮，弹出配置框，会看到框里有三个文件都在我们刚刚加载好的文件包中，这里默认不需要修改。所以点击OK即可：
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/213976398-ace4bc2a-c929-4676-b433-2d1d1ea9f49e.png"><img src="https://user-images.githubusercontent.com/5915548/213976398-ace4bc2a-c929-4676-b433-2d1d1ea9f49e.png" alt="image" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/213976397-6ed86dbb-3870-4bfd-8a12-b711bc9ee17d.png"><img src="https://user-images.githubusercontent.com/5915548/213976397-6ed86dbb-3870-4bfd-8a12-b711bc9ee17d.png" alt="image" style="max-width: 100%;"></a></p>
+</li>
+<li>
+<p>. 点击左边第三个按钮，也就是一个箭头的按钮，点击之后，将手机关机，同时按住音量上键和下键不放，连接上电脑。走动进度条后松开两键，如下图：
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/213976409-231b3823-23f6-4636-90d3-d7f002f2aa1f.png"><img src="https://user-images.githubusercontent.com/5915548/213976409-231b3823-23f6-4636-90d3-d7f002f2aa1f.png" alt="image" style="max-width: 100%;"></a></p>
+</li>
+<li>
+<p>. 线刷升级过程中请不要触碰手机和数据线，升级时间一般为5分钟左右，请根据实际情况而定，线刷成功后如下图所示：再拔掉数据线，重装电池开机即可!
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/213976439-1e958b44-1676-471b-b660-a00f8246a871.png"><img src="https://user-images.githubusercontent.com/5915548/213976439-1e958b44-1676-471b-b660-a00f8246a871.png" alt="image" style="max-width: 100%;"></a></p>
+</li>
+</ol>
+<h2><a id="user-content-卡刷魔趣51-64位系统" class="anchor" aria-hidden="true" href="#卡刷魔趣51-64位系统"><span aria-hidden="true" class="octicon octicon-link"></span></a>卡刷魔趣5.1-64位系统</h2>
+<ol>
+<li>线刷后，三键会进入到自带的奇兔recovery，双清格式化data分区</li>
+<li>连接电脑后可以看到k30设备，将卡刷包<code>乐檬k3-卡刷魔趣android-5.1刷机包.zip</code>复制到设备中</li>
+<li>recovery点击安装刚复制的卡刷包</li>
+<li>显示完毕后重启手机</li>
+</ol>
+<h2><a id="user-content-scrcpy远程控制手机" class="anchor" aria-hidden="true" href="#scrcpy远程控制手机"><span aria-hidden="true" class="octicon octicon-link"></span></a>scrcpy远程控制手机</h2>
+<p>参考：<a href="https://blog.csdn.net/liuqinhou/article/details/127460195" rel="nofollow">https://blog.csdn.net/liuqinhou/article/details/127460195</a></p>
+<pre><code>adb connect 192.168.153.243
+scrcpy -b5M -m720 -Sw
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>快捷键</th>
+<th>快捷键 (macOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>切换全屏模式</td>
+<td>Ctrl+f</td>
+<td>Cmd+f</td>
+</tr>
+<tr>
+<td>向左旋转屏幕</td>
+<td>Ctrl+← (left)</td>
+<td>Cmd+← (left)</td>
+</tr>
+<tr>
+<td>向右旋转屏幕</td>
+<td>Ctrl+→ (right)</td>
+<td>Cmd+→ (right)</td>
+</tr>
+<tr>
+<td>将窗口大小调整为1:1</td>
+<td>Ctrl+g</td>
+<td>Cmd+g</td>
+</tr>
+<tr>
+<td>调整窗口大小以移除黑色边框</td>
+<td>Ctrl+x | Double-click¹</td>
+<td>Cmd+x | Double-click¹</td>
+</tr>
+<tr>
+<td>点击 HOME</td>
+<td>Ctrl+h | Middle-click</td>
+<td>Ctrl+h | Middle-click</td>
+</tr>
+<tr>
+<td>点击 BACK</td>
+<td>Ctrl+b | Right-click²</td>
+<td>Cmd+b | Right-click²</td>
+</tr>
+<tr>
+<td>点击 APP_SWITCH</td>
+<td>Ctrl+s</td>
+<td>Cmd+s</td>
+</tr>
+<tr>
+<td>点击 MENU</td>
+<td>Ctrl+m</td>
+<td>Ctrl+m</td>
+</tr>
+<tr>
+<td>点击 VOLUME_UP</td>
+<td>Ctrl+↑ (up)</td>
+<td>Cmd+↑ (up)</td>
+</tr>
+<tr>
+<td>点击 VOLUME_DOWN</td>
+<td>Ctrl+↓ (down)</td>
+<td>Cmd+↓ (down)</td>
+</tr>
+<tr>
+<td>点击 POWER</td>
+<td>Ctrl+p</td>
+<td>Cmd+p</td>
+</tr>
+<tr>
+<td>开机</td>
+<td>Right-click²</td>
+<td>Right-click²</td>
+</tr>
+<tr>
+<td>关闭设备屏幕</td>
+<td>Ctrl+o</td>
+<td>Cmd+o</td>
+</tr>
+<tr>
+<td>点亮设备屏幕</td>
+<td>Ctrl+Shift+o</td>
+<td>Cmd+Shift+o</td>
+</tr>
+<tr>
+<td>旋转设备屏幕</td>
+<td>Ctrl+r</td>
+<td>Cmd+r</td>
+</tr>
+<tr>
+<td>展开通知面板</td>
+<td>Ctrl+n</td>
+<td>Cmd+n</td>
+</tr>
+<tr>
+<td>折叠通知面板</td>
+<td>Ctrl+Shift+n</td>
+<td>Cmd+Shift+n</td>
+</tr>
+<tr>
+<td>将设备剪贴板复制到计算机</td>
+<td>Ctrl+c</td>
+<td>Cmd+c</td>
+</tr>
+<tr>
+<td>将电脑剪贴板粘贴到设备上</td>
+<td>Ctrl+v</td>
+<td>Cmd+v</td>
+</tr>
+<tr>
+<td>将计算机剪贴板复制到设备并粘贴</td>
+<td>Ctrl+Shift+v</td>
+<td>Cmd+Shift+v</td>
+</tr>
+<tr>
+<td>启用/禁用帧率显示</td>
+<td>Ctrl+i</td>
+<td>Cmd+i</td>
+</tr>
+</tbody>
+</table>
+<h2><a id="user-content-安卓5安装termux" class="anchor" aria-hidden="true" href="#安卓5安装termux"><span aria-hidden="true" class="octicon octicon-link"></span></a>安卓5安装termux</h2>
+<p>参考:<a href="https://github.com/termux/termux-app/wiki/Termux-on-android-5-or-6">https://github.com/termux/termux-app/wiki/Termux-on-android-5-or-6</a>
+最新版本github下载地址：<a href="https://github.com/termux/termux-app/actions/workflows/debug_build.yml?query=branch%3Amaster+">https://github.com/termux/termux-app/actions/workflows/debug_build.yml?query=branch%3Amaster+</a>
+64位 <a href="https://wwuy.lanzoub.com/imQ8T0i4bd7e" rel="nofollow">termux-app_v0.118.0+be66cff-apt-android-5-github-debug_arm64-v8a.zip - 蓝奏云</a>
+32位 <a href="https://wwuy.lanzoub.com/iq8cr0i4bdjg" rel="nofollow">termux-app_v0.118.0+be66cff-apt-android-5-github-debug_armeabi-v7a.zip - 蓝奏云</a></p>
+<h2></h2>
+<h2><a id="user-content-利用atilo安装ubuntu或debian和alist" class="anchor" aria-hidden="true" href="#利用atilo安装ubuntu或debian和alist"><span aria-hidden="true" class="octicon octicon-link"></span></a>利用Atilo安装ubuntu或debian和alist</h2>
+<p>提示：安装ubuntu需要64位termux，安卓5的termux无法直接通过pkg install alist来安装alist，故需要通过其他linux安装
+Atilo 是一个用来帮助你在termux上安装不同的GNU/Linux发行版的程序
+命令:
+images           列出可用镜像
+remove           移除本地的镜像
+pull             拉取远程的镜像
+run              运行镜像
+clean            清除缓存
+help             帮助
+$ atilo images
++----------+------------+--------+--------+
+|   名称   |    版本    | 已安装 | 可安装 |
++----------+------------+--------+--------+
+|  alpine  |    3.12    | False  |  True  |
+|  centos  |     8      | False  |  True  |
+|  debian  |   buster   | False  |  True  |
+|  fedora  |     33     | False  |  True  |
+|   kali   |   latest   | False  |  True  |
+| opensuse | Tumbleweed | False  |  True  |
+|  ubuntu  |   focal    | False  |  True  |
++----------+------------+--------+--------+</p>
+<pre><code>echo "deb [trusted=yes arch=all] https://yadominjinta.github.io/files/ termux extras" &gt;&gt; $PREFIX/etc/apt/sources.list.d/atilo.list
+apt update &amp;&amp; apt install atilo-cn
+atilo images #可以安装的镜像列表
+atilo pull ubuntu
+ls ~/.atilo #可以备份该路径以便日后有问题恢复系统
+atilo run ubuntu
+# 以下为ubuntu下命令
+apt install curl
+curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install
+/opt/alist/alist admin
+/opt/alist/alist server
+</code></pre>
+]]></description>
+                    <pubDate>Mon, 23 Jan 2023 08:23:59 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/18</guid>
+                <link>https://github.com/cloudswave/blog/issues/18</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[termux nginx配置多网站示例]]></title>
+                    <description><![CDATA[<pre><code># pwd
+/data/data/com.termux/files/usr/etc/nginx
+# vi nginx.conf 
+</code></pre>
+<p>修改nginx配置文件示例如下，配置了8080和8081两个端口：</p>
+<pre><code>#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       8080;
+        server_name  localhost;
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /data/data/com.termux/files/home/www;
+            index  index.php index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /data/data/com.termux/files/home/www;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        # location ~ \.php$ {
+        location ~ .*.php(/.*)*$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /data/data/com.termux/files/home/www$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    server {
+        listen       8081;
+        server_name  localhost;
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /data/data/com.termux/files/home/music;
+            index  index.php index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /data/data/com.termux/files/home/www;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /data/data/com.termux/files/home/music$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+</code></pre>
+]]></description>
+                    <pubDate>Sun, 25 Dec 2022 09:51:10 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/17</guid>
+                <link>https://github.com/cloudswave/blog/issues/17</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[挂载alist webdav]]></title>
+                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
+]]></description>
+                    <pubDate>Fri, 16 Dec 2022 13:14:07 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
+                <link>https://github.com/cloudswave/blog/issues/10</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[fiddler抓包edge要设置使用系统代理]]></title>
+                    <description><![CDATA[<p>fiddler抓包edge要设置使用系统代理</p>
+]]></description>
+                    <pubDate>Thu, 15 Dec 2022 01:40:24 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/16</guid>
+                <link>https://github.com/cloudswave/blog/issues/16</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[nginx和php-fpm以root用户运行]]></title>
                     <description><![CDATA[<p><strong>开启root权限，请谨慎使用！！！</strong>
@@ -56,8 +536,9 @@ iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 # check php8.1-fpm.sock是否生成
 ls /run/php/
 </code></pre>
+
 ]]></description>
-                    <pubDate>Sun, 11 Dec 2022 12:54:07 GMT</pubDate>
+                    <pubDate>Sun, 11 Dec 2022 12:54:25 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/15</guid>
                 <link>https://github.com/cloudswave/blog/issues/15</link>
                     <author><![CDATA[cloudswave]]></author>
@@ -121,15 +602,6 @@ source ~/.bashrc
                 <link>https://github.com/cloudswave/blog/issues/13</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>搞机</category>
-            </item>
-            <item>
-                <title><![CDATA[挂载alist webdav]]></title>
-                    <description><![CDATA[<p>mount -t davfs <a href="http://141.147.162.129:5244/dav" rel="nofollow">http://141.147.162.129:5244/dav</a>  ~/alist</p>
-]]></description>
-                    <pubDate>Sat, 10 Dec 2022 06:59:58 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/10</guid>
-                <link>https://github.com/cloudswave/blog/issues/10</link>
-                    <author><![CDATA[cloudswave]]></author>
             </item>
             <item>
                 <title><![CDATA[docker版alist和aria2配合使用]]></title>

@@ -46,3 +46,4 @@ systemctl daemon-reload # php8.1-fpm.service修改刷新
 # check php8.1-fpm.sock是否生成
 ls /run/php/
 ```
+<!--csdn-article-id:128278703-->

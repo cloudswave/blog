@@ -41,7 +41,7 @@ EOF
 
 <a id="issuecomment-1345158833"></a>
 webdav上传大文件建议使用rclone工具，davfs容易失败
-rclone move -v /root/download alist:/teambition -P
+screen rclone move -v /root/download alist:/teambition -P --retries 200 # 显示进度 失败重试200次
 参考：
 https://blog.csdn.net/w670165403/article/details/87887300
 https://p3terx.com/archives/offline-download-of-onedrive-gdrive.html
