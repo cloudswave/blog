@@ -15,7 +15,58 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Mon, 23 Jan 2023 19:38:32 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 25 Jan 2023 03:59:17 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[Termux通过Ubuntu安装AMH面板]]></title>
+                    <description><![CDATA[<p><strong>注意先使用：uname -m查看确保手机是aarch64位架构</strong></p>
+<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
+<p>参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
+<h1><a id="user-content-快速安装amh面板" class="anchor" aria-hidden="true" href="#快速安装amh面板"><span aria-hidden="true" class="octicon octicon-link"></span></a>快速安装amh面板</h1>
+<p>参考：<a href="http://amh.sh/install.htm" rel="nofollow">http://amh.sh/install.htm</a>
+ubuntu下：</p>
+<pre><code>export CV=[CN] DV=N &amp;&amp; wget http://dl.amh.sh/amh.sh &amp;&amp; bash amh.sh
+</code></pre>
+<p>安装成功后系统会提示面板访问地址与AMH、MySQL默认账号密码。
+常用配置目录：</p>
+<pre><code>/usr/local/amh-7.0/etc/
+/usr/local/amh-7.0/vhost/
+/home/wwwroot/lnmp01/vhost/
+</code></pre>
+<p>常用命令：</p>
+<pre><code>启动Nginx: amh nginx start
+停止Nginx: amh nginx stop
+重载Nginx: amh nginx reload
+重启Nginx: amh nginx restart
+启动MySQL: amh mysql start
+停止MySQL: amh mysql stop
+重载MySQL: amh mysql reload
+重启MySQL: amh mysql restart
+强制重载MySQL: amh mysql force-reload
+启动PHP: amh php start [主标识域名]
+停止PHP: amh php stop [主标识域名]
+强行停止PHP: amh php force-quit [主标识域名]
+重启PHP: amh php restart [主标识域名]
+重载PHP: amh php reload [主标识域名]
+</code></pre>
+<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
+<ul>
+<li>面板8888端口无法访问主页，amh nginx restart 看报错信息，发现ssl证书无法加载，80端口无法使用</li>
+</ul>
+<pre><code>nginx: [emerg] cannot load certificate "/usr/local/amh-7.0/etc/ssl/amh.crt": BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/usr/local/amh-7.0/etc/ssl/amh.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+
+nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
+</code></pre>
+<ol>
+<li>修改/usr/local/amh-7.0/vhost/amh-nginx.conf移除9999端口服务器配置部分</li>
+<li>修改/home/wwwroot/lnmp01/vhost/0.0.0.0.conf，将80端口改成1024以上比如1025</li>
+</ol>
+]]></description>
+                    <pubDate>Wed, 25 Jan 2023 03:59:03 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/21</guid>
+                <link>https://github.com/cloudswave/blog/issues/21</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
             <item>
                 <title><![CDATA[Termux通过ubuntu安装宝塔面板]]></title>
                     <description><![CDATA[<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
@@ -63,8 +114,26 @@ ModuleNotFoundError: No module named 'json'
 ...
 </code></pre>
 <p>权限修复：chmod 777 -R /www</p>
+<ul>
+<li>ubuntu bash报错：groups: cannot find name for group ID ***</li>
+</ul>
+<pre><code>groups: cannot find name for group ID 1015
+groups: cannot find name for group ID 1028
+groups: cannot find name for group ID 3003
+groups: cannot find name for group ID 9997
+groups: cannot find name for group ID 50062
+</code></pre>
+<p>termux在安装ubuntu运行的时候出现了goups: cannot find name for group ID，由于termux安装ubuntu后没有给原本Android的系统用户组赋予名称导致, 解决办法：</p>
+<pre><code>echo "1015:x:1015:
+1028:x:1028:
+3003:x:3003:
+50062:x:50062:
+9997:x:9997:" &gt;&gt;/etc/group
+</code></pre>
+<p><a href="https://blog.csdn.net/babytiger/article/details/112121506" rel="nofollow">参考</a></p>
+
 ]]></description>
-                    <pubDate>Mon, 23 Jan 2023 19:38:13 GMT</pubDate>
+                    <pubDate>Tue, 24 Jan 2023 07:05:10 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/20</guid>
                 <link>https://github.com/cloudswave/blog/issues/20</link>
                     <author><![CDATA[cloudswave]]></author>

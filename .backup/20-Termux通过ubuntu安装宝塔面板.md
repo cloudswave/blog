@@ -42,3 +42,23 @@ ModuleNotFoundError: No module named 'json'
 ...
 ```
 权限修复：chmod 777 -R /www
+
+- ubuntu bash报错：groups: cannot find name for group ID ***
+```
+groups: cannot find name for group ID 1015
+groups: cannot find name for group ID 1028
+groups: cannot find name for group ID 3003
+groups: cannot find name for group ID 9997
+groups: cannot find name for group ID 50062
+```
+termux在安装ubuntu运行的时候出现了goups: cannot find name for group ID，由于termux安装ubuntu后没有给原本Android的系统用户组赋予名称导致, 解决办法：
+```
+echo "1015:x:1015:
+1028:x:1028:
+3003:x:3003:
+50062:x:50062:
+9997:x:9997:" >>/etc/group
+```
+[参考](https://blog.csdn.net/babytiger/article/details/112121506)
+
+<!--csdn-article-id:128755099-->
