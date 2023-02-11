@@ -42,3 +42,4 @@ nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
 ```
 1. 修改/usr/local/amh-7.0/vhost/amh-nginx.conf移除9999端口服务器配置部分
 2. 修改/home/wwwroot/lnmp01/vhost/0.0.0.0.conf，将80端口改成1024以上比如1025
+<!--csdn-article-id:128760107-->

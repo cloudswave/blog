@@ -11,41 +11,45 @@
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 
 ## 最近更新
+- [amh面板部署typecho博客后显示404错误](https://github.com/cloudswave/blog/issues/25)---2023-02-11
+- [M301H刷机包](https://github.com/cloudswave/blog/issues/24)---2023-02-08
+- [通过nps对宝塔部署的网站进行内网穿透访问](https://github.com/cloudswave/blog/issues/23)---2023-01-28
+- [Termux通过Atilo安装Ubuntu并部署宝塔或大圣面板后运行环境不正常的解决记录](https://github.com/cloudswave/blog/issues/22)---2023-01-27
 - [Termux通过Ubuntu安装AMH面板](https://github.com/cloudswave/blog/issues/21)---2023-01-25
 - [Termux通过ubuntu安装宝塔面板](https://github.com/cloudswave/blog/issues/20)---2023-01-23
 - [安卓5下Termux通过ubuntu安装alist](https://github.com/cloudswave/blog/issues/19)---2023-01-23
 - [联想乐檬k3刷安卓5.1教程](https://github.com/cloudswave/blog/issues/18)---2023-01-22
 - [termux nginx配置多网站示例](https://github.com/cloudswave/blog/issues/17)---2022-12-25
 - [fiddler抓包edge要设置使用系统代理](https://github.com/cloudswave/blog/issues/16)---2022-12-15
-- [nginx和php-fpm以root用户运行](https://github.com/cloudswave/blog/issues/15)---2022-12-11
-- [docker kodexplorer](https://github.com/cloudswave/blog/issues/14)---2022-12-10
-- [给rm增加回收站，安全的使用rm命令](https://github.com/cloudswave/blog/issues/13)---2022-12-10
-- [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 
 ## Guide
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
 
 
 ## Reverie
+- [M301H刷机包](https://github.com/cloudswave/blog/issues/24)---2023-02-08
+- [通过nps对宝塔部署的网站进行内网穿透访问](https://github.com/cloudswave/blog/issues/23)---2023-01-28
+- [Termux通过Atilo安装Ubuntu并部署宝塔或大圣面板后运行环境不正常的解决记录](https://github.com/cloudswave/blog/issues/22)---2023-01-27
 - [termux nginx配置多网站示例](https://github.com/cloudswave/blog/issues/17)---2022-12-25
 - [fiddler抓包edge要设置使用系统代理](https://github.com/cloudswave/blog/issues/16)---2022-12-15
+<details><summary>MORE</summary>
+
 - [docker kodexplorer](https://github.com/cloudswave/blog/issues/14)---2022-12-10
 - [挂载alist webdav](https://github.com/cloudswave/blog/issues/10)---2022-12-04
 - [Github issue update Api](https://github.com/cloudswave/blog/issues/8)---2022-10-30
-<details><summary>MORE</summary>
-
 - [便签](https://github.com/cloudswave/blog/issues/7)---2022-10-30
 </details>
 
 
 ## 搞机
+- [amh面板部署typecho博客后显示404错误](https://github.com/cloudswave/blog/issues/25)---2023-02-11
 - [Termux通过Ubuntu安装AMH面板](https://github.com/cloudswave/blog/issues/21)---2023-01-25
 - [Termux通过ubuntu安装宝塔面板](https://github.com/cloudswave/blog/issues/20)---2023-01-23
 - [安卓5下Termux通过ubuntu安装alist](https://github.com/cloudswave/blog/issues/19)---2023-01-23
 - [联想乐檬k3刷安卓5.1教程](https://github.com/cloudswave/blog/issues/18)---2023-01-22
-- [nginx和php-fpm以root用户运行](https://github.com/cloudswave/blog/issues/15)---2022-12-11
 <details><summary>MORE</summary>
 
+- [nginx和php-fpm以root用户运行](https://github.com/cloudswave/blog/issues/15)---2022-12-11
 - [给rm增加回收站，安全的使用rm命令](https://github.com/cloudswave/blog/issues/13)---2022-12-10
 - [docker版alist和aria2配合使用](https://github.com/cloudswave/blog/issues/12)---2022-12-09
 - [finalshell配置备份同步](https://github.com/cloudswave/blog/issues/11)---2022-12-04

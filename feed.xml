@@ -15,65 +15,376 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Wed, 25 Jan 2023 03:59:17 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Feb 2023 09:20:00 GMT</lastBuildDate>
             <item>
-                <title><![CDATA[Termux通过Ubuntu安装AMH面板]]></title>
-                    <description><![CDATA[<p><strong>注意先使用：uname -m查看确保手机是aarch64位架构</strong></p>
-<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
-<p>参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
-<h1><a id="user-content-快速安装amh面板" class="anchor" aria-hidden="true" href="#快速安装amh面板"><span aria-hidden="true" class="octicon octicon-link"></span></a>快速安装amh面板</h1>
-<p>参考：<a href="http://amh.sh/install.htm" rel="nofollow">http://amh.sh/install.htm</a>
-ubuntu下：</p>
-<pre><code>export CV=[CN] DV=N &amp;&amp; wget http://dl.amh.sh/amh.sh &amp;&amp; bash amh.sh
+                <title><![CDATA[amh面板部署typecho博客后显示404错误]]></title>
+                    <description><![CDATA[<p>安装typecho完成后访问后台和文章显示404
+修改nginx配置：/home/wwwroot/lnmp01/vhost/typecho.conf</p>
+<pre><code>...
+location ~ .*\.php(\/.*)*$
+	{
+		fastcgi_pass  unix:/tmp/php-cgi-lnmp01-typecho.sock;
+...
 </code></pre>
-<p>安装成功后系统会提示面板访问地址与AMH、MySQL默认账号密码。
-常用配置目录：</p>
-<pre><code>/usr/local/amh-7.0/etc/
-/usr/local/amh-7.0/vhost/
-/home/wwwroot/lnmp01/vhost/
+<p>修改重写规则：/home/wwwroot/lnmp01/rewrite/amh.conf</p>
+<pre><code>if (-f $request_filename/index.php){
+    rewrite (.*) $1/index.php;
+}
+if (!-f $request_filename){
+    rewrite (.*) /index.php;
+}
 </code></pre>
-<p>常用命令：</p>
-<pre><code>启动Nginx: amh nginx start
-停止Nginx: amh nginx stop
-重载Nginx: amh nginx reload
-重启Nginx: amh nginx restart
-启动MySQL: amh mysql start
-停止MySQL: amh mysql stop
-重载MySQL: amh mysql reload
-重启MySQL: amh mysql restart
-强制重载MySQL: amh mysql force-reload
-启动PHP: amh php start [主标识域名]
-停止PHP: amh php stop [主标识域名]
-强行停止PHP: amh php force-quit [主标识域名]
-重启PHP: amh php restart [主标识域名]
-重载PHP: amh php reload [主标识域名]
+<p>重启nginx</p>
+<pre><code>killall nginx
+/usr/local/nginx-generic-1.20/sbin/nginx
 </code></pre>
-<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
-<ul>
-<li>面板8888端口无法访问主页，amh nginx restart 看报错信息，发现ssl证书无法加载，80端口无法使用</li>
-</ul>
-<pre><code>nginx: [emerg] cannot load certificate "/usr/local/amh-7.0/etc/ssl/amh.crt": BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/usr/local/amh-7.0/etc/ssl/amh.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
-
-nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
-</code></pre>
-<ol>
-<li>修改/usr/local/amh-7.0/vhost/amh-nginx.conf移除9999端口服务器配置部分</li>
-<li>修改/home/wwwroot/lnmp01/vhost/0.0.0.0.conf，将80端口改成1024以上比如1025</li>
-</ol>
 ]]></description>
-                    <pubDate>Wed, 25 Jan 2023 03:59:03 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/21</guid>
-                <link>https://github.com/cloudswave/blog/issues/21</link>
+                    <pubDate>Sat, 11 Feb 2023 09:19:45 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/25</guid>
+                <link>https://github.com/cloudswave/blog/issues/25</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>搞机</category>
             </item>
             <item>
+                <title><![CDATA[M301H刷机包]]></title>
+                    <description><![CDATA[<p>hi，这是我用百度网盘分享的内容~复制这段内容打开「百度网盘」APP即可获取 
+链接:<a href="https://pan.baidu.com/s/1nf0jGQnRutl4-YXA03ts7A?pwd=zn4u%C2%A0" rel="nofollow">https://pan.baidu.com/s/1nf0jGQnRutl4-YXA03ts7A?pwd=zn4u </a>
+提取码:zn4u</p>
+<p>链接1: <a href="https://pan.baidu.com/s/1qSmtBgSEbKs6ZFm-yCr-XQ" rel="nofollow">https://pan.baidu.com/s/1qSmtBgSEbKs6ZFm-yCr-XQ</a></p>
+<p>提取码: nnw3</p>
+]]></description>
+                    <pubDate>Wed, 08 Feb 2023 14:41:17 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/24</guid>
+                <link>https://github.com/cloudswave/blog/issues/24</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[Termux通过Atilo安装Ubuntu并部署宝塔或大圣面板后运行环境不正常的解决记录]]></title>
+                    <description><![CDATA[<p>大圣面板（高仿宝塔）：<a href="https://github.com/midoks/mdserver-web">https://github.com/midoks/mdserver-web</a></p>
+<ul>
+<li>无法安装nginx、php等</li>
+</ul>
+<ol>
+<li>查看任务执行日志，找错误信息</li>
+<li>宝塔各环境编译脚本路径：/www/server/panel/install/，大圣面板：/www/server/mdserver-web/plugins/，可以通过修改脚本来尝试手动本地编译</li>
+<li>通过日志或者网上搜索手动编译命令</li>
+</ol>
+<pre><code># 大圣面板php7.4
+# 安装所以依赖并编译
+cd /www/server/mdserver-web/plugins/php/
+/www/server/mdserver-web/plugins/php/versions/74/install.sh install
+# 单编php
+cd  /www/server/source/php/php74/
+ make clean
+./configure --prefix=/www/server/php/74 --exec-prefix=/www/server/php/74 --with-config-file-path=/www/server/php/74/etc --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-zlib-dir=/www/server/lib/zlib --with-zip --enable-ftp --enable-mbstring --enable-sockets --enable-simplexml --enable-soap --enable-posix --enable-sysvmsg --enable-sysvsem --enable-sysvshm --disable-intl --disable-fileinfo --without-iconv --with-curl --with-libdir=lib64 --enable-fpm
+make &amp;&amp; make install
+</code></pre>
+<pre><code># 大圣面板php5.6
+# 安装所以依赖并编译
+cd /www/server/mdserver-web/plugins/php/
+/www/server/mdserver-web/plugins/php/versions/56/install.sh install
+# 单编php
+cd  /www/server/source/php/php56/
+./configure -prefix=/www/server/php/56 --exec-prefix=/www/server/php/56 --with-config-file-path=/www/server/php/56/etc --with-zlib-dir=/www/server/lib/zlib --enable-mysqlnd --with-mysql=mysqlnd --with-pdo-mysql=mysqlnd --with-mysqli=mysqlnd --enable-zip --enable-mbstring --enable-simplexml --enable-ftp --enable-sockets --enable-pcntl --enable-shmop --enable-soap --enable-posix --enable-sysvmsg --enable-sysvsem --enable-sysvshm --disable-intl --disable-fileinfo --without-iconv --with-curl --with-libdir=lib64 --enable-fpm
+make &amp;&amp; make install
+可能由于手机内存不足，上面编译zend会失败
+
+方案2: 通过ln关联已安装的php环境并配置
+ln -s /usr/local/php-generic-7.4 /www/server/php/74
+cd /usr/local/php-generic-7.4/etc/
+cp php-fpm.conf.default php-fpm.conf
+cd php-fpm.d
+cp www.conf.default www.conf
+vi www.conf # 替换listen = 127.0.0.1:9000 为 listen = /tmp/php-cgi-74.sock
+
+# 增加enable-php-74.conf、fastcgi.conf、pathinfo.conf
+vi /www/server/web_conf/php/conf/enable-php-74.conf
+location ~ [^/]\.php(/|$)
+{
+	try_files $uri =404;
+	fastcgi_pass  unix:/tmp/php-cgi-74.sock;
+	fastcgi_index index.php;
+	include /www/server/web_conf/php/conf/fastcgi.conf;
+	include /www/server/web_conf/php/conf/pathinfo.conf;
+}
+
+vi /www/server/web_conf/php/conf/fastcgi.conf
+fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+fastcgi_param  QUERY_STRING       $query_string;
+fastcgi_param  REQUEST_METHOD     $request_method;
+fastcgi_param  CONTENT_TYPE       $content_type;
+fastcgi_param  CONTENT_LENGTH     $content_length;
+
+fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
+fastcgi_param  REQUEST_URI        $request_uri;
+fastcgi_param  DOCUMENT_URI       $document_uri;
+fastcgi_param  DOCUMENT_ROOT      $document_root;
+fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+fastcgi_param  REQUEST_SCHEME     $scheme;
+fastcgi_param  HTTPS              $https if_not_empty;
+
+fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
+fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
+
+fastcgi_param  REMOTE_ADDR        $remote_addr;
+fastcgi_param  REMOTE_PORT        $remote_port;
+fastcgi_param  SERVER_ADDR        $server_addr;
+fastcgi_param  SERVER_PORT        $server_port;
+fastcgi_param  SERVER_NAME        $server_name;
+
+# PHP only, required if PHP was built with --enable-force-cgi-redirect
+fastcgi_param  REDIRECT_STATUS    200;
+
+
+vi /www/server/web_conf/php/conf/pathinfo.conf
+set $real_script_name $fastcgi_script_name;
+if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+        set $real_script_name $1;
+        set $path_info $2;
+}
+fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+fastcgi_param SCRIPT_NAME $real_script_name;
+
+# 启动nginx php-fpm
+/www/server/openresty/nginx/sbin/nginx
+php-fpm
+</code></pre>
+<p>宝塔面板：
+手动编译php7.3</p>
+<pre><code>bash /www/server/panel/install/php.sh install 7.3
+</code></pre>
+<p>参考文章手动编译nginx
+<a href="https://www.nange.cn/tls13-for-nginx.html" rel="nofollow">宝塔自定义编译安装 Nginx 并配置 TLS1.3</a>
+<a href="https://blog.csdn.net/nx_xn/article/details/110120525" rel="nofollow">宝塔Nginx自编译</a>
+<a href="https://www.landui.com/help/show-7948.html" rel="nofollow">宝塔环境编译安装第三方PHP扩展示例</a></p>
+<pre><code>宝塔手动编译集成nginx1.20记录：
+如果存在nginx可以使用/www/server/nginx/sbin/nginx -V查看configure参数，并备份nginx
+root@localhost:/www/server/nginx#curl -O http://nginx.org/download/nginx-1.20.0.tar.gz
+root@localhost:/www/server/nginx# tar -zxvf nginx-1.20.0.tar.gz
+root@localhost:/www/server/nginx#cd nginx-1.20.0/
+root@localhost:/www/server/nginx/nginx-1.20.0#./configure --user=www --group=www --prefix=/www/server/nginx
+root@localhost:/www/server/nginx/nginx-1.20.0#make &amp;&amp; make install
+
+修改/www/server/nginx/conf/nginx.conf
+nginx验证命令
+/www/server/nginx/sbin/nginx -t
+手动启动nginx
+/www/server/nginx/sbin/nginx
+</code></pre>
+<p>/www/server/nginx/conf/nginx.conf:</p>
+<pre><code>
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+  
+    server_names_hash_bucket_size 512; # 新增避免nginx名称过长报错
+    client_header_buffer_size 32k;
+    large_client_header_buffers 4 32k;
+    client_body_buffer_size 50m;
+    client_max_body_size 50m;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       1025;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+  
+  include /www/server/panel/vhost/nginx/*.conf; # 新增使其支持宝塔的多网站
+
+}
+
+</code></pre>
+<h1><a id="user-content-问题记录" class="anchor" aria-hidden="true" href="#问题记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>问题记录</h1>
+<ul>
+<li>运行内存不足导致编译失败，cc: fatal error: Killed signal terminated program cc1
+网络搜索都说可以增加虚拟内存大小<a href="https://www.cnblogs.com/huojing/articles/15824136.html" rel="nofollow">参考</a>，但是在termux中的ubuntu中以下方法会报错：swapon failed Operation not permitted。</li>
+</ul>
+<pre><code>#获取要增加的2G的SWAP文件块
+dd if=/dev/zero of=/swapfile bs=1k count=2048000
+#创建SWAP文件
+mkswap /swapfile 
+#激活SWAP文件
+swapon /swapfile   
+#查看SWAP信息是否正确
+swapon -s  
+#添加到fstab文件中让系统引导时自动启动
+</code></pre>
+<p>方案2: 尝试清理进程，关闭面板，再手动编译，实验中..</p>
+<ul>
+<li>大圣面板新建静态站点openresty nginx未启动</li>
+</ul>
+<pre><code>使用以下命令测试nginx
+ps -ef | grep nginx
+/www/server/openresty/nginx/sbin/nginx -t
+发现使用了80端口，termux需要使用1024以上端口，故修改成1026
+vi /www/server/openresty/nginx/conf
+80-&gt;1026
+继续测试nginx
+/www/server/openresty/nginx/sbin/nginx -t
+手动启动nginx
+/www/server/openresty/nginx/sbin/nginx
+验证网页
+curl http://127.0.0.1:1026
+</code></pre>
+<p>测试发现：宝塔的nginx同样无法启动，也需要如此验证，nginx路径：/www/server/nginx/</p>
+<ul>
+<li>宝塔报错：ulimit: open files: cannot modify limit: Operation not permitted
+寻找并修改源码</li>
+</ul>
+<pre><code>root@localhost:/www/server# grep -rn "ulimit"
+Binary file panel/data/default.db matches
+panel/class/public.py:299:        result = ExecShell("ulimit -n 10240 &amp;&amp; /www/server/nginx/sbin/nginx -t -c /www/server/nginx/conf/nginx.conf");
+panel/class/public.py:302:        result = ExecShell("ulimit -n 10240 &amp;&amp; /www/server/apache/bin/apachectl -t");
+panel/class/system.py:533:            result = public.ExecShell('ulimit -n 10240 &amp;&amp; ' + self.setupPath+'/apache/bin/apachectl -t');
+panel/class/system.py:551:            result = public.ExecShell('ulimit -n 10240 &amp;&amp; nginx -t -c '+self.setupPath+'/nginx/conf/nginx.conf');
+Binary file panel/class/public.pyc matches
+Binary file panel/class/system.pyc matches
+root@localhost:/www/server#
+</code></pre>
+<p>修改panel/class/public.py和panel/class/system.py将ulimit -n 10240删除:</p>
+<pre><code>    if get_webserver() == 'nginx':
+        result = ExecShell("/www/server/nginx/sbin/nginx -t -c /www/server/nginx/conf/nginx.conf");
+        searchStr = 'successful'
+    else:
+        result = ExecShell("/www/server/apache/bin/apachectl -t");
+</code></pre>
+<p>重启宝塔：/etc/init.d/bt restart</p>
+]]></description>
+                    <pubDate>Sat, 04 Feb 2023 12:10:16 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/22</guid>
+                <link>https://github.com/cloudswave/blog/issues/22</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[通过nps对宝塔部署的网站进行内网穿透访问]]></title>
+                    <description><![CDATA[<ul>
+<li>宝塔新建网站时应该如下增加端口配置：</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215266767-beeee4ef-899a-4eeb-b959-1125f3b78605.png"><img width="646" alt="image" src="https://user-images.githubusercontent.com/5915548/215266767-beeee4ef-899a-4eeb-b959-1125f3b78605.png" style="max-width: 100%;"></a></p>
+<ul>
+<li>在nps后台中增加域名绑定是端口填写上一步分配的端口</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215266909-13785cc8-9fb8-4dcd-b24e-1eb36d9094ef.png"><img width="665" alt="image" src="https://user-images.githubusercontent.com/5915548/215266909-13785cc8-9fb8-4dcd-b24e-1eb36d9094ef.png" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Sat, 28 Jan 2023 12:41:14 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/23</guid>
+                <link>https://github.com/cloudswave/blog/issues/23</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
                 <title><![CDATA[Termux通过ubuntu安装宝塔面板]]></title>
                     <description><![CDATA[<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
-<p>参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
-<h1><a id="user-content-arm64快速安装宝塔" class="anchor" aria-hidden="true" href="#arm64快速安装宝塔"><span aria-hidden="true" class="octicon octicon-link"></span></a>arm64快速安装宝塔</h1>
-<p>参考：<a href="https://gitee.com/pdusb/pdusb-fast-btpanel" rel="nofollow">https://gitee.com/pdusb/pdusb-fast-btpanel</a>
-ubuntu下：</p>
+<p>ubuntu或者debian支持64或者32位架构cpu
+参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
+<h1><a id="user-content-安装宝塔" class="anchor" aria-hidden="true" href="#安装宝塔"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装宝塔</h1>
+<p>uname -m查看cpu架构，aarch64代表64位
+参考：<a href="https://gitee.com/pdusb/pdusb-fast-btpanel" rel="nofollow">https://gitee.com/pdusb/pdusb-fast-btpanel</a>
+64位ubuntu下：</p>
 <pre><code>git clone https://gitee.com/pdusb/pdusb-fast-btpanel.git
 cd pdusb-fast-btpanel
 ./pdbolt-inst-bt-acel.sh
@@ -83,6 +394,12 @@ bash /tmp/btp/pdbolt-bt-install/install.sh
 # 进入宝塔工具面板，可查看修改端口和密码
 bt
 </code></pre>
+<p>32位ubuntu或者debian只能安装5.9版面板, python2.7：</p>
+<pre><code>apt-get install python-setuptools
+wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; sudo bash install.sh
+</code></pre>
+<p>参考<a href="https://www.234du.com/1194.html" rel="nofollow">宝塔(BT-Panel) Linux 面板 5.9 开心版教程</a>
+<a href="https://blog.csdn.net/lovelinchuangfeng/article/details/123843230" rel="nofollow">玩客云安装宝塔面板5.9</a></p>
 <h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
 <ul>
 <li>
@@ -131,11 +448,79 @@ groups: cannot find name for group ID 50062
 9997:x:9997:" &gt;&gt;/etc/group
 </code></pre>
 <p><a href="https://blog.csdn.net/babytiger/article/details/112121506" rel="nofollow">参考</a></p>
+<ul>
+<li>宝塔安装报错：ImportError: No module named setuptools
+阅读install.sh脚本，把已经执行过的命令注释，排查哪行命令报错，执行的时候发现宝塔需要使用python2.7的pip，而apt命令安装的pip会安装到python3里了。</li>
+</ul>
+<pre><code>curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py 
+python2 get-pip.py
+然后将pip命令链接到bin目录下
+</code></pre>
+<ul>
+<li>启动宝塔成功，但是无法显示登录页，显示500错误
+查看宝塔的/etc/init.d/bt 脚本，尝试找到错误日志保存路径如下，cat /tmp/panelBoot.pl ，发现cp: cannot create regular file '/dev/shm/session.db'，修改/www/server/panel/main.py, 把/dev/shm/session.db路径修改成/tmp/session.db</li>
+</ul>
+<pre><code>nohup python main.pyc `cat data/port.pl` &gt; /tmp/panelBoot.pl 2&gt;&amp;1 &amp; 
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png"><img width="329" alt="image" src="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png"><img width="395" alt="image" src="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png" style="max-width: 100%;"></a></p>
 
 ]]></description>
-                    <pubDate>Tue, 24 Jan 2023 07:05:10 GMT</pubDate>
+                    <pubDate>Fri, 27 Jan 2023 10:22:56 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/20</guid>
                 <link>https://github.com/cloudswave/blog/issues/20</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[Termux通过Ubuntu安装AMH面板]]></title>
+                    <description><![CDATA[<p><strong>注意先使用：uname -m查看确保手机是aarch64位架构</strong></p>
+<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
+<p>参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
+<h1><a id="user-content-快速安装amh面板" class="anchor" aria-hidden="true" href="#快速安装amh面板"><span aria-hidden="true" class="octicon octicon-link"></span></a>快速安装amh面板</h1>
+<p>参考：<a href="http://amh.sh/install.htm" rel="nofollow">http://amh.sh/install.htm</a>
+ubuntu下：</p>
+<pre><code>export CV=[CN] DV=N &amp;&amp; wget http://dl.amh.sh/amh.sh &amp;&amp; bash amh.sh
+</code></pre>
+<p>安装成功后系统会提示面板访问地址与AMH、MySQL默认账号密码。
+常用配置目录：</p>
+<pre><code>/usr/local/amh-7.0/etc/
+/usr/local/amh-7.0/vhost/
+/home/wwwroot/lnmp01/vhost/
+</code></pre>
+<p>常用命令：</p>
+<pre><code>启动Nginx: amh nginx start
+停止Nginx: amh nginx stop
+重载Nginx: amh nginx reload
+重启Nginx: amh nginx restart
+启动MySQL: amh mysql start
+停止MySQL: amh mysql stop
+重载MySQL: amh mysql reload
+重启MySQL: amh mysql restart
+强制重载MySQL: amh mysql force-reload
+启动PHP: amh php start [主标识域名]
+停止PHP: amh php stop [主标识域名]
+强行停止PHP: amh php force-quit [主标识域名]
+重启PHP: amh php restart [主标识域名]
+重载PHP: amh php reload [主标识域名]
+</code></pre>
+<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
+<ul>
+<li>面板8888端口无法访问主页，amh nginx restart 看报错信息，发现ssl证书无法加载，80端口无法使用</li>
+</ul>
+<pre><code>nginx: [emerg] cannot load certificate "/usr/local/amh-7.0/etc/ssl/amh.crt": BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/usr/local/amh-7.0/etc/ssl/amh.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+
+nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
+</code></pre>
+<ol>
+<li>修改/usr/local/amh-7.0/vhost/amh-nginx.conf移除9999端口服务器配置部分</li>
+<li>修改/home/wwwroot/lnmp01/vhost/0.0.0.0.conf，将80端口改成1024以上比如1025</li>
+</ol>
+
+]]></description>
+                    <pubDate>Wed, 25 Jan 2023 03:59:23 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/21</guid>
+                <link>https://github.com/cloudswave/blog/issues/21</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>搞机</category>
             </item>

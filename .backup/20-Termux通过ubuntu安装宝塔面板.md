@@ -1,10 +1,12 @@
 [Termux通过ubuntu安装宝塔面板](https://github.com/cloudswave/blog/issues/20)
 
 # Termux下Atilo安装ubuntu
+ubuntu或者debian支持64或者32位架构cpu
 参考：https://www.jianshu.com/p/a9b30ea2ae66
-# arm64快速安装宝塔
+# 安装宝塔
+uname -m查看cpu架构，aarch64代表64位
 参考：https://gitee.com/pdusb/pdusb-fast-btpanel
-ubuntu下：
+64位ubuntu下：
 ```
 git clone https://gitee.com/pdusb/pdusb-fast-btpanel.git
 cd pdusb-fast-btpanel
@@ -15,6 +17,13 @@ bash /tmp/btp/pdbolt-bt-install/install.sh
 # 进入宝塔工具面板，可查看修改端口和密码
 bt
 ```
+32位ubuntu或者debian只能安装5.9版面板, python2.7：
+```
+apt-get install python-setuptools
+wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh && sudo bash install.sh
+```
+参考[宝塔(BT-Panel) Linux 面板 5.9 开心版教程](https://www.234du.com/1194.html)
+[玩客云安装宝塔面板5.9](https://blog.csdn.net/lovelinchuangfeng/article/details/123843230)
 # 错误处理记录
 - ERROR: cannot verify download.bt.cn's certificate, issued by ‘CN=sslTrus (RSA) OV CA,O=sslTrus,C=CN’: Unable to locally verify the issuer's authority. To connect to download.bt.cn insecurely, use `--no-check-certificate' ERROR: Download python env fielded.
 关闭证书验证：echo "check_certificate = off" >> ~/.wgetrc
@@ -60,5 +69,21 @@ echo "1015:x:1015:
 9997:x:9997:" >>/etc/group
 ```
 [参考](https://blog.csdn.net/babytiger/article/details/112121506)
+
+- 宝塔安装报错：ImportError: No module named setuptools
+阅读install.sh脚本，把已经执行过的命令注释，排查哪行命令报错，执行的时候发现宝塔需要使用python2.7的pip，而apt命令安装的pip会安装到python3里了。
+```
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py 
+python2 get-pip.py
+然后将pip命令链接到bin目录下
+```
+- 启动宝塔成功，但是无法显示登录页，显示500错误
+查看宝塔的/etc/init.d/bt 脚本，尝试找到错误日志保存路径如下，cat /tmp/panelBoot.pl ，发现cp: cannot create regular file '/dev/shm/session.db'，修改/www/server/panel/main.py, 把/dev/shm/session.db路径修改成/tmp/session.db
+```
+nohup python main.pyc `cat data/port.pl` > /tmp/panelBoot.pl 2>&1 & 
+```
+<img width="329" alt="image" src="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png">
+<img width="395" alt="image" src="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png">
+
 
 <!--csdn-article-id:128755099-->
