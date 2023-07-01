@@ -24,3 +24,10 @@ p3terx/aria2-pro
 -v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享，并且只能在同一台服务器上否则离线下载后复制到某个存储下面时会报transfer失败
 参考：https://alist.nn.ci/zh/guide/install/docker.html
 <!--csdn-article-id:128254475-->
+
+---
+
+<a id='issuecomment-1445057265'></a>
+> 我的alist 跑在docker，aria2跑在主机，这样怎么设置呢
+
+alist挂载一个路径跟aria2下载路径保持一致即可

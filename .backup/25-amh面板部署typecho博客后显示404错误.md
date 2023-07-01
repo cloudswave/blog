@@ -23,3 +23,4 @@ if (!-f $request_filename){
 killall nginx
 /usr/local/nginx-generic-1.20/sbin/nginx
 ```
+<!--csdn-article-id:128986002-->

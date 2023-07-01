@@ -15,7 +15,614 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sat, 11 Feb 2023 09:20:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 01 Jul 2023 14:18:35 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[alist编译记录]]></title>
+                    <description><![CDATA[<h2><a id="user-content-服务器环境" class="anchor" aria-hidden="true" href="#服务器环境"><span aria-hidden="true" class="octicon octicon-link"></span></a>服务器环境</h2>
+<p>Linux version 3.10.0-327.el7.x86_64 (<a href="mailto:builder@kbuilder.dev.centos.org">builder@kbuilder.dev.centos.org</a>) (gcc version 4.8.3 20140911 (Red Hat 4.8.3-9) (GCC) ) #1 SMP Thu Nov 19 22:10:57 UTC 2015</p>
+<h2><a id="user-content-前端" class="anchor" aria-hidden="true" href="#前端"><span aria-hidden="true" class="octicon octicon-link"></span></a>前端</h2>
+<pre><code>yum install npm
+npm install -g npm@9.5.0
+npm install pnpm -g
+git clone --recursive https://github.com/alist-org/alist-web.git
+cd alist-web
+pnpm run build
+</code></pre>
+<h2><a id="user-content-后端" class="anchor" aria-hidden="true" href="#后端"><span aria-hidden="true" class="octicon octicon-link"></span></a>后端</h2>
+<pre><code>yum install screen
+screen -R alist # 开screen避免掉线编译中断
+rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
+curl -s https://mirror.go-repo.io/centos/go-repo.repo | tee /etc/yum.repos.d/go-repo.repo
+yum install golang
+git clone https://github.com/alist-org/alist.git
+cd alist
+vi build-local.sh # 新建一个本地编译的脚本，复制以下内容
+------
+rm -rf ./public/dist/*
+cp -r ../alist-web/dist ./public/ # 注意前端代码路径
+appName="alist"
+builtAt="$(date +'%F %T %z')"
+goVersion=$(go version | sed 's/go version //')
+gitAuthor=$(git show -s --format='format:%aN &lt;%ae&gt;' HEAD)
+gitCommit=$(git log --pretty=format:"%h" -1)
+version=$(git describe --long --tags --dirty --always)
+webVersion=$(wget -qO- -t1 -T2 "https://api.github.com/repos/alist-org/alist-web/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
+ldflags="\
+-w -s \
+-X 'github.com/alist-org/alist/v3/internal/conf.BuiltAt=$builtAt' \
+-X 'github.com/alist-org/alist/v3/internal/conf.GoVersion=$goVersion' \
+-X 'github.com/alist-org/alist/v3/internal/conf.GitAuthor=$gitAuthor' \
+-X 'github.com/alist-org/alist/v3/internal/conf.GitCommit=$gitCommit' \
+-X 'github.com/alist-org/alist/v3/internal/conf.Version=$version' \
+-X 'github.com/alist-org/alist/v3/internal/conf.WebVersion=$webVersion' \
+"
+go build -ldflags="$ldflags" 
+-----
+
+bash build-local.sh  # 编译
+
+./alist admin # 查看管理员信息
+./alist server # 启动服务
+vi ./data/config.json # 可修改端口
+</code></pre>
+<h2><a id="user-content-国际化" class="anchor" aria-hidden="true" href="#国际化"><span aria-hidden="true" class="octicon octicon-link"></span></a>国际化</h2>
+<pre><code>方案1：
+# crowdin 环境变量配置，先去crowdin官网注册获取api-token，创建一个project获取project id
+# https://crowdin.com/project/alist/zh-CN
+export CROWDIN_PROJECT_ID=***
+export CROWDIN_PERSONAL_TOKEN=***
+pnpm run i18n:release
+
+方案2：直接下载中文翻译文件
+[root@ecs-G3x6u alist]# wget https://crowdin.com/backend/download/project/alist/zh-CN.zip --no-check-certificate
+[root@ecs-G3x6u alist]# unzip zh-CN.zip 
+Archive:  zh-CN.zip
+   creating: src/
+   creating: src/lang/
+   creating: src/lang/zh-CN/
+  inflating: src/lang/zh-CN/settings.json  
+  inflating: src/lang/zh-CN/metas.json  
+  inflating: src/lang/zh-CN/settings_other.json  
+  inflating: src/lang/zh-CN/manage.json  
+  inflating: src/lang/zh-CN/storages.json  
+  inflating: src/lang/zh-CN/login.json  
+  inflating: src/lang/zh-CN/drivers.json  
+  inflating: src/lang/zh-CN/global.json  
+  inflating: src/lang/zh-CN/users.json  
+  inflating: src/lang/zh-CN/home.json  
+ extracting: src/lang/zh-CN/index.json  
+  inflating: src/lang/zh-CN/tasks.json  
+  inflating: src/lang/zh-CN/br.json  
+  inflating: src/lang/zh-CN/indexes.json  
+[root@ecs-G3x6u alist]# ls
+alist  alist-web  src  zh-CN.zip
+[root@ecs-G3x6u alist]# cp -r ./src/lang/zh-CN ./alist-web/src/
+app/        components/ hooks/      index.d.ts  lang/       main.tsx    pages/      store/      types/      utils/      
+[root@ecs-G3x6u alist]# cp -r ./src/lang/zh-CN ./alist-web/src/lang/
+[root@ecs-G3x6u alist]# cd alist-web/
+[root@ecs-G3x6u alist-web]# node ./scripts/i18n.mjs
+</code></pre>
+<h2><a id="user-content-参考" class="anchor" aria-hidden="true" href="#参考"><span aria-hidden="true" class="octicon octicon-link"></span></a>参考</h2>
+<ul>
+<li><a href="https://alist.nn.ci/zh/guide/install/source.html" rel="nofollow">https://alist.nn.ci/zh/guide/install/source.html</a></li>
+<li><a href="https://blog.csdn.net/qq_25919879/article/details/128400309" rel="nofollow">https://blog.csdn.net/qq_25919879/article/details/128400309</a></li>
+</ul>
+]]></description>
+                    <pubDate>Sat, 01 Jul 2023 14:18:18 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/29</guid>
+                <link>https://github.com/cloudswave/blog/issues/29</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[Termux通过ubuntu安装宝塔面板]]></title>
+                    <description><![CDATA[<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
+<p>ubuntu或者debian支持64或者32位架构cpu
+参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
+<h1><a id="user-content-安装宝塔" class="anchor" aria-hidden="true" href="#安装宝塔"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装宝塔</h1>
+<p>uname -m查看cpu架构，aarch64代表64位
+参考：<a href="https://gitee.com/pdusb/pdusb-fast-btpanel" rel="nofollow">https://gitee.com/pdusb/pdusb-fast-btpanel</a>
+64位ubuntu下：</p>
+<pre><code>git clone https://gitee.com/pdusb/pdusb-fast-btpanel.git
+cd pdusb-fast-btpanel
+./pdbolt-inst-bt-acel.sh
+bash /tmp/btp/pdbolt-bt-install/install.sh
+
+/etc/init.d/bt restart
+# 进入宝塔工具面板，可查看修改端口和密码
+bt
+</code></pre>
+<p>32位ubuntu或者debian只能安装5.9版面板, python2.7：</p>
+<pre><code>apt-get install python-setuptools
+wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; sudo bash install.sh
+</code></pre>
+<p>参考<a href="https://www.234du.com/1194.html" rel="nofollow">宝塔(BT-Panel) Linux 面板 5.9 开心版教程</a>
+<a href="https://blog.csdn.net/lovelinchuangfeng/article/details/123843230" rel="nofollow">玩客云安装宝塔面板5.9</a></p>
+<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
+<ul>
+<li>
+<p>ERROR: cannot verify download.bt.cn's certificate, issued by ‘CN=sslTrus (RSA) OV CA,O=sslTrus,C=CN’: Unable to locally verify the issuer's authority. To connect to download.bt.cn insecurely, use `--no-check-certificate' ERROR: Download python env fielded.
+关闭证书验证：echo "check_certificate = off" &gt;&gt; ~/.wgetrc</p>
+</li>
+<li>
+<p>报错chmod: cannot access '/tmp/btp/pyenv/bin/python3.7': Operation not permitted...</p>
+</li>
+</ul>
+<pre><code>...
+root@localhost:~/pdusb-fast-btpanel# chmod 777 /tmp/btp/pyenv/bin/ -R
+chmod: cannot access '/tmp/btp/pyenv/bin/python3.7': Operation not permitted
+chmod: cannot access '/tmp/btp/pyenv/bin/.l2s.python3.70001': Operation not permitted
+chmod: cannot access '/tmp/btp/pyenv/bin/python3.7m': Operation not permitted
+...
+</code></pre>
+<p>解压pyenv-ubuntu2004-3.7.8-aarch64.tar.xz出错导致，重新解压后替换出错文件</p>
+<ul>
+<li>宝塔启动失败</li>
+</ul>
+<pre><code>...
+Traceback (most recent call last):
+  File "/www/server/panel/BT-Panel", line 27, in &lt;module&gt;
+    from BTPanel import app,sys,public
+  File "/www/server/panel/BTPanel/__init__.py", line 11, in &lt;module&gt;
+    import json
+ModuleNotFoundError: No module named 'json'
+...
+</code></pre>
+<p>权限修复：chmod 777 -R /www</p>
+<ul>
+<li>ubuntu bash报错：groups: cannot find name for group ID ***</li>
+</ul>
+<pre><code>groups: cannot find name for group ID 1015
+groups: cannot find name for group ID 1028
+groups: cannot find name for group ID 3003
+groups: cannot find name for group ID 9997
+groups: cannot find name for group ID 50062
+</code></pre>
+<p>termux在安装ubuntu运行的时候出现了goups: cannot find name for group ID，由于termux安装ubuntu后没有给原本Android的系统用户组赋予名称导致, 解决办法：</p>
+<pre><code>echo "1015:x:1015:
+1028:x:1028:
+3003:x:3003:
+50062:x:50062:
+9997:x:9997:" &gt;&gt;/etc/group
+</code></pre>
+<p><a href="https://blog.csdn.net/babytiger/article/details/112121506" rel="nofollow">参考</a></p>
+<ul>
+<li>宝塔安装报错：ImportError: No module named setuptools
+阅读install.sh脚本，把已经执行过的命令注释，排查哪行命令报错，执行的时候发现宝塔需要使用python2.7的pip，而apt命令安装的pip会安装到python3里了。</li>
+</ul>
+<pre><code>curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py 
+python2 get-pip.py
+然后将pip命令链接到bin目录下
+</code></pre>
+<ul>
+<li>启动宝塔成功，但是无法显示登录页，显示500错误
+查看宝塔的/etc/init.d/bt 脚本，尝试找到错误日志保存路径如下，cat /tmp/panelBoot.pl ，发现cp: cannot create regular file '/dev/shm/session.db'，修改/www/server/panel/main.py, 把/dev/shm/session.db路径修改成/tmp/session.db</li>
+</ul>
+<pre><code>nohup python main.pyc `cat data/port.pl` &gt; /tmp/panelBoot.pl 2&gt;&amp;1 &amp; 
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png"><img width="329" alt="image" src="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png"><img width="395" alt="image" src="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png" style="max-width: 100%;"></a></p>
+
+]]></description>
+                    <pubDate>Sun, 28 May 2023 01:22:55 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/20</guid>
+                <link>https://github.com/cloudswave/blog/issues/20</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[chatgpt以及同类型产品体验]]></title>
+                    <description><![CDATA[<ul>
+<li><a href="https://app.slack.com/client/T058B789QC8/D057MGKRB1Q" rel="nofollow">https://app.slack.com/client/T058B789QC8/D057MGKRB1Q</a></li>
+<li><a href="https://chatbot.theb.ai" rel="nofollow">https://chatbot.theb.ai</a></li>
+</ul>
+]]></description>
+                    <pubDate>Sat, 20 May 2023 03:53:53 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/31</guid>
+                <link>https://github.com/cloudswave/blog/issues/31</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[docker版alist和aria2配合使用]]></title>
+                    <description><![CDATA[<pre><code>docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name="alist" xhofe/alist:latest
+
+docker run -d \
+--name aria2 \
+--restart unless-stopped \
+--log-opt max-size=1m \
+-e PUID=$UID \
+-e PGID=$GID \
+-e UMASK_SET=022 \
+-e RPC_SECRET=pac_password \
+-e RPC_PORT=6800 \
+-e LISTEN_PORT=6888 \
+-p 16800:6800 \
+-p 16888:6888 \
+-p 16888:6888/udp \
+-v /root/aria2/config:/config \
+-v /etc/alist/temp/downloads:/downloads \
+-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 \
+p3terx/aria2-pro
+</code></pre>
+<p>-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享，并且只能在同一台服务器上否则离线下载后复制到某个存储下面时会报transfer失败
+参考：<a href="https://alist.nn.ci/zh/guide/install/docker.html" rel="nofollow">https://alist.nn.ci/zh/guide/install/docker.html</a></p>
+
+]]></description>
+                    <pubDate>Wed, 15 Mar 2023 18:28:57 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/12</guid>
+                <link>https://github.com/cloudswave/blog/issues/12</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[试用new bing]]></title>
+                    <description><![CDATA[<ol>
+<li>使用梯子切换ip到国外</li>
+<li>访问<a href="https://www.bing.com/new" rel="nofollow">https://www.bing.com/new</a>，如果自动跳转走了，清理下cookie</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/224495654-3066aa80-67b0-43fa-b937-02b0544a03ef.png"><img width="1303" alt="截屏2023-03-12 上午12 21 09" src="https://user-images.githubusercontent.com/5915548/224495654-3066aa80-67b0-43fa-b937-02b0544a03ef.png" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Sat, 11 Mar 2023 16:21:35 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/30</guid>
+                <link>https://github.com/cloudswave/blog/issues/30</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[油猴脚本-goodreads]]></title>
+                    <description><![CDATA[<pre><code>// ==UserScript==
+// @name         豆瓣读书goodreads
+// @namespace    https://github.com/cloudswave/
+// @version      0.1.0
+// @description  从goodreads摘取评分显示在豆瓣读书条目页面
+// @author       ethanzhu
+// @match        https://book.douban.com/subject/*
+// @connect      www.goodreads.com
+// @grant        GM_xmlhttpRequest
+// @license      MIT
+// ==/UserScript==
+
+function buildCommentItem(props) {
+    return `
+&lt;li class="comment-item" data-cid="549875751"&gt;
+    &lt;div class="comment"&gt;
+        &lt;h3&gt;
+            &lt;span class="comment-info"&gt;
+                &lt;a href=${props.url}&gt;${props.author}&lt;/a&gt;
+                &lt;span class="user-stars allstar${props.rating}0 rating" title="推荐"&gt;&lt;/span&gt;
+                &lt;span&gt;${props.date}&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/h3&gt;
+        &lt;p class="comment-content"&gt;
+            &lt;span class="short"&gt;${props.content}&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/li&gt;
+`
+}
+
+function buildRatingInfo(props, bookId) {
+    const starValue = Math.round(props.rating) * 5
+    const url = `https://www.goodreads.com/book/show/${bookId}`
+    return `
+    &lt;div class="rating_wrap clearbox" rel="v:rating"&gt;
+        &lt;div class="rating_logo"&gt;goodreads评分&lt;/div&gt;
+        &lt;div class="rating_self clearfix" typeof="v:Rating"&gt;
+            &lt;strong class="ll rating_num " property="v:average"&gt; ${props.rating} &lt;/strong&gt;
+            &lt;span property="v:best" content="10.0"&gt;&lt;/span&gt;
+            &lt;div class="rating_right "&gt;
+                &lt;div class="ll bigstar${starValue}"&gt;&lt;/div&gt;
+                &lt;div class="rating_sum"&gt;
+                    &lt;span class=""&gt;
+                        &lt;a href="${url}" class="rating_people"&gt;&lt;span property="v:votes"&gt;${props.count}&lt;/span&gt;人评价&lt;/a&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    `
+}
+
+function getISBN() {
+    const metaInfo = document.querySelector('head &gt; script[type="application/ld+json"]')
+    if (metaInfo) {
+        return JSON.parse(metaInfo.textContent)['isbn']
+    }
+}
+
+function isEnglishBook(isbn) {
+    return (typeof isbn === 'string' &amp;&amp; isbn[3] === '0')
+}
+
+function Request(url, method, opt = {}) {
+    Object.assign(opt, {
+        url,
+        timeout: 5000,
+        method: method
+    })
+
+    return new Promise((resolve, reject) =&gt; {
+        opt.onerror = opt.ontimeout = reject
+        opt.onload = resolve
+        GM_xmlhttpRequest(opt)
+    })
+}
+
+
+function parseBooklogRating(doc) {
+    const ratingDiv = doc.querySelector('div[class="rating-value"]')
+    const rating = ((+ratingDiv.innerText.split('\n')[0])*2).toFixed(1)
+    const count = +doc.querySelector('span[itemprop="reviewCount"]').innerText
+    return {
+        rating,
+        count
+    }
+}
+
+function ISBN13ToISBN10(isbn13) {
+    const commonChars = isbn13.slice(3, -1)
+    let sum = 0
+    for (const [idx, char] of Array.from(commonChars).entries()) {
+        sum += (10 - idx) * parseInt(char)
+    }
+    let checkDigest = (11 - (sum % 11)) % 11
+    checkDigest = checkDigest !== 10 ? checkDigest.toString() : 'X'
+    return commonChars + checkDigest
+}
+
+(function () {
+    'use strict'
+    const isbn = getISBN()
+    if (!(isbn &amp;&amp; isEnglishBook(isbn))) {
+        // return
+    }
+    console.log(isbn);
+    const navTab = document.querySelector('div[class="nav-tab"]')
+    navTab.firstElementChild.insertAdjacentHTML('beforeend', `&lt;span&gt;/&lt;span&gt;&lt;a class="short-comment-tabs" href="booklog" data-tab="booklog"&gt;ブクログ&lt;/a&gt;`)
+    const commentListWrapper = document.getElementById('comment-list-wrapper')
+    commentListWrapper.insertAdjacentHTML('beforeend', `&lt;div id="comments" class="comment-list booklog noshow"&gt;&lt;ul id="booklog-review-list"&gt;&lt;/ul&gt;&lt;/div&gt;`)
+    const booklogReviewList = document.getElementById('booklog-review-list')
+    const RatingInfoList = document.getElementById('interest_sectl')
+    const isbn10 = ISBN13ToISBN10(isbn)
+
+
+    Request(`https://www.goodreads.com/book/auto_complete?format=json&amp;q=${isbn}`, 'GET').then(res =&gt; {
+        // console.log(res);
+        const response = JSON.parse(res.response);
+        if(response.length === 0) {
+            console.log(`goodreads ${isbn} not found!!!`);
+            RatingInfoList.insertAdjacentHTML('beforeend', '&lt;span class=""&gt;goodreads暂无记录&lt;/span&gt;')
+            return Promise.reject(0);
+        }
+        const bookId = response[0].bookId;
+        console.log(`goodreads found bookId ${bookId}`);
+        RatingInfoList.insertAdjacentHTML('beforeend', buildRatingInfo({rating: response[0].avgRating*2, count: response[0].ratingsCount}, bookId))
+        return bookId;
+    }).then(bookId =&gt; {
+/*         return Request(`https://www.goodreads.com/book/show/${bookId}`, 'GET').then(res =&gt; {
+            console.log(res);
+             const responseText = res.responseText;
+             return new DOMParser().parseFromString(responseText, "text/html")
+        }); */
+    }).then(doc =&gt; {
+        // console.log(doc);
+        // RatingInfoList.insertAdjacentHTML('beforeend', buildRatingInfo(parseBooklogRating(doc)))
+    })
+})();
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218773802-a5bc35aa-7824-46a1-b9be-61db7c4ad511.png"><img src="https://user-images.githubusercontent.com/5915548/218773802-a5bc35aa-7824-46a1-b9be-61db7c4ad511.png" alt="image" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Wed, 15 Feb 2023 04:43:09 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/28</guid>
+                <link>https://github.com/cloudswave/blog/issues/28</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[小米2sc搞机记录]]></title>
+                    <description><![CDATA[<h1><a id="user-content-硬件信息" class="anchor" aria-hidden="true" href="#硬件信息"><span aria-hidden="true" class="octicon octicon-link"></span></a>硬件信息</h1>
+<pre><code># lscpu
+Architecture:         armv7l
+Byte Order:           Little Endian
+CPU(s):               4
+On-line CPU(s) list:  0
+Off-line CPU(s) list: 1-3
+Thread(s) per core:   1
+Core(s) per socket:   1
+Socket(s):            1
+Vendor ID:            Qualcomm
+Model:                0
+Model name:           Krait
+Stepping:             0x1
+CPU max MHz:          1728.0000
+CPU min MHz:          384.0000
+BogoMIPS:             13.53
+Flags:                swp half thumb fastmult vfp edsp neon vfpv3 tls vfpv4
+</code></pre>
+<h1><a id="user-content-安装termux" class="anchor" aria-hidden="true" href="#安装termux"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装termux</h1>
+<p><a href="https://github.com/termux/termux-app/actions/workflows/debug_build.yml?query=branch%3Amaster+">最新bulid下载地址</a>，选择32位armv7架构安装包</p>
+<h1><a id="user-content-安装atilo和debian" class="anchor" aria-hidden="true" href="#安装atilo和debian"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装atilo和debian</h1>
+<pre><code>echo "deb [trusted=yes arch=all] https://yadominjinta.github.io/files/ termux extras" &gt;&gt; $PREFIX/etc/apt/sources.list.d/atilo.list
+apt update &amp;&amp; apt install atilo-cn
+atilo images #可以安装的镜像列表
+atilo pull debian # 尝试过使用ubuntu，但是感觉ubuntu问题比较多故换成debian
+ls ~/.atilo #可以备份该路径以便日后有问题恢复系统
+tmux new -d -s debian 'atilo run debian' # 使用tmux可以保证离线后台运行
+</code></pre>
+<h1><a id="user-content-debian安装大圣面板" class="anchor" aria-hidden="true" href="#debian安装大圣面板"><span aria-hidden="true" class="octicon octicon-link"></span></a>debian安装大圣面板</h1>
+<pre><code>tmux a -t debian
+apt update &amp;&amp; apt install curl
+apt install gunicorn
+curl -fsSL https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/scripts/install.sh | bash
+
+# 面板常用命令
+mw restart
+mw default
+</code></pre>
+<p>安装完成后会打印端口等信息，可能有warning可以忽略，访问面板后台后可以安装OpenResty 1.21.4.1、PHP[APT]-73、MySQL[APT] 5.7</p>
+<h2><a id="user-content-问题记录" class="anchor" aria-hidden="true" href="#问题记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>问题记录</h2>
+<ul>
+<li>安装cryptography报错
+配置环境变量：</li>
+</ul>
+<pre><code>export CRYPTOGRAPHY_DONT_BUILD_RUST=1
+export CARGO_HTTP_MULTIPLEXING=false
+</code></pre>
+<p>如果无法安装某些python模块，则可以尝试用国内源手动安装如</p>
+<pre><code>pip install psutil==5.9.1  -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<p>如果rust cargo无法访问github，换源后清理<code>rm -rf /root/.cargo/registry/*</code>
+换源：vi /root/.cargo/config</p>
+<pre><code>[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+# 指定镜像
+replace-with = 'tuna' # 如：tuna、sjtu、ustc，或者 rustcc 
+# 注：以下源配置一个即可，无需全部 
+# 中国科学技术大学
+[source.ustc]
+registry = "https://mirrors.ustc.edu.cn/crates.io-index"
+# 上海交通大学
+[source.sjtu]
+registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index/" 
+# 清华大学
+[source.tuna]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git" 
+# rustcc社区
+[source.rustcc]
+registry = "https://code.aliyun.com/rustcc/crates.io-index.git"
+</code></pre>
+<ul>
+<li>后台报错：ulimit: open files: cannot modify limit: Operation not...
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218506433-f62ba5fb-a8d2-4c09-8762-e64a2b7f29fd.png"><img src="https://user-images.githubusercontent.com/5915548/218506433-f62ba5fb-a8d2-4c09-8762-e64a2b7f29fd.png" alt="image" style="max-width: 100%;"></a>
+通过grep -rn "ulimit"搜索到使用了ulimit的文件,  删除ulimit部分
+vi mdserver-web/class/core/mw.py</li>
+</ul>
+<pre><code>...
+    # cmd = "ulimit -n 10240 &amp;&amp; " + op_dir + \
+    #     "/sbin/nginx -t -c " + op_dir + "/conf/nginx.conf"
+    cmd = " " + op_dir + \
+    "/sbin/nginx -t -c " + op_dir + "/conf/nginx.conf"
+...
+</code></pre>
+<ul>
+<li>面板后台点击重启php、nginx等报错提示
+system has not been booted with systemd as init system (PID 1). Can't operate. Failed to connect to bus: Host is down
+termux中运行的debian不支持systemctl命令导致
+参考<a href="https://www.cnblogs.com/sw-code/p/14998645.html" rel="nofollow">用servicectl代替systemctl</a>
+</li>
+</ul>
+<pre><code>root@localhost:/www/server# systemctl restart php7.3
+System has not been booted with systemd as init system (PID 1). Can't operate.Failed to connect to bus: Host is down
+grep -rn "systemctl" # 可查找文件哪些使用了systemctl
+
+wget https://github.com/smaknsk/servicectl/archive/1.0.tar.gz
+tar -xf 1.0.tar.gz -C /usr/local/lib/
+
+root@localhost:which systemctl
+/usr/bin/systemctl
+
+cp /usr/bin/systemctl /usr/bin/systemctl_bak
+rm -rf /usr/bin/systemctl
+ln -s /usr/local/lib/servicectl-1.0/servicectl /usr/bin/systemctl
+
+---
+root@localhost:~# cat /usr/lib/systemd/system/openresty.service
+[Unit]
+Description=OpenResty is a dynamic web platform based on NGINX and LuaJIT.
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/www/server/openresty/bin/openresty -c /www/server/openresty/nginx/conf/nginx.conf
+ExecStop=/www/server/openresty/bin/openresty -s stop
+ExecReload=/www/server/openresty/bin/openresty -s reload
+KillMode=process
+Restart=on-failure
+
+[Install]
+----
+----
+localhost:~# cat /usr/lib/systemd/system/php7.3-fpm.service
+[Unit]
+Description=The PHP 7.3 FastCGI Process Manager
+Documentation=man:php-fpm7.3(8)
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/php-fpm7.3 --nodaemonize --fpm-config /etc/php/7.3/fpm/php-fpm.conf
+ExecStartPost=-/usr/lib/php/php-fpm-socket-helper install /run/php/php-fpm.sock /etc/php/7.3/fpm/pool.d/www.conf 73
+ExecStopPost=-/usr/lib/php/php-fpm-socket-helper remove /run/php/php-fpm.sock /etc/php/7.3/fpm/pool.d/www.conf 73
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+------
+localhost:~# systemctl restart openresty
+localhost:~# systemctl restart php7.3-fpm
+</code></pre>
+<ul>
+<li>openresty nginx未启动</li>
+</ul>
+<pre><code>使用以下命令测试nginx
+ps -ef | grep nginx
+/www/server/openresty/nginx/sbin/nginx -t
+发现使用了80端口，termux需要使用1024以上端口，故修改成1026
+vi /www/server/openresty/nginx/conf
+80-&gt;1026
+继续测试nginx
+/www/server/openresty/nginx/sbin/nginx -t
+手动启动nginx
+/www/server/openresty/nginx/sbin/nginx
+验证网页
+curl http://127.0.0.1:1026
+可以在计划任务增加一个shell命令来启动nginx
+</code></pre>
+<ul>
+<li>php-fpm未启动</li>
+</ul>
+<pre><code>手动启动报错
+root@localhost:/www/server# /etc/init.d/php7.3-fpm start
+Failed to validate path /run/php: Bad file descriptor
+
+grep -rn "/run/php" # 查找文件内容/run/php 替换成 /tmp
+
+vi /etc/php/7.3/fpm/pool.d/mw.conf
+listen = /run/php/php7.3-fpm.sock =&gt; listen = /tmp/php7.3-fpm.sock
+vi /www/server/web_conf/php/conf/enable-php-apt7.3.conf
+fastcgi_pass  unix:/ run/php/php7.3-fpm.sock;  =&gt;  fastcgi_pass  unix:/tmp/php7.3-fpm.sock; 
+vi /etc/init.d/php7.3-fpm
+PIDFILE=${CONF_PIDFILE:-/run/php/php7.3-fpm.pid} =&gt; PIDFILE=${CONF_PIDFILE:-/tmp/php7.3-fpm.pid}
+
+手动重启
+root@localhost:/etc# /etc/init.d/php7.3-fpm restart
+[ ok ] Restarting PHP 7.3 FastCGI Process Manager: php-fpm7.3.
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218522603-dba0e559-70f9-4bb7-ab1a-a9551de62f87.png"><img src="https://user-images.githubusercontent.com/5915548/218522603-dba0e559-70f9-4bb7-ab1a-a9551de62f87.png" alt="image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218486171-2ec972d2-0f97-4115-becb-55b98dfe34ec.png"><img src="https://user-images.githubusercontent.com/5915548/218486171-2ec972d2-0f97-4115-becb-55b98dfe34ec.png" alt="image" style="max-width: 100%;"></a></p>
+<h1><a id="user-content-使用sqlite3安装wordpress" class="anchor" aria-hidden="true" href="#使用sqlite3安装wordpress"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用sqlite3安装wordpress</h1>
+<ol>
+<li>在面包后台php设置里安装sqlite3扩展，重启php-fpm</li>
+<li>下载wordpress源码上传解压到站点目录下</li>
+<li>下载<a href="https://github.com/aaemnnosttv/wp-sqlite-db/blob/master/src/db.php%E6%94%BE%E5%88%B0wp-content%E7%9B%AE%E5%BD%95%E4%B8%8B">https://github.com/aaemnnosttv/wp-sqlite-db/blob/master/src/db.php放到wp-content目录下</a>
+</li>
+<li>修改wp-config-simple.php为wp-config.php并在头部添加define('USE_MYSQL', false);</li>
+<li>访问站点继续正常安装wordpress
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218750426-5b03fc3f-79e8-4d02-9c8d-e528d2e53ab3.jpg"><img src="https://user-images.githubusercontent.com/5915548/218750426-5b03fc3f-79e8-4d02-9c8d-e528d2e53ab3.jpg" alt="Screenshot_2023-02-14-21-18-46-32_a252b927494330cdc2c8ba3b3f952e5e" style="max-width: 100%;"></a>
+</li>
+</ol>
+]]></description>
+                    <pubDate>Tue, 14 Feb 2023 13:19:40 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/27</guid>
+                <link>https://github.com/cloudswave/blog/issues/27</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[github下载加速]]></title>
+                    <description><![CDATA[<p>下载链接转化：<a href="https://doget.nocsdn.com/#/" rel="nofollow">https://doget.nocsdn.com/#/</a></p>
+]]></description>
+                    <pubDate>Sun, 12 Feb 2023 06:50:25 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/26</guid>
+                <link>https://github.com/cloudswave/blog/issues/26</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[amh面板部署typecho博客后显示404错误]]></title>
                     <description><![CDATA[<p>安装typecho完成后访问后台和文章显示404
@@ -38,8 +645,9 @@ if (!-f $request_filename){
 <pre><code>killall nginx
 /usr/local/nginx-generic-1.20/sbin/nginx
 </code></pre>
+
 ]]></description>
-                    <pubDate>Sat, 11 Feb 2023 09:19:45 GMT</pubDate>
+                    <pubDate>Sat, 11 Feb 2023 09:20:03 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/25</guid>
                 <link>https://github.com/cloudswave/blog/issues/25</link>
                     <author><![CDATA[cloudswave]]></author>
@@ -375,102 +983,6 @@ root@localhost:/www/server#
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/23</guid>
                 <link>https://github.com/cloudswave/blog/issues/23</link>
                     <author><![CDATA[cloudswave]]></author>
-            </item>
-            <item>
-                <title><![CDATA[Termux通过ubuntu安装宝塔面板]]></title>
-                    <description><![CDATA[<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
-<p>ubuntu或者debian支持64或者32位架构cpu
-参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
-<h1><a id="user-content-安装宝塔" class="anchor" aria-hidden="true" href="#安装宝塔"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装宝塔</h1>
-<p>uname -m查看cpu架构，aarch64代表64位
-参考：<a href="https://gitee.com/pdusb/pdusb-fast-btpanel" rel="nofollow">https://gitee.com/pdusb/pdusb-fast-btpanel</a>
-64位ubuntu下：</p>
-<pre><code>git clone https://gitee.com/pdusb/pdusb-fast-btpanel.git
-cd pdusb-fast-btpanel
-./pdbolt-inst-bt-acel.sh
-bash /tmp/btp/pdbolt-bt-install/install.sh
-
-/etc/init.d/bt restart
-# 进入宝塔工具面板，可查看修改端口和密码
-bt
-</code></pre>
-<p>32位ubuntu或者debian只能安装5.9版面板, python2.7：</p>
-<pre><code>apt-get install python-setuptools
-wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; sudo bash install.sh
-</code></pre>
-<p>参考<a href="https://www.234du.com/1194.html" rel="nofollow">宝塔(BT-Panel) Linux 面板 5.9 开心版教程</a>
-<a href="https://blog.csdn.net/lovelinchuangfeng/article/details/123843230" rel="nofollow">玩客云安装宝塔面板5.9</a></p>
-<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
-<ul>
-<li>
-<p>ERROR: cannot verify download.bt.cn's certificate, issued by ‘CN=sslTrus (RSA) OV CA,O=sslTrus,C=CN’: Unable to locally verify the issuer's authority. To connect to download.bt.cn insecurely, use `--no-check-certificate' ERROR: Download python env fielded.
-关闭证书验证：echo "check_certificate = off" &gt;&gt; ~/.wgetrc</p>
-</li>
-<li>
-<p>报错chmod: cannot access '/tmp/btp/pyenv/bin/python3.7': Operation not permitted...</p>
-</li>
-</ul>
-<pre><code>...
-root@localhost:~/pdusb-fast-btpanel# chmod 777 /tmp/btp/pyenv/bin/ -R
-chmod: cannot access '/tmp/btp/pyenv/bin/python3.7': Operation not permitted
-chmod: cannot access '/tmp/btp/pyenv/bin/.l2s.python3.70001': Operation not permitted
-chmod: cannot access '/tmp/btp/pyenv/bin/python3.7m': Operation not permitted
-...
-</code></pre>
-<p>解压pyenv-ubuntu2004-3.7.8-aarch64.tar.xz出错导致，重新解压后替换出错文件</p>
-<ul>
-<li>宝塔启动失败</li>
-</ul>
-<pre><code>...
-Traceback (most recent call last):
-  File "/www/server/panel/BT-Panel", line 27, in &lt;module&gt;
-    from BTPanel import app,sys,public
-  File "/www/server/panel/BTPanel/__init__.py", line 11, in &lt;module&gt;
-    import json
-ModuleNotFoundError: No module named 'json'
-...
-</code></pre>
-<p>权限修复：chmod 777 -R /www</p>
-<ul>
-<li>ubuntu bash报错：groups: cannot find name for group ID ***</li>
-</ul>
-<pre><code>groups: cannot find name for group ID 1015
-groups: cannot find name for group ID 1028
-groups: cannot find name for group ID 3003
-groups: cannot find name for group ID 9997
-groups: cannot find name for group ID 50062
-</code></pre>
-<p>termux在安装ubuntu运行的时候出现了goups: cannot find name for group ID，由于termux安装ubuntu后没有给原本Android的系统用户组赋予名称导致, 解决办法：</p>
-<pre><code>echo "1015:x:1015:
-1028:x:1028:
-3003:x:3003:
-50062:x:50062:
-9997:x:9997:" &gt;&gt;/etc/group
-</code></pre>
-<p><a href="https://blog.csdn.net/babytiger/article/details/112121506" rel="nofollow">参考</a></p>
-<ul>
-<li>宝塔安装报错：ImportError: No module named setuptools
-阅读install.sh脚本，把已经执行过的命令注释，排查哪行命令报错，执行的时候发现宝塔需要使用python2.7的pip，而apt命令安装的pip会安装到python3里了。</li>
-</ul>
-<pre><code>curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py 
-python2 get-pip.py
-然后将pip命令链接到bin目录下
-</code></pre>
-<ul>
-<li>启动宝塔成功，但是无法显示登录页，显示500错误
-查看宝塔的/etc/init.d/bt 脚本，尝试找到错误日志保存路径如下，cat /tmp/panelBoot.pl ，发现cp: cannot create regular file '/dev/shm/session.db'，修改/www/server/panel/main.py, 把/dev/shm/session.db路径修改成/tmp/session.db</li>
-</ul>
-<pre><code>nohup python main.pyc `cat data/port.pl` &gt; /tmp/panelBoot.pl 2&gt;&amp;1 &amp; 
-</code></pre>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png"><img width="329" alt="image" src="https://user-images.githubusercontent.com/5915548/215061606-14bf121c-db32-4397-8084-ffebc7fd2965.png" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png"><img width="395" alt="image" src="https://user-images.githubusercontent.com/5915548/215062467-bd13cfeb-a6a7-42aa-af81-d4bab63b8af2.png" style="max-width: 100%;"></a></p>
-
-]]></description>
-                    <pubDate>Fri, 27 Jan 2023 10:22:56 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/20</guid>
-                <link>https://github.com/cloudswave/blog/issues/20</link>
-                    <author><![CDATA[cloudswave]]></author>
-                        <category>搞机</category>
             </item>
             <item>
                 <title><![CDATA[Termux通过Ubuntu安装AMH面板]]></title>
@@ -1117,38 +1629,6 @@ source ~/.bashrc
                     <pubDate>Sat, 10 Dec 2022 14:50:48 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/13</guid>
                 <link>https://github.com/cloudswave/blog/issues/13</link>
-                    <author><![CDATA[cloudswave]]></author>
-                        <category>搞机</category>
-            </item>
-            <item>
-                <title><![CDATA[docker版alist和aria2配合使用]]></title>
-                    <description><![CDATA[<pre><code>docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name="alist" xhofe/alist:latest
-
-docker run -d \
---name aria2 \
---restart unless-stopped \
---log-opt max-size=1m \
--e PUID=$UID \
--e PGID=$GID \
--e UMASK_SET=022 \
--e RPC_SECRET=pac_password \
--e RPC_PORT=6800 \
--e LISTEN_PORT=6888 \
--p 16800:6800 \
--p 16888:6888 \
--p 16888:6888/udp \
--v /root/aria2/config:/config \
--v /etc/alist/temp/downloads:/downloads \
--v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 \
-p3terx/aria2-pro
-</code></pre>
-<p>-v /etc/alist/temp/aria2:/opt/alist/data/temp/aria2 注意这个地方是为了让离线下载路径可以共享，并且只能在同一台服务器上否则离线下载后复制到某个存储下面时会报transfer失败
-参考：<a href="https://alist.nn.ci/zh/guide/install/docker.html" rel="nofollow">https://alist.nn.ci/zh/guide/install/docker.html</a></p>
-
-]]></description>
-                    <pubDate>Fri, 09 Dec 2022 08:02:00 GMT</pubDate>
-                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/12</guid>
-                <link>https://github.com/cloudswave/blog/issues/12</link>
                     <author><![CDATA[cloudswave]]></author>
                         <category>搞机</category>
             </item>
