@@ -11,6 +11,8 @@
 - [开始使用Github Issues写博客](https://github.com/cloudswave/blog/issues/4)---2022-10-28
 
 ## 最近更新
+- [开源免费远程控制软件RustDesk](https://github.com/cloudswave/blog/issues/33)---2023-08-26
+- [安卓脱壳破解系统](https://github.com/cloudswave/blog/issues/32)---2023-08-14
 - [chatgpt以及同类型产品体验](https://github.com/cloudswave/blog/issues/31)---2023-05-20
 - [试用new bing](https://github.com/cloudswave/blog/issues/30)---2023-03-11
 - [alist编译记录](https://github.com/cloudswave/blog/issues/29)---2023-02-17
@@ -19,21 +21,20 @@
 - [github下载加速](https://github.com/cloudswave/blog/issues/26)---2023-02-12
 - [amh面板部署typecho博客后显示404错误](https://github.com/cloudswave/blog/issues/25)---2023-02-11
 - [M301H刷机包](https://github.com/cloudswave/blog/issues/24)---2023-02-08
-- [通过nps对宝塔部署的网站进行内网穿透访问](https://github.com/cloudswave/blog/issues/23)---2023-01-28
-- [Termux通过Atilo安装Ubuntu并部署宝塔或大圣面板后运行环境不正常的解决记录](https://github.com/cloudswave/blog/issues/22)---2023-01-27
 
 ## Guide
 - [How to get and save the CSDN cookie as the secret](https://github.com/cloudswave/blog/issues/6)---2022-10-29
 
 
 ## Reverie
+- [安卓脱壳破解系统](https://github.com/cloudswave/blog/issues/32)---2023-08-14
 - [chatgpt以及同类型产品体验](https://github.com/cloudswave/blog/issues/31)---2023-05-20
 - [试用new bing](https://github.com/cloudswave/blog/issues/30)---2023-03-11
 - [alist编译记录](https://github.com/cloudswave/blog/issues/29)---2023-02-17
 - [油猴脚本-goodreads](https://github.com/cloudswave/blog/issues/28)---2023-02-14
-- [小米2sc搞机记录](https://github.com/cloudswave/blog/issues/27)---2023-02-13
 <details><summary>MORE</summary>
 
+- [小米2sc搞机记录](https://github.com/cloudswave/blog/issues/27)---2023-02-13
 - [github下载加速](https://github.com/cloudswave/blog/issues/26)---2023-02-12
 - [M301H刷机包](https://github.com/cloudswave/blog/issues/24)---2023-02-08
 - [通过nps对宝塔部署的网站进行内网穿透访问](https://github.com/cloudswave/blog/issues/23)---2023-01-28
@@ -65,6 +66,10 @@
 
 ## 测试
 - [测试issue2blog](https://github.com/cloudswave/blog/issues/1)---2022-10-28
+
+
+## 软件推荐
+- [开源免费远程控制软件RustDesk](https://github.com/cloudswave/blog/issues/33)---2023-08-26
 
 
 ## 随笔

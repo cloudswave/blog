@@ -15,7 +15,32 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sat, 01 Jul 2023 14:18:35 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 26 Aug 2023 08:55:45 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[开源免费远程控制软件RustDesk]]></title>
+                    <description><![CDATA[<p>简介：目前最友好的开源远程桌面软件，开箱即用，无需任何配置，全平台支持，完美替代 TeamViewer、ToDesk、AnyDesk等
+开源地址：<a href="https://github.com/rustdesk">https://github.com/rustdesk</a>
+软件下载地址：<a href="https://github.com/rustdesk/rustdesk/releases">https://github.com/rustdesk/rustdesk/releases</a>
+网页端：<a href="http://45.76.181.120:8080/#/" rel="nofollow">http://45.76.181.120:8080/#/</a></p>
+]]></description>
+                    <pubDate>Sat, 26 Aug 2023 08:55:31 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/33</guid>
+                <link>https://github.com/cloudswave/blog/issues/33</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>软件推荐</category>
+            </item>
+            <item>
+                <title><![CDATA[安卓脱壳破解系统]]></title>
+                    <description><![CDATA[<p>下载地址：
+小飞机网盘，下载不限速、一键转存无上限、在线播放无损音视频。复制这段内容打开「小飞机网盘」APP即可获取
+链接：<a href="https://www.feijix.com/s/jkuL1GV" rel="nofollow">https://www.feijix.com/s/jkuL1GV</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/cloudswave/blog/assets/5915548/6ce66fd0-2679-4579-ac54-8f3434cb4053"><img src="https://github.com/cloudswave/blog/assets/5915548/6ce66fd0-2679-4579-ac54-8f3434cb4053" alt="Screenshot_2023-08-14-21-03-19-75_bebc5b24fcfa09fec0f188d50da87968" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Mon, 14 Aug 2023 13:08:45 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/32</guid>
+                <link>https://github.com/cloudswave/blog/issues/32</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[alist编译记录]]></title>
                     <description><![CDATA[<h2><a id="user-content-服务器环境" class="anchor" aria-hidden="true" href="#服务器环境"><span aria-hidden="true" class="octicon octicon-link"></span></a>服务器环境</h2>
@@ -107,8 +132,9 @@ app/        components/ hooks/      index.d.ts  lang/       main.tsx    pages/  
 <li><a href="https://alist.nn.ci/zh/guide/install/source.html" rel="nofollow">https://alist.nn.ci/zh/guide/install/source.html</a></li>
 <li><a href="https://blog.csdn.net/qq_25919879/article/details/128400309" rel="nofollow">https://blog.csdn.net/qq_25919879/article/details/128400309</a></li>
 </ul>
+
 ]]></description>
-                    <pubDate>Sat, 01 Jul 2023 14:18:18 GMT</pubDate>
+                    <pubDate>Sat, 01 Jul 2023 14:28:26 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/29</guid>
                 <link>https://github.com/cloudswave/blog/issues/29</link>
                     <author><![CDATA[cloudswave]]></author>
