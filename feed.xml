@@ -15,18 +15,236 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Thu, 31 Aug 2023 00:07:12 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 28 Oct 2023 01:26:28 GMT</lastBuildDate>
+            <item>
+                <title><![CDATA[云南开放大学学习小助手]]></title>
+                    <description><![CDATA[<p>游猴脚本，辅助学习，可自动播放课程视频，自动提交作业等
+请加微信获取
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d65cacafa94670276603e2b6f9de9fd4fa96ac661c0a25bb1e78560f48736dbf/68747470733a2f2f6e66696c652e7765626e6f74657061642e6e65742f75706c6f6164732f32303233313032382f39623039326636383632363439303239663163383339326236386330383063362e706e67"><img src="https://camo.githubusercontent.com/d65cacafa94670276603e2b6f9de9fd4fa96ac661c0a25bb1e78560f48736dbf/68747470733a2f2f6e66696c652e7765626e6f74657061642e6e65742f75706c6f6164732f32303233313032382f39623039326636383632363439303239663163383339326236386330383063362e706e67" width="30%" data-canonical-src="https://nfile.webnotepad.net/uploads/20231028/9b092f6862649029f1c8392b68c080c6.png" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9b6888b278e7a837433321b89be7573477e063612bfb199b4c268e70a0c47821/68747470733a2f2f6e66696c652e7765626e6f74657061642e6e65742f75706c6f6164732f32303233313032382f63343662396631343432306361383762616431643764356263633837646561332e6a7067"><img src="https://camo.githubusercontent.com/9b6888b278e7a837433321b89be7573477e063612bfb199b4c268e70a0c47821/68747470733a2f2f6e66696c652e7765626e6f74657061642e6e65742f75706c6f6164732f32303233313032382f63343662396631343432306361383762616431643764356263633837646561332e6a7067" width="60%" data-canonical-src="https://nfile.webnotepad.net/uploads/20231028/c46b9f14420ca87bad1d7d5bcc87dea3.jpg" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Sat, 28 Oct 2023 01:26:14 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/42</guid>
+                <link>https://github.com/cloudswave/blog/issues/42</link>
+                    <author><![CDATA[cloudswave]]></author>
+                        <category>搞机</category>
+            </item>
+            <item>
+                <title><![CDATA[图床]]></title>
+                    <description><![CDATA[<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/cloudswave/blog/assets/5915548/1b43c96a-6dc0-424e-9fa2-f51365383149"><img src="https://github.com/cloudswave/blog/assets/5915548/1b43c96a-6dc0-424e-9fa2-f51365383149" alt="mmexport1697454703186" style="max-width: 100%;"></a></p>
+]]></description>
+                    <pubDate>Mon, 16 Oct 2023 11:20:17 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/38</guid>
+                <link>https://github.com/cloudswave/blog/issues/38</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[宝塔搭建webdav]]></title>
+                    <description><![CDATA[<h2 id="user-content-方法1宝塔直接编译nginx搭建webdav"><a class="heading-link" href="#方法1宝塔直接编译nginx搭建webdav">方法1:宝塔直接编译nginx搭建webdav<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
+<p>选择安装nginx的时候选择编译安装并且添加自定义模块，目的是补全nginx的webdav功能
+模块名称：
+http_dav_module
+模块描述：
+webdev
+模块参数：
+--with-http_dav_module --add-module=/root/nginx-dav-ext-module
+前置脚本：
+git clone <a href="https://github.com/arut/nginx-dav-ext-module.git">https://github.com/arut/nginx-dav-ext-module.git</a> /root/nginx-dav-ext-module
+新建网页，自己命名，php版本选择纯静态并且在配置文件中添加</p>
+<pre><code>location / {
+        root /www/wwwroot/webdav;#这里写你webdav的路径
+        #client_max_body_size 102400M;#大文件支持
+        autoindex on;
+        dav_methods PUT DELETE MKCOL COPY MOVE;
+        # 需要 nginx-dav-ext-module 才有下面的选项
+        dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
+        create_full_put_path  on;
+    }
+</code></pre>
+<p>然后再网站目录添加账号密码即可，如果需要用到webdav的话，账号就是你添加的账号，密码就是你添加的密码，地址就是你的webdav的网页。</p>
+<p><strong>注意：如果编译安装失败，在不勾选添加自定义模块后再次编译安装试一试。如果仍然失败可以尝试方法2。</strong></p>
+<h2 id="user-content-方法2-手动nginx编译webdav模块并替换"><a class="heading-link" href="#方法2-手动nginx编译webdav模块并替换">方法2: 手动nginx编译webdav模块并替换<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
+<p>1，nighx必须是编译安装（安装过的卸载重新安装）
+2，通过ps命令查看nginx文件的路径
+ps -elf | grep nginx
+得到宝塔面板nginx的具体路径：/www/server/nginx/sbin/nginx
+3，执行：</p>
+<pre><code>cd /www/server/nginx/sbin/   #进入到路径
+cp nginx nginx.bak    #备份nginx
+</code></pre>
+<p>4，下载nginx-dav-ext-module
+git clone <a href="https://github.com/arut/nginx-dav-ext-module.git">https://github.com/arut/nginx-dav-ext-module.git</a>
+5，拷贝至src目录</p>
+<pre><code>cp -R ./nginx-dav-ext-module /www/server/nginx/src
+</code></pre>
+<p>6，nignx-V（V大写）</p>
+<pre><code>cd /www/server/nginx/src
+nginx -V
+</code></pre>
+<p>查看nignx安装了哪些模块
+然后全部复制到一个记事本中备用。然后在最后面添加:
+--with-http_dav_module --add-module=/www/server/nginx/src/nginx-dav-ext-module
+7，编译（以下代码为1.17）</p>
+<pre><code>./configure --prefix=/www/server/nginx --add-module=/www/server/nginx/src/ngx_devel_kit --add-module=/www/server/nginx/src/lua_nginx_module --add-module=/www/server/nginx/src/ngx_cache_purge --add-module=/www/server/nginx/src/nginx-sticky-module --with-openssl=/www/server/nginx/src/openssl --with-pcre=pcre-8.43 --with-http_v2_module --with-stream --with-stream_ssl_module --with-http_stub_status_module --with-http_ssl_module --with-http_image_filter_module --with-http_gzip_static_module --with-http_gunzip_module --with-ipv6 --with-http_sub_module --with-http_flv_module --with-http_addition_module --with-http_realip_module --with-http_mp4_module --with-ld-opt=-Wl,-E --with-cc-opt=-Wno-error --with-ld-opt=-ljemalloc --with-http_dav_module --add-module=/www/server/nginx/src/nginx-dav-ext-module
+make
+</code></pre>
+<p>注：需要进入到：/www/server/nginx/src编译才会有效。</p>
+<p>8，nginx替换</p>
+<pre><code>rm -rf /www/server/nginx/sbin/nginx
+cp objs/nginx /www/server/nginx/sbin/
+service nginx restart
+</code></pre>
+<p>9，检查安装
+使用nginx -V，如果最后出现 --with-http_dav_module --add-module=/www/server/nginx/src/nginx-dav-ext-module即为成功</p>
+<p>10，配置网站</p>
+<p>新建静态站点，在配置中输入以下代码</p>
+<pre><code>client_max_body_size 102400M;#大文件支持
+
+location / {
+        root /www/wwwroot/你的域名;
+                autoindex on;
+        dav_methods PUT DELETE MKCOL COPY MOVE;
+        # 需要 nginx-dav-ext-module 才有下面的选项
+        dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
+        create_full_put_path  on;
+    }
+</code></pre>
+<p>11，设置账号密码
+宝塔中网站设置里面在网站目录中打开密码访问，设置账号密码即可。</p>
+]]></description>
+                    <pubDate>Fri, 06 Oct 2023 06:45:06 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/37</guid>
+                <link>https://github.com/cloudswave/blog/issues/37</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[hamibot开发技巧]]></title>
+                    <description><![CDATA[<h2 id="user-content-问题1无法通过自带的布局范围分析工具轻易过滤找到想要的控件如多多果园里的弹框的关闭按钮"><a class="heading-link" href="#问题1无法通过自带的布局范围分析工具轻易过滤找到想要的控件如多多果园里的弹框的关闭按钮">问题1：无法通过自带的布局范围分析工具轻易过滤找到想要的控件，如多多果园里的弹框的关闭按钮<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
+<ul>
+<li>尝试多切换几次界面，然后通过自带的布局范围分析工具查看控件边框情况</li>
+<li>尝试找到控件附近的文本控件，通过它的bounds估算目标控件的位置，再使用boundsInside()或boundsContains()进一步匹配。举例获取多多果园里的弹框关闭按钮：</li>
+</ul>
+<pre><code>log(text("买菜得水滴").findOne().bounds()); // 打印附近某个文本的位置和大小
+let v = boundsInside(850,600,1080,776); // 估算弹框关闭按钮的范围
+// v = boundsContains(500, 300, 500, 300) // 给定一个点(500, 300), 寻找在这个点上的控件
+let list = v.find();
+log(list.length); // 如果长度大于1可以遍历
+for(let i=0;i&lt;list.length;i++){
+   v = list[i];
+   log(v.bounds(),v.className(),v.depth(),v.text()); // 打印具体信息分析是不是关闭按钮
+}
+
+let closeBtn = boundsInside(w * 2/3, 0, w, h/2).text("webp").filter(function(w) {
+      let b = w.bounds();
+      return b.bottom-b.top &gt; 80 &amp;&amp; b.bottom-b.top &lt; 90;
+});
+
+textContains("记录").filter(function(w) {
+  let b = w.bounds();
+  return b.bottom-b.top &gt; 0 &amp;&amp; b.bottom &lt;= h - 200 &amp;&amp; b.top &gt; recordBounds.bottom;
+}).find().forEach(function(i){
+  log(i.text(),i.id(),i.bounds(),i.depth(),i.className());
+});
+boundsInside(w * 2/3, 0, w, h/2).text("webp").find().forEach(function(i){
+  log(i.text(),i.id(),i.bounds(),i.depth(),i.className());
+});
+
+</code></pre>
+<ul>
+<li>遍历整个UI树尝试绘制每个控件的边框，未具体验证</li>
+</ul>
+]]></description>
+                    <pubDate>Tue, 26 Sep 2023 15:50:59 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/36</guid>
+                <link>https://github.com/cloudswave/blog/issues/36</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
+            <item>
+                <title><![CDATA[docker安装安卓]]></title>
+                    <description><![CDATA[<p>官方github地址：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fbudtmo%2Fdocker-android" rel="nofollow">https://github.com/budtmo/docker-android</a>
+cpu必须支持虚拟化，检查cpu是否支持虚拟化</p>
+<pre><code># 查询是否支持虚拟化
+egrep "(svm|vmx)" /proc/cpuinfo &gt;/dev/null &amp;&amp; echo '支持' || echo '不支持'
+
+# 安装
+docker run -d -p 6080:6080 -e EMULATOR_DEVICE="Samsung Galaxy S10" -e WEB_VNC=true --device /dev/kvm --name android-container budtmo/docker-android:emulator_11.0
+
+# 访问
+http://docker-host-ip-address:6080
+</code></pre>
+<p>手机型号号可以通过更改device参数来修改</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Device Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phone</td>
+<td>Samsung Galaxy S10</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Samsung Galaxy S9</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Samsung Galaxy S8</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Samsung Galaxy S7 Edge</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Samsung Galaxy S7</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Samsung Galaxy S6</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Nexus 4</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Nexus 5</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Nexus One</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Nexus S</td>
+</tr>
+<tr>
+<td>Tablet</td>
+<td>Nexus 7</td>
+</tr>
+</tbody>
+</table>
+<br>
+]]></description>
+                    <pubDate>Thu, 31 Aug 2023 00:25:25 GMT</pubDate>
+                        <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/35</guid>
+                <link>https://github.com/cloudswave/blog/issues/35</link>
+                    <author><![CDATA[cloudswave]]></author>
+            </item>
             <item>
                 <title><![CDATA[用浏览器远程控制 Android 手机，搭建云手机]]></title>
                     <description><![CDATA[<p>项目地址： <a href="https://github.com/NetrisTV/ws-scrcpy">GitHub – NetrisTV/ws-scrcpy: Web client prototype for scrcpy.</a></p>
-<h3><a id="user-content-docker版" class="anchor" aria-hidden="true" tabindex="-1" href="#docker版"><span aria-hidden="true" class="octicon octicon-link"></span></a>docker版</h3>
+<h3 id="user-content-docker版"><a class="heading-link" href="#docker版">docker版<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <pre><code># docker run --name ws-scrcpy -d -p 8000:8000 scavin/ws-scrcpy
 docker run --name ws-scrcpy -d --net=host  scavin/ws-scrcpy   # 使用--net=host 保证能访问到安卓设备
 docker exec ws-scrcpy adb connect 安卓IP地址:5555 # 如果使用zerotier实现内网穿透，则在zerotier后台查看分配到ip
 </code></pre>
 <p>访问：<a href="http://%E6%9C%8D%E5%8A%A1%E5%99%A8ip:8000" rel="nofollow">http://服务器ip:8000</a>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/cloudswave/blog/assets/5915548/261e036f-4e9d-4878-8ea8-bf603866cf64"><img width="945" alt="image" src="https://github.com/cloudswave/blog/assets/5915548/261e036f-4e9d-4878-8ea8-bf603866cf64" style="max-width: 100%;"></a></p>
-<h3><a id="user-content-andorid手机打开网络调试" class="anchor" aria-hidden="true" tabindex="-1" href="#andorid手机打开网络调试"><span aria-hidden="true" class="octicon octicon-link"></span></a>Andorid手机打开网络调试</h3>
+<h3 id="user-content-andorid手机打开网络调试"><a class="heading-link" href="#andorid手机打开网络调试">Andorid手机打开网络调试<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <ul>
 <li>电脑安装 adb工具套件<a href="https://developer.android.com/studio/releases/platform-tools" rel="nofollow">SDK Platform Tools</a>
 </li>
@@ -34,7 +252,7 @@ docker exec ws-scrcpy adb connect 安卓IP地址:5555 # 如果使用zerotier实�
 <li>使用 USB 连接 Android 设备，并授权</li>
 <li>终端输入 adb tcpip 5555</li>
 </ul>
-<h3><a id="user-content-安装zerotier实现内网穿透" class="anchor" aria-hidden="true" tabindex="-1" href="#安装zerotier实现内网穿透"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装zerotier实现内网穿透</h3>
+<h3 id="user-content-安装zerotier实现内网穿透"><a class="heading-link" href="#安装zerotier实现内网穿透">安装zerotier实现内网穿透<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <ul>
 <li>安卓手机直接下载zerotier app：<a href="https://www.zerotier.com/download/" rel="nofollow">https://www.zerotier.com/download/</a>
 </li>
@@ -69,13 +287,14 @@ sudo zerotier-cli status
 zerotier-cli join [网络ID]
 </code></pre>
 <p>也可以使用frp或者nps来实现内网穿透达到对安卓的控制</p>
-<h3><a id="user-content-参考" class="anchor" aria-hidden="true" tabindex="-1" href="#参考"><span aria-hidden="true" class="octicon octicon-link"></span></a>参考</h3>
+<h3 id="user-content-参考"><a class="heading-link" href="#参考">参考<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <ul>
 <li><a href="https://www.appinn.com/ws-scrcpy" rel="nofollow">https://www.appinn.com/ws-scrcpy</a></li>
 <li><a href="https://github.com/Genymobile/scrcpy">https://github.com/Genymobile/scrcpy</a></li>
 </ul>
+
 ]]></description>
-                    <pubDate>Thu, 31 Aug 2023 00:06:51 GMT</pubDate>
+                    <pubDate>Thu, 31 Aug 2023 00:07:15 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/34</guid>
                 <link>https://github.com/cloudswave/blog/issues/34</link>
                     <author><![CDATA[cloudswave]]></author>
@@ -109,9 +328,9 @@ zerotier-cli join [网络ID]
             </item>
             <item>
                 <title><![CDATA[alist编译记录]]></title>
-                    <description><![CDATA[<h2><a id="user-content-服务器环境" class="anchor" aria-hidden="true" tabindex="-1" href="#服务器环境"><span aria-hidden="true" class="octicon octicon-link"></span></a>服务器环境</h2>
+                    <description><![CDATA[<h2 id="user-content-服务器环境"><a class="heading-link" href="#服务器环境">服务器环境<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>Linux version 3.10.0-327.el7.x86_64 (<a href="mailto:builder@kbuilder.dev.centos.org">builder@kbuilder.dev.centos.org</a>) (gcc version 4.8.3 20140911 (Red Hat 4.8.3-9) (GCC) ) #1 SMP Thu Nov 19 22:10:57 UTC 2015</p>
-<h2><a id="user-content-前端" class="anchor" aria-hidden="true" tabindex="-1" href="#前端"><span aria-hidden="true" class="octicon octicon-link"></span></a>前端</h2>
+<h2 id="user-content-前端"><a class="heading-link" href="#前端">前端<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <pre><code>yum install npm
 npm install -g npm@9.5.0
 npm install pnpm -g
@@ -119,7 +338,7 @@ git clone --recursive https://github.com/alist-org/alist-web.git
 cd alist-web
 pnpm run build
 </code></pre>
-<h2><a id="user-content-后端" class="anchor" aria-hidden="true" tabindex="-1" href="#后端"><span aria-hidden="true" class="octicon octicon-link"></span></a>后端</h2>
+<h2 id="user-content-后端"><a class="heading-link" href="#后端">后端<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <pre><code>yum install screen
 screen -R alist # 开screen避免掉线编译中断
 rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
@@ -156,7 +375,7 @@ bash build-local.sh  # 编译
 ./alist server # 启动服务
 vi ./data/config.json # 可修改端口
 </code></pre>
-<h2><a id="user-content-国际化" class="anchor" aria-hidden="true" tabindex="-1" href="#国际化"><span aria-hidden="true" class="octicon octicon-link"></span></a>国际化</h2>
+<h2 id="user-content-国际化"><a class="heading-link" href="#国际化">国际化<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <pre><code>方案1：
 # crowdin 环境变量配置，先去crowdin官网注册获取api-token，创建一个project获取project id
 # https://crowdin.com/project/alist/zh-CN
@@ -193,7 +412,7 @@ app/        components/ hooks/      index.d.ts  lang/       main.tsx    pages/  
 [root@ecs-G3x6u alist]# cd alist-web/
 [root@ecs-G3x6u alist-web]# node ./scripts/i18n.mjs
 </code></pre>
-<h2><a id="user-content-参考" class="anchor" aria-hidden="true" tabindex="-1" href="#参考"><span aria-hidden="true" class="octicon octicon-link"></span></a>参考</h2>
+<h2 id="user-content-参考"><a class="heading-link" href="#参考">参考<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ul>
 <li><a href="https://alist.nn.ci/zh/guide/install/source.html" rel="nofollow">https://alist.nn.ci/zh/guide/install/source.html</a></li>
 <li><a href="https://blog.csdn.net/qq_25919879/article/details/128400309" rel="nofollow">https://blog.csdn.net/qq_25919879/article/details/128400309</a></li>
@@ -207,10 +426,10 @@ app/        components/ hooks/      index.d.ts  lang/       main.tsx    pages/  
             </item>
             <item>
                 <title><![CDATA[Termux通过ubuntu安装宝塔面板]]></title>
-                    <description><![CDATA[<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" tabindex="-1" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
+                    <description><![CDATA[<h1 id="user-content-termux下atilo安装ubuntu"><a class="heading-link" href="#termux下atilo安装ubuntu">Termux下Atilo安装ubuntu<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <p>ubuntu或者debian支持64或者32位架构cpu
 参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
-<h1><a id="user-content-安装宝塔" class="anchor" aria-hidden="true" tabindex="-1" href="#安装宝塔"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装宝塔</h1>
+<h1 id="user-content-安装宝塔"><a class="heading-link" href="#安装宝塔">安装宝塔<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <p>uname -m查看cpu架构，aarch64代表64位
 参考：<a href="https://gitee.com/pdusb/pdusb-fast-btpanel" rel="nofollow">https://gitee.com/pdusb/pdusb-fast-btpanel</a>
 64位ubuntu下：</p>
@@ -229,7 +448,7 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; su
 </code></pre>
 <p>参考<a href="https://www.234du.com/1194.html" rel="nofollow">宝塔(BT-Panel) Linux 面板 5.9 开心版教程</a>
 <a href="https://blog.csdn.net/lovelinchuangfeng/article/details/123843230" rel="nofollow">玩客云安装宝塔面板5.9</a></p>
-<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" tabindex="-1" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
+<h1 id="user-content-错误处理记录"><a class="heading-link" href="#错误处理记录">错误处理记录<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <ul>
 <li>
 <p>ERROR: cannot verify download.bt.cn's certificate, issued by ‘CN=sslTrus (RSA) OV CA,O=sslTrus,C=CN’: Unable to locally verify the issuer's authority. To connect to download.bt.cn insecurely, use `--no-check-certificate' ERROR: Download python env fielded.
@@ -509,7 +728,7 @@ function ISBN13ToISBN10(isbn13) {
             </item>
             <item>
                 <title><![CDATA[小米2sc搞机记录]]></title>
-                    <description><![CDATA[<h1><a id="user-content-硬件信息" class="anchor" aria-hidden="true" tabindex="-1" href="#硬件信息"><span aria-hidden="true" class="octicon octicon-link"></span></a>硬件信息</h1>
+                    <description><![CDATA[<h1 id="user-content-硬件信息"><a class="heading-link" href="#硬件信息">硬件信息<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <pre><code># lscpu
 Architecture:         armv7l
 Byte Order:           Little Endian
@@ -528,9 +747,9 @@ CPU min MHz:          384.0000
 BogoMIPS:             13.53
 Flags:                swp half thumb fastmult vfp edsp neon vfpv3 tls vfpv4
 </code></pre>
-<h1><a id="user-content-安装termux" class="anchor" aria-hidden="true" tabindex="-1" href="#安装termux"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装termux</h1>
+<h1 id="user-content-安装termux"><a class="heading-link" href="#安装termux">安装termux<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <p><a href="https://github.com/termux/termux-app/actions/workflows/debug_build.yml?query=branch%3Amaster+">最新bulid下载地址</a>，选择32位armv7架构安装包</p>
-<h1><a id="user-content-安装atilo和debian" class="anchor" aria-hidden="true" tabindex="-1" href="#安装atilo和debian"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装atilo和debian</h1>
+<h1 id="user-content-安装atilo和debian"><a class="heading-link" href="#安装atilo和debian">安装atilo和debian<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <pre><code>echo "deb [trusted=yes arch=all] https://yadominjinta.github.io/files/ termux extras" &gt;&gt; $PREFIX/etc/apt/sources.list.d/atilo.list
 apt update &amp;&amp; apt install atilo-cn
 atilo images #可以安装的镜像列表
@@ -538,7 +757,7 @@ atilo pull debian # 尝试过使用ubuntu，但是感觉ubuntu问题比较多故
 ls ~/.atilo #可以备份该路径以便日后有问题恢复系统
 tmux new -d -s debian 'atilo run debian' # 使用tmux可以保证离线后台运行
 </code></pre>
-<h1><a id="user-content-debian安装大圣面板" class="anchor" aria-hidden="true" tabindex="-1" href="#debian安装大圣面板"><span aria-hidden="true" class="octicon octicon-link"></span></a>debian安装大圣面板</h1>
+<h1 id="user-content-debian安装大圣面板"><a class="heading-link" href="#debian安装大圣面板">debian安装大圣面板<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <pre><code>tmux a -t debian
 apt update &amp;&amp; apt install curl
 apt install gunicorn
@@ -549,7 +768,7 @@ mw restart
 mw default
 </code></pre>
 <p>安装完成后会打印端口等信息，可能有warning可以忽略，访问面板后台后可以安装OpenResty 1.21.4.1、PHP[APT]-73、MySQL[APT] 5.7</p>
-<h2><a id="user-content-问题记录" class="anchor" aria-hidden="true" tabindex="-1" href="#问题记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>问题记录</h2>
+<h2 id="user-content-问题记录"><a class="heading-link" href="#问题记录">问题记录<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ul>
 <li>安装cryptography报错
 配置环境变量：</li>
@@ -689,7 +908,7 @@ root@localhost:/etc# /etc/init.d/php7.3-fpm restart
 </code></pre>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218522603-dba0e559-70f9-4bb7-ab1a-a9551de62f87.png"><img src="https://user-images.githubusercontent.com/5915548/218522603-dba0e559-70f9-4bb7-ab1a-a9551de62f87.png" alt="image" style="max-width: 100%;"></a></p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/218486171-2ec972d2-0f97-4115-becb-55b98dfe34ec.png"><img src="https://user-images.githubusercontent.com/5915548/218486171-2ec972d2-0f97-4115-becb-55b98dfe34ec.png" alt="image" style="max-width: 100%;"></a></p>
-<h1><a id="user-content-使用sqlite3安装wordpress" class="anchor" aria-hidden="true" tabindex="-1" href="#使用sqlite3安装wordpress"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用sqlite3安装wordpress</h1>
+<h1 id="user-content-使用sqlite3安装wordpress"><a class="heading-link" href="#使用sqlite3安装wordpress">使用sqlite3安装wordpress<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <ol>
 <li>在面包后台php设置里安装sqlite3扩展，重启php-fpm</li>
 <li>下载wordpress源码上传解压到站点目录下</li>
@@ -999,7 +1218,7 @@ http {
 }
 
 </code></pre>
-<h1><a id="user-content-问题记录" class="anchor" aria-hidden="true" tabindex="-1" href="#问题记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>问题记录</h1>
+<h1 id="user-content-问题记录"><a class="heading-link" href="#问题记录">问题记录<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <ul>
 <li>运行内存不足导致编译失败，cc: fatal error: Killed signal terminated program cc1
 网络搜索都说可以增加虚拟内存大小<a href="https://www.cnblogs.com/huojing/articles/15824136.html" rel="nofollow">参考</a>，但是在termux中的ubuntu中以下方法会报错：swapon failed Operation not permitted。</li>
@@ -1079,9 +1298,9 @@ root@localhost:/www/server#
             <item>
                 <title><![CDATA[Termux通过Ubuntu安装AMH面板]]></title>
                     <description><![CDATA[<p><strong>注意先使用：uname -m查看确保手机是aarch64位架构</strong></p>
-<h1><a id="user-content-termux下atilo安装ubuntu" class="anchor" aria-hidden="true" tabindex="-1" href="#termux下atilo安装ubuntu"><span aria-hidden="true" class="octicon octicon-link"></span></a>Termux下Atilo安装ubuntu</h1>
+<h1 id="user-content-termux下atilo安装ubuntu"><a class="heading-link" href="#termux下atilo安装ubuntu">Termux下Atilo安装ubuntu<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <p>参考：<a href="https://www.jianshu.com/p/a9b30ea2ae66" rel="nofollow">https://www.jianshu.com/p/a9b30ea2ae66</a></p>
-<h1><a id="user-content-快速安装amh面板" class="anchor" aria-hidden="true" tabindex="-1" href="#快速安装amh面板"><span aria-hidden="true" class="octicon octicon-link"></span></a>快速安装amh面板</h1>
+<h1 id="user-content-快速安装amh面板"><a class="heading-link" href="#快速安装amh面板">快速安装amh面板<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <p>参考：<a href="http://amh.sh/install.htm" rel="nofollow">http://amh.sh/install.htm</a>
 ubuntu下：</p>
 <pre><code>export CV=[CN] DV=N &amp;&amp; wget http://dl.amh.sh/amh.sh &amp;&amp; bash amh.sh
@@ -1108,7 +1327,7 @@ ubuntu下：</p>
 重启PHP: amh php restart [主标识域名]
 重载PHP: amh php reload [主标识域名]
 </code></pre>
-<h1><a id="user-content-错误处理记录" class="anchor" aria-hidden="true" tabindex="-1" href="#错误处理记录"><span aria-hidden="true" class="octicon octicon-link"></span></a>错误处理记录</h1>
+<h1 id="user-content-错误处理记录"><a class="heading-link" href="#错误处理记录">错误处理记录<span aria-hidden="true" class="octicon octicon-link"></span></a></h1>
 <ul>
 <li>面板8888端口无法访问主页，amh nginx restart 看报错信息，发现ssl证书无法加载，80端口无法使用</li>
 </ul>
@@ -1131,7 +1350,7 @@ nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
             <item>
                 <title><![CDATA[安卓5下Termux通过ubuntu安装alist]]></title>
                     <description><![CDATA[<p>安卓7以上可以直接通过pkg install alist来安装alist，安卓5安装ubuntu需要64位termux，通过Atilo套娃其他linux来安装alist</p>
-<h2><a id="user-content-安装" class="anchor" aria-hidden="true" tabindex="-1" href="#安装"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装</h2>
+<h2 id="user-content-安装"><a class="heading-link" href="#安装">安装<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>termux下：</p>
 <pre><code>apt install tmux
 echo "deb [trusted=yes arch=all] https://yadominjinta.github.io/files/ termux extras" &gt;&gt; $PREFIX/etc/apt/sources.list.d/atilo.list
@@ -1171,7 +1390,7 @@ $ atilo images
 | ubuntu | focal | False | True |
 +----------+------------+--------+--------+
 </code></pre>
-<h2><a id="user-content-自启配置" class="anchor" aria-hidden="true" tabindex="-1" href="#自启配置"><span aria-hidden="true" class="octicon octicon-link"></span></a>自启配置</h2>
+<h2 id="user-content-自启配置"><a class="heading-link" href="#自启配置">自启配置<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>termux下：</p>
 <pre><code>echo "~/startup.sh" &gt;&gt; ~/.bashrc
 echo "~/startup.sh" &gt;&gt; ~/.atilo/ubuntu/root/.bashrc
@@ -1204,7 +1423,7 @@ fi
             </item>
             <item>
                 <title><![CDATA[联想乐檬k3刷安卓5.1教程]]></title>
-                    <description><![CDATA[<h2><a id="user-content-操作快捷键" class="anchor" aria-hidden="true" tabindex="-1" href="#操作快捷键"><span aria-hidden="true" class="octicon octicon-link"></span></a>操作快捷键</h2>
+                    <description><![CDATA[<h2 id="user-content-操作快捷键"><a class="heading-link" href="#操作快捷键">操作快捷键<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ul>
 <li>三键进recovery: 电源键+音量加+音量减</li>
 <li>进入fastboot: 电源键+音量减</li>
@@ -1213,7 +1432,7 @@ fi
 </ul>
 <p>刷机包下载: <a href="https://pan.baidu.com/s/1tnf2xMoqtcL6p50ZiRYICw" rel="nofollow">https://pan.baidu.com/s/1tnf2xMoqtcL6p50ZiRYICw</a> 提取码:agjm
 提示： 如果插电脑usb后供电不足反复重启，则电池触点正负极接线后使用充电宝供电</p>
-<h2><a id="user-content-线刷51底包" class="anchor" aria-hidden="true" tabindex="-1" href="#线刷51底包"><span aria-hidden="true" class="octicon octicon-link"></span></a>线刷5.1底包</h2>
+<h2 id="user-content-线刷51底包"><a class="heading-link" href="#线刷51底包">线刷5.1底包<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p><code>联想乐檬K3安卓5.0以上底层线刷包.rar</code>中有线刷文件，驱动和工具
 线刷工具使用参考：<a href="http://m.rom.7to.cn/jiaochengdetail/4292" rel="nofollow">http://m.rom.7to.cn/jiaochengdetail/4292</a></p>
 <ol>
@@ -1238,14 +1457,14 @@ fi
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/213976439-1e958b44-1676-471b-b660-a00f8246a871.png"><img src="https://user-images.githubusercontent.com/5915548/213976439-1e958b44-1676-471b-b660-a00f8246a871.png" alt="image" style="max-width: 100%;"></a></p>
 </li>
 </ol>
-<h2><a id="user-content-卡刷魔趣51-64位系统" class="anchor" aria-hidden="true" tabindex="-1" href="#卡刷魔趣51-64位系统"><span aria-hidden="true" class="octicon octicon-link"></span></a>卡刷魔趣5.1-64位系统</h2>
+<h2 id="user-content-卡刷魔趣51-64位系统"><a class="heading-link" href="#卡刷魔趣51-64位系统">卡刷魔趣5.1-64位系统<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ol>
 <li>线刷后，三键会进入到自带的奇兔recovery，双清格式化data分区</li>
 <li>连接电脑后可以看到k30设备，将卡刷包<code>乐檬k3-卡刷魔趣android-5.1刷机包.zip</code>复制到设备中</li>
 <li>recovery点击安装刚复制的卡刷包</li>
 <li>显示完毕后重启手机</li>
 </ol>
-<h2><a id="user-content-scrcpy远程控制手机" class="anchor" aria-hidden="true" tabindex="-1" href="#scrcpy远程控制手机"><span aria-hidden="true" class="octicon octicon-link"></span></a>scrcpy远程控制手机</h2>
+<h2 id="user-content-scrcpy远程控制手机"><a class="heading-link" href="#scrcpy远程控制手机">scrcpy远程控制手机<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>参考：<a href="https://blog.csdn.net/liuqinhou/article/details/127460195" rel="nofollow">https://blog.csdn.net/liuqinhou/article/details/127460195</a></p>
 <pre><code>adb connect 192.168.153.243 # 手机ip
 scrcpy -b5M -m720 -Sw
@@ -1371,7 +1590,7 @@ scrcpy -b5M -m720 -Sw
 </tr>
 </tbody>
 </table>
-<h2><a id="user-content-安卓5安装termux" class="anchor" aria-hidden="true" tabindex="-1" href="#安卓5安装termux"><span aria-hidden="true" class="octicon octicon-link"></span></a>安卓5安装termux</h2>
+<h2 id="user-content-安卓5安装termux"><a class="heading-link" href="#安卓5安装termux">安卓5安装termux<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ul>
 <li>参考<a href="https://github.com/termux/termux-app/wiki/Termux-on-android-5-or-6">Termux-on-android-5-or-6</a>
 </li>
@@ -1380,7 +1599,7 @@ scrcpy -b5M -m720 -Sw
 <li><a href="https://wwuy.lanzoub.com/imQ8T0i4bd7e" rel="nofollow">64位termux-app_v0.118.0+be66cff-apt-android-5-github-debug_arm64-v8a.zip - 蓝奏云</a></li>
 <li><a href="https://wwuy.lanzoub.com/iq8cr0i4bdjg" rel="nofollow">32位termux-app_v0.118.0+be66cff-apt-android-5-github-debug_armeabi-v7a.zip - 蓝奏云</a></li>
 </ul>
-<h2><a id="user-content-利用atilo安装ubuntu或debian和alist" class="anchor" aria-hidden="true" tabindex="-1" href="#利用atilo安装ubuntu或debian和alist"><span aria-hidden="true" class="octicon octicon-link"></span></a>利用Atilo安装ubuntu或debian和alist</h2>
+<h2 id="user-content-利用atilo安装ubuntu或debian和alist"><a class="heading-link" href="#利用atilo安装ubuntu或debian和alist">利用Atilo安装ubuntu或debian和alist<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>提示：安装ubuntu需要64位termux，安卓5的termux无法直接通过pkg install alist来安装alist，故需要通过其他linux安装</p>
 <pre><code>echo "deb [trusted=yes arch=all] https://yadominjinta.github.io/files/ termux extras" &gt;&gt; $PREFIX/etc/apt/sources.list.d/atilo.list
 apt update &amp;&amp; apt install atilo-cn
@@ -1761,27 +1980,27 @@ Icacls C:\Windows\SoftwareDistribution /deny "ALL APPLICATION PACKAGES:(OI)(CI)(
             </item>
             <item>
                 <title><![CDATA[测试issue2blog]]></title>
-                    <description><![CDATA[<h2><a id="user-content-标题" class="anchor" aria-hidden="true" tabindex="-1" href="#标题"><span aria-hidden="true" class="octicon octicon-link"></span></a>标题</h2>
+                    <description><![CDATA[<h2 id="user-content-标题"><a class="heading-link" href="#标题">标题<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>一级标题:    # 标题<br>
 二级标题:   ## 标题<br>
 三级标题:     ### 标题<br>
 四级标题:    #### 标题<br>
 五级标题:     #### 标题</p>
-<h2><a id="user-content-加粗" class="anchor" aria-hidden="true" tabindex="-1" href="#加粗"><span aria-hidden="true" class="octicon octicon-link"></span></a>加粗</h2>
+<h2 id="user-content-加粗"><a class="heading-link" href="#加粗">加粗<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p><strong>加粗</strong></p>
 
-<h2><a id="user-content-图片" class="anchor" aria-hidden="true" tabindex="-1" href="#图片"><span aria-hidden="true" class="octicon octicon-link"></span></a>图片</h2>
+<h2 id="user-content-图片"><a class="heading-link" href="#图片">图片<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5ddad46642a2c8b0ac8a83c25b204e21c16d8523bb5d51c23084866c9e32aee8/68747470733a2f2f7777772e696d6775726c2e6f72672f7374617469632f696d616765732f6c756f79652e6a7067"><img src="https://camo.githubusercontent.com/5ddad46642a2c8b0ac8a83c25b204e21c16d8523bb5d51c23084866c9e32aee8/68747470733a2f2f7777772e696d6775726c2e6f72672f7374617469632f696d616765732f6c756f79652e6a7067" alt="落叶" data-canonical-src="https://www.imgurl.org/static/images/luoye.jpg" style="max-width: 100%;"></a></p>
-<h2><a id="user-content-超链接" class="anchor" aria-hidden="true" tabindex="-1" href="#超链接"><span aria-hidden="true" class="octicon octicon-link"></span></a>超链接</h2>
+<h2 id="user-content-超链接"><a class="heading-link" href="#超链接">超链接<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p><a href="http://baidu.com" rel="nofollow">百度</a></p>
-<h2><a id="user-content-斜体" class="anchor" aria-hidden="true" tabindex="-1" href="#斜体"><span aria-hidden="true" class="octicon octicon-link"></span></a>斜体</h2>
+<h2 id="user-content-斜体"><a class="heading-link" href="#斜体">斜体<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p><em>斜体</em></p>
-<h2><a id="user-content-粗斜体" class="anchor" aria-hidden="true" tabindex="-1" href="#粗斜体"><span aria-hidden="true" class="octicon octicon-link"></span></a>粗斜体</h2>
+<h2 id="user-content-粗斜体"><a class="heading-link" href="#粗斜体">粗斜体<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p><em><strong>粗斜体</strong></em></p>
-<h2><a id="user-content-代码块" class="anchor" aria-hidden="true" tabindex="-1" href="#代码块"><span aria-hidden="true" class="octicon octicon-link"></span></a>代码块</h2>
+<h2 id="user-content-代码块"><a class="heading-link" href="#代码块">代码块<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <pre><code>code.
 </code></pre>
-<h2><a id="user-content-分割线" class="anchor" aria-hidden="true" tabindex="-1" href="#分割线"><span aria-hidden="true" class="octicon octicon-link"></span></a>分割线</h2>
+<h2 id="user-content-分割线"><a class="heading-link" href="#分割线">分割线<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <p>Hello</p>
 
 ]]></description>
@@ -1826,7 +2045,7 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
             </item>
             <item>
                 <title><![CDATA[开始使用Github Issues写博客]]></title>
-                    <description><![CDATA[<h2><a id="user-content-背景" class="anchor" aria-hidden="true" tabindex="-1" href="#背景"><span aria-hidden="true" class="octicon octicon-link"></span></a>背景</h2>
+                    <description><![CDATA[<h2 id="user-content-背景"><a class="heading-link" href="#背景">背景<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ul>
 <li>简书频繁下架文章，每天只能发布两篇</li>
 <li>CSDN页面太杂，写作不够专注，客户端不好用</li>
@@ -1836,10 +2055,10 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
 </ul>
 
 
-<h2><a id="user-content-需求和实现" class="anchor" aria-hidden="true" tabindex="-1" href="#需求和实现"><span aria-hidden="true" class="octicon octicon-link"></span></a>需求和实现</h2>
-<h3><a id="user-content-自动生成readme目录" class="anchor" aria-hidden="true" tabindex="-1" href="#自动生成readme目录"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动生成README目录</h3>
+<h2 id="user-content-需求和实现"><a class="heading-link" href="#需求和实现">需求和实现<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
+<h3 id="user-content-自动生成readme目录"><a class="heading-link" href="#自动生成readme目录">自动生成README目录<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <p>仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2readme.yaml">.github/workflows/issue2readme.yaml</a>在仓库里增加workflows配置文件进行修改，<a href="https://github.com/bxb100/issueblog#readme">说明文档</a>，最后生成<a href="https://github.com/cloudswave/blog/#readme">效果</a></p>
-<h3><a id="user-content-自动构建hexo发布到github-pages" class="anchor" aria-hidden="true" tabindex="-1" href="#自动构建hexo发布到github-pages"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动构建Hexo发布到Github Pages</h3>
+<h3 id="user-content-自动构建hexo发布到github-pages"><a class="heading-link" href="#自动构建hexo发布到github-pages">自动构建Hexo发布到Github Pages<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <p>仿照<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2hexo.yaml">.github/workflows/issue2hexo.yaml</a>在仓库里增加workflows配置文件，根据自身情况修改环境变量，最后发布的效果可查看<a href="http://cloudswave.github.io" rel="nofollow">我的Hexo博客</a></p>
 <pre><code>env:
   # github pages repo
@@ -1862,12 +2081,12 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
 <strong>另外还需要Pages仓库的权限配置</strong>，如下图：
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712542-b1c8edfc-4170-426b-885c-0ba691a6934b.png"><img src="https://user-images.githubusercontent.com/5915548/198712542-b1c8edfc-4170-426b-885c-0ba691a6934b.png" alt="image" style="max-width: 100%;"></a>
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png"><img src="https://user-images.githubusercontent.com/5915548/198712367-39502701-4d41-4468-97b7-9b808b92ae62.png" alt="image" style="max-width: 100%;"></a></p>
-<h3><a id="user-content-自动发布文章到其他博客平台用来引流" class="anchor" aria-hidden="true" tabindex="-1" href="#自动发布文章到其他博客平台用来引流"><span aria-hidden="true" class="octicon octicon-link"></span></a>自动发布文章到其他博客平台用来引流</h3>
+<h3 id="user-content-自动发布文章到其他博客平台用来引流"><a class="heading-link" href="#自动发布文章到其他博客平台用来引流">自动发布文章到其他博客平台用来引流<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <ul>
 <li>发布到CSDN, 参考<a href="https://github.com/cloudswave/blog/blob/master/.github/workflows/issue2csdn.yml">issue2csdn</a>增加workflows配置文件，<a href="https://github.com/cloudswave/issue2csdn#readme">说明文档</a>
 </li>
 </ul>
-<h3><a id="user-content-提示" class="anchor" aria-hidden="true" tabindex="-1" href="#提示"><span aria-hidden="true" class="octicon octicon-link"></span></a>提示</h3>
+<h3 id="user-content-提示"><a class="heading-link" href="#提示">提示<span aria-hidden="true" class="octicon octicon-link"></span></a></h3>
 <p>如果你只想在issue添加Miestone为publish的时候才发布更新，可以修改yml里的触发器，如：</p>
 <pre><code>on:
   issues:
@@ -1877,7 +2096,7 @@ await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
 </code></pre>
 <p>可以在Actions页面查看workflow执行日志和禁止某个workflow执行
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/5915548/198864861-03313485-2a81-4f76-ba44-ec24254a619a.png"><img width="805" alt="action-guide" src="https://user-images.githubusercontent.com/5915548/198864861-03313485-2a81-4f76-ba44-ec24254a619a.png" style="max-width: 100%;"></a></p>
-<h2><a id="user-content-参考文档" class="anchor" aria-hidden="true" tabindex="-1" href="#参考文档"><span aria-hidden="true" class="octicon octicon-link"></span></a>参考文档</h2>
+<h2 id="user-content-参考文档"><a class="heading-link" href="#参考文档">参考文档<span aria-hidden="true" class="octicon octicon-link"></span></a></h2>
 <ul>
 <li><a href="https://github.com/Solybum/hexo-deploy">https://github.com/Solybum/hexo-deploy</a></li>
 <li><a href="https://github.com/zenghongtu/github-issue-to-hexo">https://github.com/zenghongtu/github-issue-to-hexo</a></li>
