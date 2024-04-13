@@ -1,5 +1,15 @@
 [docker安装安卓](https://github.com/cloudswave/blog/issues/35)
 
+## 项目:redroid
+地址：https://github.com/remote-android/redroid-doc
+```
+docker run -itd --privileged --memory-swappiness=0 --pull always -v /opt/data12.1:/data -p 5555:5555 --name redroid12-1 redroid/redroid:12.0.0-latest androidboot.redroid_width=1080 androidboot.redroid_height=1920 androidboot.redroid_dpi=480 androidboot.redroid_gpu_mode=guest ro.secure=0
+```
+arm服务器验证可行，配合ws-scrcpy实现浏览器远程控制
+
+## 项目:docker-android
+> 个人未搭建成功，请自行测试验证
+
 官方github地址：[https://github.com/budtmo/docker-android](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fbudtmo%2Fdocker-android)
 cpu必须支持虚拟化，检查cpu是否支持虚拟化
 ```
