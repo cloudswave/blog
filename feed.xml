@@ -15,7 +15,7 @@
                     <title><![CDATA[EthanZhu's Blog]]></title>
                 <link>https://github.com/cloudswave/blog</link>
             </image>
-        <lastBuildDate>Sat, 13 Apr 2024 01:07:44 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 13 Apr 2024 01:17:18 GMT</lastBuildDate>
             <item>
                 <title><![CDATA[快速搭建Flutter Android开发环境]]></title>
                     <description><![CDATA[<div class="markdown-heading"><h1 class="heading-element">利用github codespaces容器</h1><a id="user-content-利用github-codespaces容器" class="anchor" aria-label="Permalink: 利用github codespaces容器" href="#利用github-codespaces容器"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
@@ -127,10 +127,11 @@ echo "
 "
 </code></pre>
 ]]></description>
-                    <pubDate>Sat, 13 Apr 2024 01:07:29 GMT</pubDate>
+                    <pubDate>Sat, 13 Apr 2024 01:17:05 GMT</pubDate>
                         <guid isPermaLink="false">https://github.com/cloudswave/blog/issues/43</guid>
                 <link>https://github.com/cloudswave/blog/issues/43</link>
                     <author><![CDATA[cloudswave]]></author>
+                        <category>开发</category>
             </item>
             <item>
                 <title><![CDATA[chatgpt官方版本使用]]></title>
